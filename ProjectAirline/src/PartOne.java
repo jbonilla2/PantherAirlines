@@ -4,7 +4,7 @@ import java.util.Scanner;
 class Customer
 {  
 private String customerFirstname = "Paul";
-private String customerLastname = "Jason";
+private String customerLastname = "Rodgers";
 private String customerAddress = "123 abc rd";
 private String customerZip = "12345";
 private String customerState = "Ga";
