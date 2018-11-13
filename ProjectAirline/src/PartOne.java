@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class Customer
 {  
-private String customerFirstname = "Tom";
+private String customerFirstname = "Paul";
 private String customerLastname = "Jason";
 private String customerAddress = "123 abc rd";
 private String customerZip = "12345";
@@ -15,7 +15,7 @@ private String customerSSN = "123456789";
 private String customerSecurityQ = "IDK";
   
 public void createCustomer() {
-	this.customerFirstname = "Tom";
+	this.customerFirstname = "Paul";
 	 this.customerLastname = "Jason";
 	 this.customerAddress = "123 abc rd";
 	 this.customerZip = "12345";
