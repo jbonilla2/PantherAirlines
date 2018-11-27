@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Flight {
 	
 	public void AdminFlight(int a, ArrayList<Customer> AdminInfo) {
-		System.out.println("Welcom Admin "+ AdminInfo.get(a).getcustomerFirstname());
+		System.out.println("Welcome Admin "+ AdminInfo.get(a).getcustomerFirstname());
 		System.out.println("How can I help you?");
 		System.out.println("(1) View my status");
 		System.out.println("(2) View customers' status");
@@ -14,7 +14,7 @@ public class Flight {
 		Scanner in = new Scanner(System.in);
 		String MYC = "n";
 		do {
-		System.out.println("Welcom "+ CusInfo.get(a).getcustomerFirstname());
+		System.out.println("Welcome "+ CusInfo.get(a).getcustomerFirstname());
 		System.out.println("How can I help you?");
 		System.out.println("(1) View my status");
 		System.out.println("(2) Adding flight");
