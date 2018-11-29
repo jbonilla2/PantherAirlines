@@ -1,0 +1,7 @@
+public interface Person {
+	void setFirstname();
+	void setLastname();
+	void setUsername();
+	 void setPassword();
+	 void setSSN();
+}
