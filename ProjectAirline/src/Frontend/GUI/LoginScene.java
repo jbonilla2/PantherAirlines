@@ -23,7 +23,7 @@ public class LoginScene {
     public static  void initialize(){
 
         //loginLabel
-        loginLabel = new Label("Log in");
+    	loginLabel = new Label("Log in");
         loginLabel.setPadding((new Insets(0, 0, 30, 0)));
         loginLabel.setStyle("-fx-font-size: 24pt");
 
@@ -31,10 +31,11 @@ public class LoginScene {
         //hermesLabel
         pantherLabel = new Label("Welcome to Panther Airlines");
         pantherLabel.setId("welcome");
+        pantherLabel.setStyle("-fx-font-size: 24pt");
 
         //usernameField
         usernameField = new TextField();
-        usernameField.setPromptText("User ID");
+        usernameField.setPromptText("Username");
         usernameField.setMaxWidth(220);
         usernameField.setAlignment(Pos.CENTER);
 
@@ -54,8 +55,8 @@ public class LoginScene {
         loginLayout.getChildren().addAll(pantherLabel,loginLabel,usernameField,passwordField,loginButton);
 
         //scene
-        scene = new Scene(loginLayout,400,500);
-        scene.getStylesheets().add("Presentation/style.css");
+        scene = new Scene(loginLayout,800,500);
+        //scene.getStylesheets().add("Presentation/style.css");
 
 
 

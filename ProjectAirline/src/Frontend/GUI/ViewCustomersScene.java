@@ -1,6 +1,8 @@
 package Frontend.GUI;
 
-import Application.DataTypes.Customer;
+//Change the red, add or change Table columns
+
+import Backend.User;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,19 +13,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-/**
- * Created by DragonClau on 19/5/2016.
- */
-
 public class ViewCustomersScene {
 
 
         //fields
         private static Pane layout;
         private static Scene scene;
-        private static TableView<Customer> table;
-        private static TableColumn<Customer, Integer> idColumn, ageColumn;
-        private static TableColumn<Customer, String> fnameColumn, lnameColumn, passportColumn, phoneColumn;
+        private static TableView<User> table;
+        private static TableColumn<User, Integer> idColumn, ageColumn;
+        private static TableColumn<User, String> fnameColumn, lnameColumn, passportColumn, phoneColumn;
         private static TextField search;
         private static HBox buttonLayout;
         private static Button backB, addB, editB;
@@ -94,11 +92,11 @@ public class ViewCustomersScene {
 
 
         //getters
-    public static TableColumn<Customer, String> getFnameColumn() {
+    public static TableColumn<User, String> getFnameColumn() {
         return fnameColumn;
     }
 
-    public static TableColumn<Customer, String> getLnameColumn() {
+    public static TableColumn<User, String> getLnameColumn() {
         return lnameColumn;
     }
 
