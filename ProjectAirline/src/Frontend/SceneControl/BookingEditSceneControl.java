@@ -2,16 +2,13 @@ package Frontend.SceneControl;
 
 import Backend.*;
 import databaseAccess.*;
-import Frontend.*;
+import Frontend.GUI.*;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- * Created by Petru on 26-May-16.
- */
 
 public class BookingEditSceneControl {
 
@@ -29,8 +26,8 @@ public class BookingEditSceneControl {
     private static Button cancelButton;
     private static Label priceLabelObs;
     private static boolean okPressed = false;
-    private static Booking booking;
-    private static BookingTable bookingTable;
+    private static Reservations booking;
+    private static ReservationsTable bookingTable;
 
 
 
@@ -380,7 +377,7 @@ public class BookingEditSceneControl {
 
 
     //getters
-    public static Booking getBooking() {
+    public static Reservations getBooking() {
         return booking;
     }
 

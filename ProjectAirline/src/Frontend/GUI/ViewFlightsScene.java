@@ -12,12 +12,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-/**
- * Created by Petru on 18-May-16.
- */
-
 public class ViewFlightsScene {
 
+	/* To DO: 
+	 * delete route
+	 * need FlightID
+	 * Departing City which is only ATL
+	 * Departing Date
+	 * Departing time  and delete arrival time
+	 * Arrival City
+	 * Arrival Date
+	 * Price
+	 * Seats remaining 	
+	 */	
+	
     //fields
     private static Pane layout;
     private static Scene scene;
@@ -41,37 +49,37 @@ public class ViewFlightsScene {
 
         //initialize columns
         flight_idColumn = new TableColumn<>("ID");
-        flight_idColumn.setCellValueFactory(cellData -> cellData.getValue().flight_idProperty().asObject());
+        //flight_idColumn.setCellValueFactory(cellData -> cellData.getValue().flight_idProperty().asObject());
         flight_idColumn.setMaxWidth(70);
         flight_idColumn.setMinWidth(60);
 
 
         departure_dateColumn = new TableColumn<>("Departure date");
-        departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
+       // departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
 
 
         departure_cityColumn = new TableColumn<>("Departure city");
-        departure_cityColumn.setCellValueFactory(cellData -> cellData.getValue().departure_cityProperty());
+       // departure_cityColumn.setCellValueFactory(cellData -> cellData.getValue().departure_cityProperty());
 
 
         arrival_cityColumn = new TableColumn<>("Arrival city");
-        arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
+       // arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
 
 
         priceColumn = new TableColumn<>("Basic price");
-        priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+       // priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
 
 
         economyColumn = new TableColumn<>("Eco seat");
-        economyColumn.setCellValueFactory(cellData -> cellData.getValue().economyLeftProperty().asObject());
+      //  economyColumn.setCellValueFactory(cellData -> cellData.getValue().economyLeftProperty().asObject());
 
 
         coachColumn = new TableColumn<>("Coach seat");
-        coachColumn.setCellValueFactory(cellData -> cellData.getValue().coachLeftProperty().asObject());
+       // coachColumn.setCellValueFactory(cellData -> cellData.getValue().coachLeftProperty().asObject());
 
 
         first_classColumn = new TableColumn<>("First seat");
-        first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classLeftProperty().asObject());
+      //  first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classLeftProperty().asObject());
 
 
         table.getColumns().addAll(flight_idColumn,departure_dateColumn,departure_cityColumn,arrival_cityColumn,priceColumn,economyColumn,coachColumn,first_classColumn);
@@ -106,7 +114,7 @@ public class ViewFlightsScene {
 
         //scene
         scene = new Scene(layout, 1200, 700);
-        scene.getStylesheets().add("/Presentation/style.css");
+        scene.getStylesheets().add("/Frontend/GUI/style.css");
 
         System.out.println("flights scene initialized");
     }

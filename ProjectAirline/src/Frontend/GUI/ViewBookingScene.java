@@ -192,7 +192,7 @@ public class ViewBookingScene {
 
         //Scene
         scene = new Scene(layout,1200,700);
-        scene.getStylesheets().add("/Presentation/style.css");
+        scene.getStylesheets().add("/Frontend/GUI/style.css");
 
 
         System.out.println("bookings scene initialized");

@@ -2,7 +2,7 @@ package Frontend.SceneControl;
 
 import Backend.*;
 import databaseAccess.*;
-import Frontend.*;
+import Frontend.GUI.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -18,10 +18,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-/**
- * Created by Administrator on 5/25/2016.
- */
 
 public class FlightEditSceneControl {
 
@@ -43,18 +39,20 @@ public class FlightEditSceneControl {
 
         //route
         routeC = FlightsEditScene.getRouteC();
+/*       
         for(Airline airline: AirlineData.getAirlines()){
             if(!routeC.getItems().contains(airline.getDeparture_city() + " -> " + airline.getArrival_city()))
                 routeC.getItems().add(airline.getDeparture_city() + " -> " + airline.getArrival_city());
         }
-
+*/
         //plane
         plane_id = FlightsEditScene.getPlane_id();
+  /*
         for(Plane p : PlaneData.getPlanes()){
             if(!plane_id.getItems().contains(p.getPlane_id()))
                 plane_id.getItems().add(p.getPlane_id());
         }
-
+*/
 
         //flight times setup
         departure_time= FlightsEditScene.getDeparture_time();
@@ -75,7 +73,7 @@ public class FlightEditSceneControl {
 
         //ok button
         okB = FlightsEditScene.getOkB();
-        okB.setOnAction( e -> handle_okB());
+        //okB.setOnAction( e -> handle_okB());
 
 
         //cancel button
@@ -84,10 +82,10 @@ public class FlightEditSceneControl {
 
     }
 
-
+/*
     //setting flight for edit
     public static void setFlight(FlightTable f,Flight flig){
-
+    	
             flightTable = f;
             flight = flig;
 
@@ -121,7 +119,7 @@ public class FlightEditSceneControl {
     public static void handle_okB(){
         if(isInputValid()){
 
-        flight.setPlane_id(plane_id.getValue());
+        flight.setFlight_id(plane_id.getValue());
 
         String route = routeC.getValue();
 
@@ -149,7 +147,7 @@ public class FlightEditSceneControl {
         }
 
     }
-
+*/
 
     //cancel button action
     public static void handleClose(){

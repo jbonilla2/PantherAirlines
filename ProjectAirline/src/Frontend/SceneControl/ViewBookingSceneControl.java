@@ -1,8 +1,9 @@
 package Frontend.SceneControl;
 
-import Backend.*;
+import Backend.Reservations;
+import Backend.ReservationsTable;
 import databaseAccess.*;
-import Frontend.*;
+import Frontend.GUI.*;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class ViewBookingSceneControl {
 
     //fields
-    private static TableView<BookingTable> table;
+    private static TableView<ReservationsTable> table;
     private static Label departure_dateObs;
     private static Label arrival_dateObs;
     private static Label categoryObs;
@@ -33,7 +34,7 @@ public class ViewBookingSceneControl {
     private static Button backButton;
     private static Button editButton;
 
-    private static ObservableList<BookingTable> bookings, tableItems;
+    private static ObservableList<ReservationsTable> bookings, tableItems;
     private static double refund;
 
 
@@ -42,8 +43,8 @@ public class ViewBookingSceneControl {
 
         //table
         table = ViewBookingScene.getTable();
-        table.setItems(BookingTableData.getBookingTableItems());
-        table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayBookingInfo(newValue));
+//        table.setItems(BookingTableData.getBookingTableItems());
+//        table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayBookingInfo(newValue));
 
         //flight info labels
         departure_dateObs = ViewBookingScene.getDeparture_dateObs();
@@ -69,7 +70,7 @@ public class ViewBookingSceneControl {
         backButton.setOnAction(e -> handle_backButton());
 
         editButton = ViewBookingScene.getEditButton();
-        editButton.setOnAction(e -> handle_editButton());
+       // editButton.setOnAction(e -> handle_editButton());
 
 
         //search field setup
@@ -87,16 +88,16 @@ public class ViewBookingSceneControl {
 
     //add button action
     public static void handle_addButton(){
-        BookingTable bookingTable = new BookingTable();
-        Booking booking = new Booking();
+    	ReservationsTable bookingTable = new ReservationsTable();
+    	Reservations booking = new Reservations();
 
         boolean okPressed = MainControl.showBookingEditScene(bookingTable, booking);
 
         if (okPressed) {
             booking = BookingEditSceneControl.getBooking();
-            BookingData.insertBooking(booking); //add booking to database
+           // BookingData.insertBooking(booking); //add booking to database
 
-            table.setItems(BookingTableData.getBookingTableItems()); //set the table items
+          //  table.setItems(BookingTableData.getBookingTableItems()); //set the table items
             bookings = table.getItems();
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -109,11 +110,11 @@ public class ViewBookingSceneControl {
 
     }
 
-
+/*
     //edit button action
     public static void handle_editButton(){
-        BookingTable bookingTable = table.getSelectionModel().getSelectedItem();
-        Booking booking = new Booking();
+    	ReservationsTable bookingTable = table.getSelectionModel().getSelectedItem();
+    	Reservations booking = new Reservations();
 
         if(bookingTable != null) {
             //assuming that the customer is going to change the ticket category
@@ -155,16 +156,16 @@ public class ViewBookingSceneControl {
             alert.showAndWait();
         }
     }
-
+*/
 
     //remove button action
     public static void handle_cancelButton() {
-        BookingTable bookingTable = table.getSelectionModel().getSelectedItem();
-        Booking booking = new Booking();
+        ReservationsTable bookingTable = table.getSelectionModel().getSelectedItem();
+        Reservations booking = new Reservations();
 
         if (bookingTable != null) {
             refund = 0.0;
-            for (Booking b : BookingData.getBookings())
+            for (Reservations b : BookingData.getBookings())
                 if (bookingTable.getBooking_id() == b.getBooking_id()) {
                     booking = b;
                     break;
@@ -250,13 +251,13 @@ public class ViewBookingSceneControl {
         }
     }
 
-
+/*
     //method to display the booking details
-    public static void displayBookingInfo(BookingTable buk) {
+    public static void displayBookingInfo(ReservationsTable buk) {
         if(buk != null) {
 
-            Booking booking = new Booking();
-            for(Booking b : BookingData.getBookings())
+            Reservations booking = new Reservations();
+            for(Reservations b : BookingData.getBookings())
                 if(b.getBooking_id() == buk.getBooking_id()) {
                     booking = b;
                     break;
@@ -308,12 +309,13 @@ public class ViewBookingSceneControl {
             phone_numberObs.setText("");
         }
     }
-
+*/
 
     //search bar setup
     public static void initializeSearch(){
         search.textProperty().addListener(new InvalidationListener() {
-            @Override
+           
+        	@Override
             public void invalidated(Observable observable) {
                 if (search.textProperty().get().isEmpty()) {
                     table.setItems(bookings);
@@ -322,9 +324,9 @@ public class ViewBookingSceneControl {
 
                 tableItems = FXCollections.observableArrayList();
 
-                for(BookingTable b : bookings){
+                for(ReservationsTable b : bookings){
                     if(b.getRoute().toUpperCase().contains(search.getText().toUpperCase())||
-                            b.getCustomer().toUpperCase().contains(search.getText().toUpperCase())) {
+                            b.getUser().toUpperCase().contains(search.getText().toUpperCase())) {
 
                         tableItems.add(b);
                     }

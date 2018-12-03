@@ -2,7 +2,7 @@ package Frontend.SceneControl;
 
 import Backend.*;
 import databaseAccess.*;
-import Frontend.*;
+import Frontend.GUI.*;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -35,7 +35,7 @@ public class ViewFlightSceneControl {
         editB.setOnAction(e -> handle_editB());
 
         exportFlightsB = ViewFlightsScene.getExportFlightsB();
-        exportFlightsB.setOnAction(event -> handle_exportFlightsB());
+        //exportFlightsB.setOnAction(event -> handle_exportFlightsB());
 
 
         search = ViewFlightsScene.getSearch();
@@ -55,12 +55,13 @@ public class ViewFlightSceneControl {
         if(okPressed) {
             flight = FlightEditSceneControl.getFlight();
 
+  /*  
             //getting the seat info from plane database
             for(Plane p: PlaneData.getPlanes()){
                 if(p.getPlane_id()==flight.getPlane_id()){
-                    flight.setFirst_class_left(p.getFirst_class());
-                    flight.setCoach_left(p.getCoach());
-                    flight.setEconomy_left(p.getEconomy());
+                   // flight.setFirst_class_left(p.getFirst_class());
+                    //flight.setCoach_left(p.getCoach());
+                    //flight.setEconomy_left(p.getEconomy());
                 }
             }
 
@@ -73,7 +74,7 @@ public class ViewFlightSceneControl {
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Flight added!");
             alert.showAndWait();
-
+*/
             System.out.println("new flight added");
         }
     }
@@ -90,7 +91,7 @@ public class ViewFlightSceneControl {
 
             if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();
-                FlightData.updateFlight(flight); //update flight in database
+   //             FlightData.updateFlight(flight); //update flight in database
 
                 table.setItems(FlightTableData.getFlightTableItems()); //set the table items
                 flights = table.getItems();
@@ -118,13 +119,13 @@ public class ViewFlightSceneControl {
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
 
-
+/*
     //export button action
     public static void handle_exportFlightsB() {
         FlightData.getFlight();
         FlightData.exportFlights();
     }
-
+*/
 
     //search bar setup
     public static void initializeSearch(){
@@ -137,14 +138,14 @@ public class ViewFlightSceneControl {
                 }
 
                 tableItems = FXCollections.observableArrayList();
-
+/*
                 for(FlightTable f : flights){
                     if(f.getDeparture_city().toUpperCase().contains(search.getText().toUpperCase()) ||
                             f.getArrival_city().toUpperCase().contains(search.getText().toUpperCase())){
                         tableItems.add(f);
                     }
                 }
-
+*/
                 table.setItems(tableItems);
             }
         });

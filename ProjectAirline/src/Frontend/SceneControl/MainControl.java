@@ -11,9 +11,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- * Created by Administrator on 5/19/2016.
- */
 
 public class MainControl {
 
@@ -58,7 +55,7 @@ public class MainControl {
         window.centerOnScreen();
     }
 
-/*
+
     //view bookings scene
     public static void showViewBookingScene(){
         //initialization of scene
@@ -69,9 +66,9 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewBookingScene.getScene());
-        window.setTitle("Hermes Airlines™  -  Bookings");
+        window.setTitle("Panther Airlines™  -  Bookings");
     }
-*/
+
 
     //view customers scene
     public static void showViewCustomerScene(){
@@ -86,7 +83,7 @@ public class MainControl {
         window.setTitle("Panther Airlines™  -  Customers");
     }
 
-/*
+
     //view flights scene
     public static void showViewFlightsScene(){
         //initialization of scene
@@ -97,10 +94,10 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewFlightsScene.getScene());
-        window.setTitle("Hermes Airlines™  -  Flights");
+        window.setTitle("Panther Airlines™  -  Flights");
     }
 
-
+/*
     //view planes scene
     public static void showViewPlanesScene(){
         //initialization of scene
@@ -148,7 +145,7 @@ public class MainControl {
         return CustomerEditSceneControl.isOkPressed();
     }
 
-
+*/
     //flight edit dialog
     public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
         //initialization of scene
@@ -156,7 +153,7 @@ public class MainControl {
 
         //initialization of controller
         FlightEditSceneControl.initialize();
-        FlightEditSceneControl.setFlight(flightTable,flight);
+        //FlightEditSceneControl.setFlight(flightTable,flight);
 
         FlightsEditScene.getDialogStage().initOwner(window);
         FlightsEditScene.getDialogStage().setTitle("Flight menu");
@@ -167,13 +164,13 @@ public class MainControl {
 
 
     //booking edit dialog
-    public static boolean showBookingEditScene(BookingTable bookingTable, Booking booking) {
+    public static boolean showBookingEditScene(ReservationsTable bookingTable, Reservations booking) {
         //initialization of scene
         BookingEditScene.initialize();
 
         //initialization of controller
         BookingEditSceneControl.initialize();
-        BookingEditSceneControl.setBooking(bookingTable, booking);
+// Come back to edit  BookingEditSceneControl.setBooking(bookingTable, booking);
 
         BookingEditScene.getDialogStage().initOwner(window);
         BookingEditScene.getDialogStage().setTitle("Booking menu");
@@ -183,7 +180,7 @@ public class MainControl {
 
     }
 
-*/
+
 
     //getters
     public static Stage getWindow() {
