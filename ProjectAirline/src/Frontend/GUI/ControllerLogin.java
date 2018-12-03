@@ -38,15 +38,14 @@ public class ControllerLogin {
 	public static TextField anwQuestionInput = new TextField();
 	
 	//handle registration
-	public static void handleRegisterButton() {
+	public void handleRegisterButton() {
 		
-		firstNameInput.clear();
-		lastNameInput.clear();
+		System.out.println("Register button");
 		
 	}
 	
 	
-	public static void handleLoginButton() {
+	public void handleLoginButton() {
 		
 		//username
         username = usernameLog.getText();
