@@ -34,22 +34,22 @@ public class ViewCustomersScene {
             idColumn = new TableColumn<>("ID");
             idColumn.setMinWidth(60);
             idColumn.setMaxWidth(70);
-            idColumn.setCellValueFactory(cellData -> cellData.getValue().customer_idProperty().asObject());;
+            //idColumn.setCellValueFactory(cellData -> cellData.getValue().customer_idProperty().asObject());;
 
             fnameColumn = new TableColumn("First Name");
-            fnameColumn.setCellValueFactory(cellData -> cellData.getValue().first_nameProperty());
+            //fnameColumn.setCellValueFactory(cellData -> cellData.getValue().first_nameProperty());
 
             lnameColumn = new TableColumn<>("Last Name");
-            lnameColumn.setCellValueFactory(cellData -> cellData.getValue().last_nameProperty());
+            //lnameColumn.setCellValueFactory(cellData -> cellData.getValue().last_nameProperty());
 
             ageColumn = new TableColumn("Age");
-            ageColumn.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
+            //ageColumn.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
 
             phoneColumn = new TableColumn("Phone Number");
-            phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phone_nrProperty());
+            //phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phone_nrProperty());
 
             passportColumn = new TableColumn("Passport Number");
-            passportColumn.setCellValueFactory(cellData -> cellData.getValue().passport_numberProperty());
+           // passportColumn.setCellValueFactory(cellData -> cellData.getValue().passport_numberProperty());
 
             //table
             table = new TableView<>();
@@ -76,15 +76,15 @@ public class ViewCustomersScene {
             //button layout
             buttonLayout = new HBox(20);
             buttonLayout.setAlignment(Pos.CENTER);
-            buttonLayout.relocate(862,642);
+            buttonLayout.relocate(800,642);
             buttonLayout.getChildren().addAll(addB,editB,backB);
 
             //layout setup
             layout = new Pane();
             layout.getChildren().addAll(table,search,buttonLayout);
             //scene
-            scene = new Scene(layout, 1200, 700);
-            scene.getStylesheets().add("/Presentation/style.css");
+            scene = new Scene(layout, 1200, 800);
+            scene.getStylesheets().add("/Frontend/GUI/style.css");
 
             System.out.println("customers scene initialized");
         }

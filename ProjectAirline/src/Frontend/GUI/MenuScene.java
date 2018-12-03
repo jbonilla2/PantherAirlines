@@ -55,17 +55,17 @@ public class MenuScene {
         //customersB
         customersB = new Button("Customers");
         customersB.setAlignment(Pos.CENTER);
-        //customersB.getStyleClass().add("menu-button");
+        customersB.getStyleClass().add("menu-button");
 
         //flightsB
         flightsB = new Button("Flights");
         flightsB.setAlignment(Pos.CENTER);
-        //flightsB.getStyleClass().add("menu-button");
+        flightsB.getStyleClass().add("menu-button");
 
         //planesB
         planesB = new Button("Planes");
         planesB.setAlignment(Pos.CENTER);
-        //planesB.getStyleClass().add("menu-button");
+        planesB.getStyleClass().add("menu-button");
 
         //EXITB
         exitB = new Button("Exit");
@@ -79,15 +79,10 @@ public class MenuScene {
         //VBox make into layout
         vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
-        //vbox.relocate(940,320);
         vbox.getChildren().addAll(welcomeLabel, bookingsB,customersB,flightsB,planesB,exitB,logoutB);
 
-        //layout
-        //layout = new Pane();
-        //layout.getChildren().addAll(welcomeLabel, vbox);
-
         //scene
-        scene = new Scene(vbox, 800, 500);
+        scene = new Scene(vbox, 800, 800);
         scene.getStylesheets().add("Frontend/GUI/style.css");
 
         System.out.println("menu scene initialized");

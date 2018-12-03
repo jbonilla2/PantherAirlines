@@ -55,7 +55,7 @@ public class LoginScene {
         loginLayout.getChildren().addAll(pantherLabel,loginLabel,usernameField,passwordField,loginButton);
 
         //scene
-        scene = new Scene(loginLayout,800,500);
+        scene = new Scene(loginLayout,800,800);
         scene.getStylesheets().add("Frontend/GUI/style.css");
 
 

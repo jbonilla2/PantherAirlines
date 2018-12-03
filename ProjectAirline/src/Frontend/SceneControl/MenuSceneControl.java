@@ -22,7 +22,7 @@ public class MenuSceneControl {
 
         //customersB
         customersB = MenuScene.getCustomersB();
-        //customersB.setOnAction(e -> handle_customersB());
+        customersB.setOnAction(e -> handle_customersB());
 
         //flightsB
         flightsB = MenuScene.getFlightsB();
@@ -54,12 +54,12 @@ public class MenuSceneControl {
     public static void handle_bookingsB(){
         MainControl.showViewBookingScene();
     }
-
+*/
     //handle customersB
     public static void handle_customersB(){
         MainControl.showViewCustomerScene();
     }
-
+/*
     //handle flightsB
     public static void handle_flightsB(){
         MainControl.showViewFlightsScene();

@@ -71,7 +71,7 @@ public class MainControl {
         window.setScene(ViewBookingScene.getScene());
         window.setTitle("Hermes Airlines™  -  Bookings");
     }
-
+*/
 
     //view customers scene
     public static void showViewCustomerScene(){
@@ -83,10 +83,10 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewCustomersScene.getScene());
-        window.setTitle("Hermes Airlines™  -  Customers");
+        window.setTitle("Panther Airlines™  -  Customers");
     }
 
-
+/*
     //view flights scene
     public static void showViewFlightsScene(){
         //initialization of scene

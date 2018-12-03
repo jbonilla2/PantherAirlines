@@ -2,7 +2,7 @@ package Frontend.SceneControl;
 
 import Backend.*;
 import databaseAccess.*;
-import Frontend.*;
+import Frontend.GUI.*;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -13,10 +13,10 @@ import javafx.scene.control.*;
 public class ViewCustomerSceneControl {
 
     //fields
-    private static TableView<Customer> table;
+    private static TableView<User> table;
     private static TextField search;
-    private static ObservableList<Customer> customers;
-    private static ObservableList<Customer> tableItems;
+    private static ObservableList<User> customers;
+    private static ObservableList<User> tableItems;
     private static Button backB, addB, editB;
 
 
@@ -24,7 +24,7 @@ public class ViewCustomerSceneControl {
     public static void initialize(){
         //table
         table = ViewCustomersScene.getTable();
-        table.setItems(CustomerData.getCustomers());
+        table.setItems(UserData.getUsers());
 
 
         //backB
@@ -33,22 +33,22 @@ public class ViewCustomerSceneControl {
 
         //addB
         addB = ViewCustomersScene.getAddB();
-        addB.setOnAction(e -> handle_addB());
+        //addB.setOnAction(e -> handle_addB());
 
         //editB
         editB = ViewCustomersScene.getEditB();
-        editB.setOnAction(e -> handle_editB());
+        //editB.setOnAction(e -> handle_editB());
 
         // search field
         search = ViewCustomersScene.getSearch();
         customers = table.getItems(); //set search arrayList items
-        initializeSearch();
+        //initializeSearch();
     }
 
-
+/*
     //add button action
     public static void handle_addB() {
-        Customer customer = new Customer();
+        User customer = new User();
         boolean okPressed = MainControl.showCustomerEditScene(customer);
 
         if(okPressed) {
@@ -107,9 +107,9 @@ public class ViewCustomerSceneControl {
 
                 tableItems = FXCollections.observableArrayList();
 
-                for(Customer c : customers){
-                    if(c.getFirst_name().toUpperCase().contains(search.getText().toUpperCase())||
-                       c.getLast_name().toUpperCase().contains(search.getText().toUpperCase())||
+                for(User c : customers){
+                    if(c.getFirstname().toUpperCase().contains(search.getText().toUpperCase())||
+                       c.getLastname().toUpperCase().contains(search.getText().toUpperCase())||
                             c.getPassport_number().toUpperCase().contains(search.getText().toUpperCase())||
                             c.getPhone_nr().contains(search.getText())){
 
@@ -122,7 +122,7 @@ public class ViewCustomerSceneControl {
 
         });
     }
-
+*/
 
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
