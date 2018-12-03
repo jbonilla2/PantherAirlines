@@ -52,7 +52,7 @@ public class UserData {
     public static void insertUser(User user) {
         try{
             statement.executeUpdate("INSERT INTO user" + 
-        "VALUES(customer.getSSN, customer.getFirstname(), customer.getLastname(), customer.getAddress(), customer.getZip(), customer.getState(), customer.getUsername(), customer.getPassword(), customer.getEmail(), customer.getSecurityQ(), customer.getSecurityA()");            
+        "VALUES(user.getSSN, user.getFirstname(), user.getLastname(), user.getAddress(), user.getZip(), user.getState(), user.getUsername(), user.getPassword(), user.getEmail(), user.getSecurityQ(), user.getSecurityA()");            
             users.add(user); // observable array list
             //customer.setSSN(customers.indexOf(customer) + 1);
         }

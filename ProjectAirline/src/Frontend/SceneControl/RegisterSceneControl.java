@@ -79,7 +79,7 @@ public class RegisterSceneControl {
             secqStr = secQ.getText();
             secaStr = secA.getText();
             
-            User newuser = new User(Integer.parseInt(ssnStr), Integer.parseInt(zipStr), firstStr, lastStr, addressStr, stateStr, username, password, emailStr, secqStr, secqStr);
+            User newuser = new User(Integer.parseInt(ssnStr), firstStr, lastStr, addressStr, Integer.parseInt(zipStr), stateStr, username, password, emailStr, secqStr, secqStr);
         	
             UserData.insertUser(newuser); //add customer to database
 

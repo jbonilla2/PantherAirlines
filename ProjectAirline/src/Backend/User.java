@@ -27,7 +27,7 @@ public class User {
         securityA = new SimpleStringProperty("");
     }
 
-    public User(int ssn, int zip, String firstname, String lastname, String address,
+    public User(int ssn, String firstname, String lastname, String address, int zip,
     		String state, String username, String password, String email, String securityQ, String securityA) {
     	this.ssn = new SimpleIntegerProperty(ssn);
         this.zip = new SimpleIntegerProperty(zip);
