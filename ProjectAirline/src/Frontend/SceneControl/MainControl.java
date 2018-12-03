@@ -17,7 +17,22 @@ public class MainControl {
     //fields
     public static Stage window = new Stage();
 
-
+    //register scene
+    public static void showRegisterScene() {
+    	//connect to database
+    	Connection conn = DBconnect.connect();
+    	
+    	//initialization of scene
+    	RegisterScene.initialize();
+    	
+    	//initialization of controller
+    	RegisterSceneControl.initialize();
+    	
+    	//set scene
+    	window.setScene(MenuScene.getScene());
+    	window.setTitle("Panther Airlines - Register New");
+    	window.centerOnScreen();
+    }
 
     //menu scene
     public static void showMenuScene(){
@@ -67,6 +82,7 @@ public class MainControl {
         //set scene
         window.setScene(ViewBookingScene.getScene());
         window.setTitle("Panther Airlines™  -  Bookings");
+        window.centerOnScreen();
     }
 
 
@@ -81,6 +97,7 @@ public class MainControl {
         //set scene
         window.setScene(ViewCustomersScene.getScene());
         window.setTitle("Panther Airlines™  -  Customers");
+        window.centerOnScreen();
     }
 
 
@@ -95,6 +112,7 @@ public class MainControl {
         //set scene
         window.setScene(ViewFlightsScene.getScene());
         window.setTitle("Panther Airlines™  -  Flights");
+        window.centerOnScreen();
     }
 
 /*

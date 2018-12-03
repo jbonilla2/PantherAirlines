@@ -17,7 +17,11 @@ import java.util.ArrayList;
 public class LoginSceneControl {
 
     //fields
-    private static Button loginButton;
+    //Buttons
+	private static Button loginButton;
+	private static Button registerButton;
+	private static Button forgotpassButton;
+    
     private static TextField usernameField;
     private static TextField passwordField;
    // private static ArrayList<Admin> admins;
@@ -48,11 +52,20 @@ public class LoginSceneControl {
 
             handle_loginButton();
         });
+        
+        //registerButton
+        registerButton = LoginScene.getRegisterButton();
+        registerButton.setOnAction(e-> handle_registerButton());
 
     }
 
 
-    //handle login button
+    private static void handle_registerButton() {
+		MainControl.showRegisterScene(); //Switch to register screen
+	}
+
+
+	//handle login button
     public static void handle_loginButton(){
         int ok = 0;
 

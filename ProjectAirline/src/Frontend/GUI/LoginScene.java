@@ -18,9 +18,12 @@ public class LoginScene {
     private static PasswordField passwordField;
     private static Button loginButton;
     private static Button registerButton;
+    private static Button forgotpassButton;
 
 
-    //initialization of objects
+
+
+	//initialization of objects
     public static  void initialize(){
 
         //loginLabel
@@ -46,14 +49,23 @@ public class LoginScene {
         passwordField.setMaxWidth(220);
         passwordField.setPromptText("Password");
 
-        //buttonField
+        //Login button
         loginButton=new Button("Login");
         loginButton.setMaxWidth(120);
+        
+        //Register button
+        registerButton=new Button("Register");
+        registerButton.setMaxWidth(120);
 
+        
+        //Forgot password button
+        forgotpassButton=new Button("Forgot Password");
+        forgotpassButton.setMaxWidth(120);
+        
         //layout
         loginLayout = new VBox(10);
         loginLayout.setAlignment(Pos.CENTER);
-        loginLayout.getChildren().addAll(pantherLabel,loginLabel,usernameField,passwordField,loginButton);
+        loginLayout.getChildren().addAll(pantherLabel,loginLabel,usernameField,passwordField,loginButton,registerButton,forgotpassButton);
 
         //scene
         scene = new Scene(loginLayout,800,800);
@@ -99,9 +111,8 @@ public class LoginScene {
 		return registerButton;
 	}
 
-
-	public static void setRegisterButton(Button registerButton) {
-		LoginScene.registerButton = registerButton;
+	public static Button getForgotpassButton() {
+		return forgotpassButton;
 	}
 
 }
