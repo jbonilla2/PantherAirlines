@@ -79,8 +79,7 @@ public class RegisterSceneControl {
             secqStr = secQ.getText();
             secaStr = secA.getText();
             
-            User newuser = new User(Integer.parseInt(ssnStr), Integer.parseInt(zipStr), firstStr, lastStr, addressStr,
-            		stateStr, username, password, emailStr, secqStr, secqStr);
+            User newuser = new User(Integer.parseInt(ssnStr), Integer.parseInt(zipStr), firstStr, lastStr, addressStr, stateStr, username, password, emailStr, secqStr, secqStr);
         	
             UserData.insertUser(newuser); //add customer to database
 
@@ -98,14 +97,14 @@ public class RegisterSceneControl {
 	
   //handle login button
     public static void handle_registerButton(){
-        
+        MainControl.showLoginScene();
     	
-    	
+    	/*
     	int ok = 0;
 
         if(isInputValid()) {
         	
-        	MainControl.showMenuScene(); //valid username and pass
+        	MainControl.showLoginScene(); //valid username and pass
             System.out.println("registration successful");
             ok = 1;
             
@@ -123,9 +122,9 @@ public class RegisterSceneControl {
                 alert.initOwner(MainControl.getWindow());
                 alert.showAndWait();
            // }
-        }
+        } */
     }
-    
+ 
     //method to verify the user input
     public static boolean isInputValid(){
         String error = "";

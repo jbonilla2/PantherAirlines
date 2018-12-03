@@ -51,16 +51,16 @@ public class LoginScene {
 
         //Login button
         loginButton=new Button("Login");
-        loginButton.setMaxWidth(120);
+        loginButton.setMaxWidth(300);
         
         //Register button
         registerButton=new Button("Register");
-        registerButton.setMaxWidth(120);
+        registerButton.setMaxWidth(300);
 
         
         //Forgot password button
         forgotpassButton=new Button("Forgot Password");
-        forgotpassButton.setMaxWidth(120);
+        forgotpassButton.setMaxWidth(300);
         
         //layout
         loginLayout = new VBox(10);

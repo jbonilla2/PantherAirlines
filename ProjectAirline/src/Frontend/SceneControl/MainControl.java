@@ -29,7 +29,7 @@ public class MainControl {
     	RegisterSceneControl.initialize();
     	
     	//set scene
-    	window.setScene(MenuScene.getScene());
+    	window.setScene(RegisterScene.getScene());
     	window.setTitle("Panther Airlines - Register New");
     	window.centerOnScreen();
     }

@@ -55,7 +55,7 @@ public class LoginSceneControl {
         
         //registerButton
         registerButton = LoginScene.getRegisterButton();
-        registerButton.setOnAction(e-> handle_registerButton());
+        registerButton.setOnAction(e -> handle_registerButton());
 
     }
 
