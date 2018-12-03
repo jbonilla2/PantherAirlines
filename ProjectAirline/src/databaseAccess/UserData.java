@@ -1,6 +1,6 @@
 package databaseAccess;
 
-
+import Backend.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
