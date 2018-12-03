@@ -12,33 +12,44 @@ import javafx.stage.Stage;
 public class MenuSceneControl {
 
     //fields
-    private static Button bookingsB, customersB, flightsB, planesB, exitB;
+    private static Button bookingsB, customersB, flightsB, planesB, exitB, logoutB;
 
     //initialization of fields
     public static void initialize(){
         //bookingsB
         bookingsB = MenuScene.getBookingsB();
-        bookingsB.setOnAction(e -> handle_bookingsB());
+       // bookingsB.setOnAction(e -> handle_bookingsB());
 
         //customersB
         customersB = MenuScene.getCustomersB();
-        customersB.setOnAction(e -> handle_customersB());
+        //customersB.setOnAction(e -> handle_customersB());
 
         //flightsB
         flightsB = MenuScene.getFlightsB();
-        flightsB.setOnAction(e -> handle_flightsB());
+        //flightsB.setOnAction(e -> handle_flightsB());
 
         //planesB
         planesB = MenuScene.getPlanesB();
-        planesB.setOnAction(e -> handle_planesB());
+        //planesB.setOnAction(e -> handle_planesB());
 
         //exitB
         exitB = MenuScene.getExitB();
-        exitB.setOnAction(e -> handle_exitsB());
+        //exitB.setOnAction(e -> handle_exitsB());
+      
+        //logoutB
+        logoutB = MenuScene.getLogoutB();
+        logoutB.setOnAction(e -> handle_logoutB());
+        
+        
 
     }
+    
+    //hanlde logoutB
+	public static void handle_logoutB() {
+		MainControl.showLoginScene();
+	}
 
-
+/*
     //handle bookingsB
     public static void handle_bookingsB(){
         MainControl.showViewBookingScene();
@@ -63,5 +74,5 @@ public class MenuSceneControl {
     public static void handle_exitsB(){
         MainControl.getWindow().close();
     }
-
+*/
 }

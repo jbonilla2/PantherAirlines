@@ -2,7 +2,7 @@ package Frontend.SceneControl;
 
 import Backend.*;
 import databaseAccess.*;
-import Frontend.GUI.LoginScene;
+import Frontend.GUI.*;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,7 +17,7 @@ public class MainControl {
     public static Stage window = new Stage();
 
 
-/*
+
     //menu scene
     public static void showMenuScene(){
         //initialization of scene
@@ -28,11 +28,11 @@ public class MainControl {
 
         //set scene
         window.setScene(MenuScene.getScene());
-        window.setTitle("Hermes Airlines™");
+        window.setTitle("Panther Airlines™");
         window.centerOnScreen();
 
     }
-*/
+
 
     //login scene
     public static void showLoginScene() {

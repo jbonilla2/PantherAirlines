@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: radial-gradient(radius 100%, derive(antiquewhite, 10%), derive(ghostwhite, 10%), derive(white, 10%));
+    -fx-background-color: linear-gradient(to bottom right, derive(darkblue, 80%), ghostwhite);
 }
 
 .label {
@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: 'MKX Title';
-    src: url('/Presentation/MKX Title.ttf');
+    src: url('/Frontend/GUI/MKX Title.ttf');
 }
 
 #welcome {

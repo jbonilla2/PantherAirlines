@@ -57,6 +57,12 @@ public class LoginSceneControl {
         int ok = 0;
 
         if(isInputValid()) {
+        	
+        	MainControl.showMenuScene(); //valid username and pass
+            System.out.println("login successful");
+            ok = 1;
+            
+        }
 /*
             //verify the user credentials in database
             for(Admin admin : AdminData.getAdmins()) {
@@ -68,10 +74,11 @@ public class LoginSceneControl {
                     break;
                 }
             }
-
+*/ 
             //wrong username or pass
             if(ok == 0) {
-*/                usernameField.clear();
+
+        		usernameField.clear();
                 passwordField.clear();
 
                 Alert alert = new Alert(Alert.AlertType.WARNING);

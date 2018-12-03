@@ -56,7 +56,7 @@ public class LoginScene {
 
         //scene
         scene = new Scene(loginLayout,800,500);
-        //scene.getStylesheets().add("Presentation/style.css");
+        scene.getStylesheets().add("Frontend/GUI/style.css");
 
 
 
