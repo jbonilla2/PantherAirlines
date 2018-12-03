@@ -48,8 +48,7 @@ public class MainControl {
 
         //set scene
         window.setScene(LoginScene.getScene());
-        window.setTitle("Panther Airlines™");
-        window.getIcons().add(new Image("/Presentation/icon.png"));
+        window.setTitle("Panther Airlines™");      
 
         window.show();
         window.centerOnScreen();

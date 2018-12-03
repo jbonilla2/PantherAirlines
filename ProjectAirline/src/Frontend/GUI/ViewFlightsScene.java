@@ -1,6 +1,8 @@
 package Frontend.GUI;
 
-import Application.DataTypes.FlightTable;
+//Change the red, add or change Table columns
+
+import Backend.FlightTable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
