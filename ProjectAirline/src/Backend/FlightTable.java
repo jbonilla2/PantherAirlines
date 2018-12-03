@@ -5,47 +5,49 @@ import java.util.Date;
 
 public class FlightTable {
 	
-	private IntegerProperty flightID, seatsLeft;
-	private StringProperty departureDate, arrivalDate, departureCity, arrivalCity;
+	private IntegerProperty flightID, seatsRemaining;
+	private StringProperty departingDate, arrivalDate, departingCity, arrivalCity, departingTime;
 	private DoubleProperty price;
 	
 	public FlightTable() {
 		
 	}
 	
-	public FlightTable(String departureDate) {
+	public FlightTable(String departingDate) {
 		
-		this.departureDate = new SimpleStringProperty(departureDate);
+		this.departingDate = new SimpleStringProperty(departingDate);
 		flightID = new SimpleIntegerProperty(0);
-		seatsLeft = new SimpleIntegerProperty(0);
-		departureCity = new SimpleStringProperty("");
+		seatsRemaining = new SimpleIntegerProperty(0);
+		departingCity = new SimpleStringProperty("");
 		arrivalCity = new SimpleStringProperty("");
 		price = new SimpleDoubleProperty(0);
+		departingTime = new SimpleStringProperty("");
 	
 	}
 	
-	public FlightTable(String departureDate, String arrivalDate, String departureCity, String arrivalCity, int flightID, int seatsLeft, double price) {
+	public FlightTable(String departingDate, String arrivalDate, String departingCity, 
+			String arrivalCity, int flightID, int seatsRemaining, double price, String departingTime) {
 		
-		this.departureDate = new SimpleStringProperty(departureDate);
+		this.departingDate = new SimpleStringProperty(departingDate);
 		this.arrivalDate = new SimpleStringProperty(arrivalDate);
-        this.departureCity = new SimpleStringProperty(departureCity);
+        this.departingCity = new SimpleStringProperty(departingCity);
         this.arrivalCity = new SimpleStringProperty(arrivalCity);
         this.price = new SimpleDoubleProperty(price);
         this.flightID = new SimpleIntegerProperty(flightID);
-        this.seatsLeft = new SimpleIntegerProperty(seatsLeft);
-		
+        this.seatsRemaining = new SimpleIntegerProperty(seatsRemaining);
+        this.departingTime = new SimpleStringProperty(departingTime);
 	}
 	
-	public String getDepartureDate() {
-        return departureDate.get();
+	public String getDepartingDate() {
+        return departingDate.get();
     }
 
-    public StringProperty departureDateProperty() {
-        return departureDate;
+    public StringProperty departingDateProperty() {
+        return departingDate;
     }
 
-    public void setDepartureDate(String departureDate) {
-        this.departureDate.set(departureDate);
+    public void setDepartingDate(String departingDate) {
+        this.departingDate.set(departingDate);
     }
     
     public String getArrivalDate() {
@@ -60,16 +62,16 @@ public class FlightTable {
         this.arrivalDate.set(arrivalDate);
     }
     
-    public String getDepartureCity() {
-        return departureCity.get();
+    public String getDepartingCity() {
+        return departingCity.get();
     }
 
-    public StringProperty departureCityProperty() {
-        return departureCity;
+    public StringProperty departingCityProperty() {
+        return departingCity;
     }
 
-    public void setDeparture_city(String departureCity) {
-        this.departureCity.set(departureCity);
+    public void setDepartingCity(String departingCity) {
+        this.departingCity.set(departingCity);
     }
     
     public String getArrivalCity() {
@@ -108,18 +110,28 @@ public class FlightTable {
         this.flightID.set(flightID);
     }
 
-    public int seatsLeft() {
-        return seatsLeft.get();
+    public int seatsRemaining() {
+        return seatsRemaining.get();
     }
 
-    public IntegerProperty seatsLeftProperty() {
-        return seatsLeft;
+    public IntegerProperty seatsRemainingProperty() {
+        return seatsRemaining;
     }
 
-    public void setSeatsLeft(int seatsLeft) {
-        this.seatsLeft.set(seatsLeft);
+    public void setSeatsRemaining(int seatsRemaining) {
+        this.seatsRemaining.set(seatsRemaining);
     }
 
-    
+    public String getDepartingTime() {
+        return departingTime.get();
+    }
+
+    public StringProperty departingTimeProperty() {
+        return departingTime;
+    }
+
+    public void setDepartingTime(String departingTime) {
+        this.departingTime.set(departingTime);
+    }
 	
 }

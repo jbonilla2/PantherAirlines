@@ -1,7 +1,9 @@
 package Frontend.SceneControl;
 
+import java.sql.Connection;
+
 import Backend.*;
-import databaseAccess.*;
+import databaseAccess.DBconnect;
 import Frontend.GUI.LoginScene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -37,7 +39,7 @@ public class MainControl {
     //login scene
     public static void showLoginScene() {
         //connect to database
-       // DataConnection.connect();
+    	Connection conn = DBconnect.connect();
 
         //initialization of scene
         LoginScene.initialize();
