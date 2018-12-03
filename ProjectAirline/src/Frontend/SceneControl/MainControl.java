@@ -1,8 +1,15 @@
 package Frontend.SceneControl;
 
+import java.sql.Connection;
+
 import Backend.*;
+<<<<<<< HEAD
 import databaseAccess.*;
 import Frontend.GUI.*;
+=======
+import databaseAccess.DBconnect;
+import Frontend.GUI.LoginScene;
+>>>>>>> branch 'master' of https://github.com/fmbarrera/ProjectAirline.git
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,7 +44,7 @@ public class MainControl {
     //login scene
     public static void showLoginScene() {
         //connect to database
-       // DataConnection.connect();
+    	Connection conn = DBconnect.connect();
 
         //initialization of scene
         LoginScene.initialize();

@@ -8,16 +8,17 @@ import javafx.beans.property.StringProperty;
 public class ReservationsTable {
 	
 	private IntegerProperty ticketNum;
-    private StringProperty departureDate, user;
+    private StringProperty departureDate, user, route;
     
     public ReservationsTable() {
     	
     }
     
-    public ReservationsTable(int ticketNum, String departureDate, String user) {
+    public ReservationsTable(int ticketNum, String departureDate, String user, String route) {
         this.ticketNum = new SimpleIntegerProperty(ticketNum);
         this.departureDate = new SimpleStringProperty(departureDate);
         this.user = new SimpleStringProperty(user);
+        this.route = new SimpleStringProperty(route);
     }
     
     public int getTicketNum() {
@@ -56,10 +57,23 @@ public class ReservationsTable {
         this.user.set(user);
     }
     
+    public String getRoute() {
+        return route.get();
+    }
+
+    public StringProperty routeProperty() {
+        return route;
+    }
+
+    public void setRoute(String route) {
+        this.route.set(route);
+    }
+    
     public String toString() {
         return "BookingTable{" +
                 "ticketNumber=" + ticketNum +
                 ", departureDate=" + departureDate +
+                ", route=" + route +
                 ", user=" + user +
                 '}';
     }
