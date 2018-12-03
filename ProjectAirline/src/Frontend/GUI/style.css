@@ -13,11 +13,6 @@
     -fx-font-family:"Seagoe UI";
 }
 
-@font-face {
-    font-family: 'MKX Title';
-    src: url('/Frontend/GUI/MKX Title.ttf');
-}
-
 #welcome {
     -fx-font-size: 41pt;
     -fx-font-family: "MKX Title";
