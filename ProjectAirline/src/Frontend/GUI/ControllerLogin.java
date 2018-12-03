@@ -5,7 +5,7 @@ import Frontend.SceneControl.*;
 import java.util.ArrayList;
 
 //import Application.DataTypes.Admin;
-import Backend.Person;
+import Backend.User;
 //import DataAccess.AdminData;
 import javafx.scene.control.*;
 
