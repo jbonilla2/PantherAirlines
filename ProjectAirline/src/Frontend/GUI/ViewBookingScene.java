@@ -1,8 +1,8 @@
 package Frontend.GUI;
 
-import Application.DataTypes.Booking;
-import Application.DataTypes.BookingTable;
-import Application.DataTypes.Customer;
+import Backend.Reservations;
+import Backend.ReservationsTable;
+import Backend.User;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,19 +12,15 @@ import javafx.scene.layout.VBox;
 
 import java.util.Date;
 
-/**
- * Created by Administrator on 5/18/2016.
- */
-
 public class ViewBookingScene {
 
     //fields
     private static Scene scene;
     private static Pane layout;
-    private static TableView<BookingTable> table;
-    private static TableColumn<BookingTable, String> dateColumn;
-    private static TableColumn<BookingTable, String> nameColumn;
-    private static TableColumn<BookingTable, String> routeColumn;
+    private static TableView<ReservationsTable> table;
+    private static TableColumn<ReservationsTable, String> dateColumn;
+    private static TableColumn<ReservationsTable, String> nameColumn;
+    private static TableColumn<ReservationsTable, String> routeColumn;
     private static Label flightLabel;
     private static Label departure_dateLabel;
     private static Label departure_dateObs;
@@ -66,14 +62,14 @@ public class ViewBookingScene {
 
         //table columns
         dateColumn=new TableColumn<>("Departure date");
-        dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
+        dateColumn.setCellValueFactory(cellData -> cellData.getValue().departureDateProperty());
 
         nameColumn=new TableColumn<>("Customer name");
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().customerProperty());
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().userProperty());
 
         routeColumn=new TableColumn<>("\t\t\tRoute");
         routeColumn.setMinWidth(160);
-        routeColumn.setCellValueFactory(cellData -> cellData.getValue().routeProperty());
+       // routeColumn.setCellValueFactory(cellData -> cellData.getValue().routeProperty());
 
 
         //table
@@ -212,19 +208,19 @@ public class ViewBookingScene {
         return layout;
     }
 
-    public static TableView<BookingTable> getTable() {
+    public static TableView<ReservationsTable> getTable() {
         return table;
     }
 
-    public static TableColumn<BookingTable, String> getDateColumn() {
+    public static TableColumn<ReservationsTable, String> getDateColumn() {
         return dateColumn;
     }
 
-    public static TableColumn<BookingTable, String> getNameColumn() {
+    public static TableColumn<ReservationsTable, String> getNameColumn() {
         return nameColumn;
     }
 
-    public static TableColumn<BookingTable, String> getRouteColumn() {
+    public static TableColumn<ReservationsTable, String> getRouteColumn() {
         return routeColumn;
     }
 
