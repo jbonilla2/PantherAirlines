@@ -17,6 +17,7 @@ public class LoginScene {
     private static TextField usernameField;
     private static PasswordField passwordField;
     private static Button loginButton;
+    private static Button registerButton;
 
 
     //initialization of objects
@@ -92,5 +93,15 @@ public class LoginScene {
     public static Button getLoginButton() {
         return loginButton;
     }
+
+
+	public static Button getRegisterButton() {
+		return registerButton;
+	}
+
+
+	public static void setRegisterButton(Button registerButton) {
+		LoginScene.registerButton = registerButton;
+	}
 
 }
