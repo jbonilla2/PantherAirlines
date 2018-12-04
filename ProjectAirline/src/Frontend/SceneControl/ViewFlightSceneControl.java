@@ -17,7 +17,7 @@ public class ViewFlightSceneControl {
     private static TableView<FlightTable> table;
     private static ObservableList<FlightTable> flights, tableItems;
     private static TextField search;
-    private static Button backB, addB, editB, exportFlightsB;
+    private static Button backB, addB, editB, deleteFlightsB;
 
     //initialize
     public static void initialize(){
@@ -34,7 +34,7 @@ public class ViewFlightSceneControl {
         editB = ViewFlightsScene.getEditB();
         editB.setOnAction(e -> handle_editB());
 
-        exportFlightsB = ViewFlightsScene.getExportFlightsB();
+        deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
         //exportFlightsB.setOnAction(event -> handle_exportFlightsB());
 
 

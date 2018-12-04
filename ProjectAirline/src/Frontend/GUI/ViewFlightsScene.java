@@ -31,11 +31,12 @@ public class ViewFlightsScene {
     private static Scene scene;
     private static TableView<FlightTable> table;
     private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
-    private static TableColumn<FlightTable, String> departingDateColumn, departingCityColumn, arrivalCityColumn;
-    private static TableColumn<FlightTable, Double> priceColumn;
+    private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn;
+    
+	private static TableColumn<FlightTable, Double> priceColumn;
     private static TextField search;
     private static HBox buttonLayout;
-    private static Button backB, addB, editB, exportFlightsB;
+    private static Button backB, addB, editB, deleteFlightsB;
 
 
     //initialization of objects
@@ -49,33 +50,33 @@ public class ViewFlightsScene {
 
         //initialize columns
         flightIDColumn = new TableColumn<>("ID");
-        //flight_idColumn.setCellValueFactory(cellData -> cellData.getValue().flight_idProperty().asObject());
+        flightIDColumn.setCellValueFactory(cellData -> cellData.getValue().flightIDProperty().asObject());
         flightIDColumn.setMaxWidth(70);
         flightIDColumn.setMinWidth(60);
 
-
         departingDateColumn = new TableColumn<>("Departing date");
-       // departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
-
+        departingDateColumn.setCellValueFactory(cellData -> cellData.getValue().departingDateProperty());
 
         departingCityColumn = new TableColumn<>("Departing city");
-       // departure_cityColumn.setCellValueFactory(cellData -> cellData.getValue().departure_cityProperty());
+        departingCityColumn.setCellValueFactory(cellData -> cellData.getValue().departingCityProperty());
 
-
+        departingTimeColumn = new TableColumn<>("Departing time");
+        departingTimeColumn.setCellValueFactory(cellData -> cellData.getValue().departingTimeProperty());
+        
         arrivalCityColumn = new TableColumn<>("Arrival city");
-       // arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
+        arrivalCityColumn.setCellValueFactory(cellData -> cellData.getValue().arrivalCityProperty());
 
+        arrivalDateColumn = new TableColumn<>("Arrival Date");
+        arrivalDateColumn.setCellValueFactory(cellData -> cellData.getValue().arrivalDateProperty());
 
         priceColumn = new TableColumn<>("Basic price");
-       // priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+        priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
 
 
         seatsRemainingColumn = new TableColumn<>("Available seats");
-      //  economyColumn.setCellValueFactory(cellData -> cellData.getValue().economyLeftProperty().asObject());
+        seatsRemainingColumn.setCellValueFactory(cellData -> cellData.getValue().seatsRemainingProperty().asObject());
 
-
-
-        table.getColumns().addAll(flightIDColumn,departingDateColumn,departingCityColumn,arrivalCityColumn,priceColumn,seatsRemainingColumn);
+        table.getColumns().addAll(flightIDColumn,departingCityColumn,departingDateColumn,departingTimeColumn,arrivalCityColumn,arrivalDateColumn,priceColumn,seatsRemainingColumn);
 
         //search field
         search = new TextField();
@@ -93,13 +94,13 @@ public class ViewFlightsScene {
         editB = new Button("Edit...");
 
         //exportFlightsB
-        exportFlightsB = new Button("Export");
+        deleteFlightsB = new Button("Delete");
 
         //button layout
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
         buttonLayout.relocate(740,642);
-        buttonLayout.getChildren().addAll(addB,editB,exportFlightsB,backB);
+        buttonLayout.getChildren().addAll(addB,editB,deleteFlightsB,backB);
 
         //layout setup
         layout = new Pane();
@@ -145,6 +146,14 @@ public class ViewFlightsScene {
     public static TableColumn<FlightTable, String> getArrivalCityColumn() {
         return arrivalCityColumn;
     }
+    
+    public static TableColumn<FlightTable, String> getDepartingTimeColumn() {
+		return departingTimeColumn;
+	}
+
+	public static TableColumn<FlightTable, String> getArrivalDateColumn() {
+		return arrivalDateColumn;
+	}
 
     public static TableColumn<FlightTable, Double> getPriceColumn() {
         return priceColumn;
@@ -170,8 +179,8 @@ public class ViewFlightsScene {
         return editB;
     }
 
-    public static Button getExportFlightsB() {
-        return exportFlightsB;
+    public static Button getDeleteFlightsB() {
+        return deleteFlightsB;
     }
 
 }

@@ -39,10 +39,10 @@ public class FlightTableData {
 	        catch(Exception e){
 	            e.printStackTrace();
 	        }
-
-
 	        return  flightTableItems;
 	    }
 	
+	 
+	 
 	
 }
