@@ -1,7 +1,6 @@
 package Frontend.SceneControl;
 
 import Backend.User;
-import Frontend.GUI.LoginScene;
 import Frontend.GUI.RegisterScene;
 import databaseAccess.UserData;
 import javafx.scene.control.Alert;
@@ -12,6 +11,7 @@ import javafx.scene.control.TextField;
 public class RegisterSceneControl {
 
 	//fields
+	
 	//text fields 
     private static TextField firstName;
     private static TextField lastName;
@@ -79,7 +79,7 @@ public class RegisterSceneControl {
             secqStr = secQ.getText();
             secaStr = secA.getText();
             
-            User newuser = new User(Integer.parseInt(ssnStr), firstStr, lastStr, addressStr, Integer.parseInt(zipStr), stateStr, username, password, emailStr, secqStr, secqStr);
+            User newuser = new User(Integer.parseInt(ssnStr), firstStr, lastStr, addressStr, Integer.parseInt(zipStr), stateStr, username, password, emailStr, secqStr, secaStr);
         	
             UserData.insertUser(newuser); //add customer to database
 
@@ -98,65 +98,8 @@ public class RegisterSceneControl {
   //handle login button
     public static void handle_registerButton(){
         MainControl.showLoginScene();
-    	
-    	/*
-    	int ok = 0;
-
-        if(isInputValid()) {
-        	
-        	MainControl.showLoginScene(); //valid username and pass
-            System.out.println("registration successful");
-            ok = 1;
-            
-        }
-
-            //wrong username or pass
-            if(ok == 0) {
-
-        		usernameField.clear();
-                passwordField.clear();
-
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText("Login failed");
-                alert.setContentText("Invalid username or password");
-                alert.initOwner(MainControl.getWindow());
-                alert.showAndWait();
-           // }
-        } */
-    }
+   }
  
-    //method to verify the user input
-    public static boolean isInputValid(){
-        String error = "";
-
-        if(username.isEmpty())
-            error+="Insert username!\n";
-        else 
-        	
-        	/*try{
-            Integer.parseInt(username);
-        }
-        
-        //Delete
-        catch(NumberFormatException e){
-            error +="Invalid username!\n";
-        } */
-
-        if(password.isEmpty())
-            error += "Insert password!\n";
-
-        if(error=="")
-            return true;
-
-        else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText(error);
-            alert.setHeaderText("Invalid input!");
-            alert.initOwner(MainControl.getWindow());
-            alert.showAndWait();
-            return false;
-        }
-    }
 
     
 }

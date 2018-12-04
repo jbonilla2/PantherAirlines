@@ -115,55 +115,6 @@ public class MainControl {
         window.centerOnScreen();
     }
 
-/*
-    //view planes scene
-    public static void showViewPlanesScene(){
-        //initialization of scene
-        ViewPlaneScene.initialize();
-
-        //initialization of controller
-        ViewPlaneSceneControl.initialize();
-
-        //set scene
-        window.setScene(ViewPlaneScene.getScene());
-        window.setTitle("Hermes Airlines™  -  Planes");
-    }
-
-
-    //plane edit dialog
-    public static boolean showPlaneEditScene(Plane plane){
-        //initialization of scene
-        PlaneEditScene.initialize();
-
-        //initialization of control
-        PlaneEditSceneControl.initialize();
-        PlaneEditSceneControl.setPlane(plane);
-
-        PlaneEditScene.getDialogStage().initOwner(window);
-        PlaneEditScene.getDialogStage().setTitle("Plane menu");
-        PlaneEditScene.getDialogStage().showAndWait();
-
-        return PlaneEditSceneControl.isOkPressed();
-    }
-
-
-    //customer edit dialog
-    public static boolean showCustomerEditScene(Customer customer){
-        //initialization of scene
-        CustomerEditScene.initialize();
-
-        //initialization of control
-        CustomerEditSceneControl.initialize();
-        CustomerEditSceneControl.setCustomer(customer);
-
-        CustomerEditScene.getDialogStage().initOwner(window);
-        CustomerEditScene.getDialogStage().setTitle("Customer menu");
-        CustomerEditScene.getDialogStage().showAndWait();
-
-        return CustomerEditSceneControl.isOkPressed();
-    }
-
-*/
     //flight edit dialog
     public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
         //initialization of scene
