@@ -19,11 +19,11 @@ public class ReservationsTableData {
 	        try{
 	            statement = conn.createStatement();
 	            ResultSet rs = statement.executeQuery("SELECT DepartingDate, DepartingCity, DepartingTime, ArrivalCity, ArrivalDate, FlightID " +
-	                    "FROM flight f JOIN reservations r " +
-	                    "ON f.flightID = r.flightID " +
+	                    "FROM reservations r JOIN flight f " +
+	                    "ON r.flightID = f.flightID " +
 	                    "JOIN user u " +
 	                    "ON r.UserID = u.UserID " +
-	                    "ORDER BY departure_date;");
+	                    "ORDER BY departureDate;");
 
 	            if(rs!=null)
 	                while(rs.next()){
@@ -31,9 +31,9 @@ public class ReservationsTableData {
 	                    b.setDepartureDate(rs.getDate(1).toString());
 	                    b.setRoute(rs.getString(2) + " -> " + rs.getString(3));
 	                    b.setUser(rs.getString(4) + " " + rs.getString(5));
-	                    b.setFlightNum(rs.getInt(6));
+	                    b.setTicketNum(rs.getInt(6));
 
-	                    reservationTableItems.add(b);
+	                    reservationsTableItems.add(b);
 	                }
 	        }
 
@@ -41,9 +41,9 @@ public class ReservationsTableData {
 	            e.printStackTrace();
 	        }
 
-	        return  reservationTableItems;
+	        return  reservationsTableItems;
 	    }
 
-	}
+	
 
 }

@@ -46,7 +46,7 @@ public class ReservationsData {
     public static void insertReservation(Reservations reservation) {
         
     	try{
-            statement.executeUpdate("INSERT INTO reservations VALUE(" + reservation.getUserID() + ", " + reservation.getFlightID() + ", '" + reservation.getTicketNum() + "');");
+            statement.executeUpdate("INSERT INTO reservations VALUE(" + reservation.getUserID() + ", " + reservation.getFlightID() + ", " + reservation.getTicketNum() + ");");
         }
 
         catch(Exception e){
@@ -59,7 +59,7 @@ public class ReservationsData {
     //method to edit a booking
     public static void updateReservation(Reservations reservation){
         try{
-            statement.executeUpdate("UPDATE reservations SET userID = " + reservation.getUserID() + ", flightID = " + reservation.getFlightID() + "' WHERE ticketNumber = " + reservation.getTicketNum() + ";" );
+            statement.executeUpdate("UPDATE reservations SET UserID = " + reservation.getUserID() + ", FlightID = " + reservation.getFlightID() + " WHERE ticketNumber = " + reservation.getTicketNum() + ";" );
         }
 
         catch(Exception e){
@@ -72,7 +72,7 @@ public class ReservationsData {
     //method to remove a booking
     public static void deleteReservation(Reservations reservation){
         try{
-            statement.executeUpdate("DELETE FROM booking WHERE booking_id = " + reservation.getTicketNum() + ";");
+            statement.executeUpdate("DELETE FROM reservations WHERE TicketNumber = " + reservation.getTicketNum() + ";");
         }
 
         catch(Exception e){
