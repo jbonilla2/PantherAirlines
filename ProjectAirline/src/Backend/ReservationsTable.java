@@ -14,11 +14,11 @@ public class ReservationsTable {
     	
     }
     
-    public ReservationsTable(int ticketNum, String departingDate, String user, String route) {
-        this.ticketNum = new SimpleIntegerProperty(ticketNum);
+    public ReservationsTable(int ticketNum, String departingCity, String departingDate, String arrivalCity) {
+        this.departingCity = new SimpleStringProperty(departingCity);
         this.departingDate = new SimpleStringProperty(departingDate);
-        this.user = new SimpleStringProperty(user);
-        this.route = new SimpleStringProperty(route);
+        this.ticketNum = new SimpleIntegerProperty(ticketNum);
+        this.arrivalCity = new SimpleStringProperty(arrivalCity);
     }
     
     public int getTicketNum() {
