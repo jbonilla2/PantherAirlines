@@ -20,24 +20,14 @@ public class FlightTableData {
 	        
 	        try{
 	            statement = conn.createStatement();
-	            ResultSet rs = statement.executeQuery(sql); 
-	            //ObservableList<FlightTable> fList = null;
+	            ResultSet rs = statement.executeQuery(sql);
 	            
 	            if(rs!=null)
 	                while(rs.next()){
-	                    //FlightTable f = new FlightTable();
+	                    
 	                	flightTableItems.add(new FlightTable(rs.getInt(1),rs.getString(2),rs.getString(3),
 	                    		rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getInt(8)));
-	                    /*f.setDepartingCity(rs.getString(2));
-	                    f.setDepartingDate(rs.getString(3));
-	                    f.setDepartingTime(rs.getString(4));
-	                    f.setArrivalCity(rs.getString(5));
-	                    f.setArrivalDate(rs.getString(6));                   
-	                    f.setPrice(rs.getDouble(7));
-	                    f.setSeatsRemaining(rs.getInt(8));
-						
-	                    flightTableItems.add(f);
-	                    */
+	                   
 	                }
 	        }
 
