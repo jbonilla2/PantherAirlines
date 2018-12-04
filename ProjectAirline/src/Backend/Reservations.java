@@ -33,7 +33,7 @@ public class Reservations {
         this.ticketNum.set(ticketNum);
     }
 
-    public int getuserID() {
+    public int getUserID() {
         return userID.get();
     }
 
@@ -53,7 +53,7 @@ public class Reservations {
         return flightID;
     }
 
-    public void setFlight_id(int flightID) {
+    public void setFlightID(int flightID) {
         this.flightID.set(flightID);
     }
     

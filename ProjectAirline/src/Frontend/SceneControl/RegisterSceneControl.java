@@ -1,6 +1,6 @@
 package Frontend.SceneControl;
 
-import Backend.User;
+import Backend.*;
 import Frontend.GUI.RegisterScene;
 import databaseAccess.UserData;
 import javafx.scene.control.Alert;
@@ -82,13 +82,27 @@ public class RegisterSceneControl {
             User newuser = new User(Integer.parseInt(ssnStr), firstStr, lastStr, addressStr, Integer.parseInt(zipStr), stateStr, username, password, emailStr, secqStr, secaStr);
         	
             UserData.insertUser(newuser); //add customer to database
+            
+            for (User user : UserData.getUsers()) {
+            	
+            	if (user.getUsername() == username) {
+            		
+            		
+            		
+            	}
+            	
+            	else {
+                    
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.initOwner(MainControl.getWindow());
+                    alert.setContentText("Customer added!");
+                    alert.showAndWait();
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.initOwner(MainControl.getWindow());
-            alert.setContentText("Customer added!");
-            alert.showAndWait();
-
-            System.out.println("new customer added");
+                    System.out.println("new customer added");
+                    
+                    }
+            	
+            } 
             
             handle_registerButton();
         });
