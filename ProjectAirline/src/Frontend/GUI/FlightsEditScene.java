@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -34,15 +33,14 @@ public class FlightsEditScene {
     private static Stage dialogStage;
     private static Scene scene;
     private static Pane layout;
-    private static Label flightL,timeL,routeL,dateL,planeL,toL,priceL;
-    private static ComboBox<String> routeC,departure_time, arrival_time;
-    private static ComboBox<Integer> plane_id;
-    private static DatePicker departure_date;
-    private static TextField price;
+    private static Label flightL,timeL,dcityL,acityL,depdateL,arrivdateL,fidL,priceL,seatsL;
+    private static ComboBox<String> dcityC, acityC, departure_time;
+    private static DatePicker departure_date, arrival_date;
+    private static TextField flight_id, price;
     private static Button okB, cancelB;
     private static VBox vBox1, vBox2;
 
-    private static HBox timeBox,buttons;
+    private static HBox buttons;
 
 
     //initialization of objects
@@ -54,32 +52,33 @@ public class FlightsEditScene {
         flightL.setAlignment(Pos.CENTER);
         flightL.setStyle("-fx-font-size:20pt");
 
+        dcityL = new Label("Departing City");
+        acityL = new Label("Arrival City");
+        depdateL = new Label("Date");
+        arrivdateL = new Label("Date");
+        timeL = new Label("Departing Time");
+        fidL = new Label ("Flight ID");
         priceL = new Label("Base price");
-        routeL = new Label("Route");
-        dateL = new Label("Date");
-        timeL = new Label("Time");
-        planeL = new Label ("Plane ID");
+        seatsL = new Label("Remaining Seats");
 
-        toL = new Label("to");
-   //     toL.relocate(289,302);
 
         //labels layout
         vBox1 = new VBox();
-        vBox1.getChildren().addAll(routeL, dateL,timeL,planeL, priceL);
+        vBox1.getChildren().addAll(dcityL, acityL, depdateL, arrivdateL, timeL,fidL, priceL, seatsL);
         vBox1.relocate(41,202);
         vBox1.setSpacing(34);
 
-
         //combo boxes
-        routeC = new ComboBox<>();
-        routeC.setMinWidth(248);
+        dcityC = new ComboBox<>();
+        dcityC.setMinWidth(248);
+        
+        acityC = new ComboBox<>();
+        acityC.setMinWidth(248);
+        
         departure_time = new ComboBox<>();
-        arrival_time = new ComboBox<>();
-        plane_id = new ComboBox<>();
-
-        //hBox
-        timeBox = new HBox(20);
-        timeBox.getChildren().addAll(departure_time,toL,arrival_time);
+        
+        //flight id field
+        flight_id = new TextField();
 
         //price field
         price = new TextField();
@@ -87,7 +86,11 @@ public class FlightsEditScene {
         //departure date picker
         departure_date = new DatePicker();
         departure_date.setMinWidth(248);
-
+        
+        //arrival date picker
+        arrival_date = new DatePicker();
+        arrival_date.setMinWidth(248);
+        
         //buttons
         okB = new Button("Ok");
         okB.setDefaultButton(true);
@@ -100,28 +103,21 @@ public class FlightsEditScene {
 
         //selectors layout
         vBox2 = new VBox();
-        vBox2.getChildren().addAll(routeC,departure_date,timeBox,plane_id, price, buttons);
+        vBox2.getChildren().addAll(dcityC, acityC,departure_date,arrival_date,departure_time,flight_id, price, buttons);
         vBox2.setSpacing(24);
         vBox2.relocate(160,200);
-
-        //arrival time box
-        arrival_time = new ComboBox<>();
-        arrival_time.relocate(350,302);
-
-
-
 
 
         //layout
         layout = new Pane();
         layout.getChildren().addAll(flightL, vBox1, vBox2);
         layout.getStylesheets().add("/Frontend/GUI/style.css");
+        
         //stage setup
         scene = new Scene(layout,500,600);
         scene.getStylesheets().addAll("/Frontend/GUI/style.css");
 
         dialogStage = new Stage();
-       //delete this  -> dialogStage.getIcons().add(new javafx.scene.image.Image("/Frontend/GUI/icon.png"));
         dialogStage.setScene(scene);
 
         System.out.println("flight edit dialog initialized");
@@ -150,40 +146,16 @@ public class FlightsEditScene {
         return timeL;
     }
 
-    public static Label getRouteL() {
-        return routeL;
-    }
-
-    public static Label getDateL() {
-        return dateL;
-    }
-
-    public static Label getPlaneL() {
-        return planeL;
-    }
-
-    public static Label getToL() {
-        return toL;
+    public static Label getDcityL() {
+        return dcityL;
     }
 
     public static Label getPriceL() {
         return priceL;
     }
 
-    public static ComboBox<String> getRouteC() {
-        return routeC;
-    }
-
-    public static ComboBox<String> getDeparture_time() {
+       public static ComboBox<String> getDeparture_time() {
         return departure_time;
-    }
-
-    public static ComboBox<String> getArrival_time() {
-        return arrival_time;
-    }
-
-    public static ComboBox<Integer> getPlane_id() {
-        return plane_id;
     }
 
     public static DatePicker getDeparture_date() {
@@ -209,5 +181,65 @@ public class FlightsEditScene {
     public static VBox getvBox2() {
         return vBox2;
     }
+
+
+
+	public static Label getAcityL() {
+		return acityL;
+	}
+
+
+
+	public static Label getDepdateL() {
+		return depdateL;
+	}
+
+
+
+	public static Label getArrivdateL() {
+		return arrivdateL;
+	}
+
+
+
+	public static Label getFidL() {
+		return fidL;
+	}
+
+
+
+	public static Label getSeatsL() {
+		return seatsL;
+	}
+
+
+
+	public static ComboBox<String> getDcityC() {
+		return dcityC;
+	}
+
+
+
+	public static ComboBox<String> getAcityC() {
+		return acityC;
+	}
+
+
+
+	public static DatePicker getArrival_date() {
+		return arrival_date;
+	}
+
+
+
+	public static TextField getFlight_id() {
+		return flight_id;
+	}
+
+
+
+	public static HBox getButtons() {
+		return buttons;
+	}
 
 }

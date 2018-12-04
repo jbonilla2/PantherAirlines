@@ -42,7 +42,7 @@ public class ForgotPassControl {
     }
     
     public static void handle_backButton() {
-    	MainControl.showLoginScene();
+    	ForgotPassScene.getDialogStage().close();
     }
     
     public static void handle_submitButton() {

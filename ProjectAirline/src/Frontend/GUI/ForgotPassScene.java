@@ -6,9 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ForgotPassScene {
 
+	private static Stage dialogStage;
 	private static Scene scene;
     private static VBox layout;
     private static Label usernameLabel;
@@ -44,7 +46,7 @@ public class ForgotPassScene {
     	submit.setMaxWidth(200);
     	submit.setAlignment(Pos.CENTER);
     	
-    	back = new Button("Back");
+    	back = new Button("Close");
     	back.setMaxWidth(200);
     	back.setAlignment(Pos.CENTER);
     	
@@ -53,9 +55,12 @@ public class ForgotPassScene {
     	layout.getChildren().addAll(usernameLabel,usernameField,find,secaField,submit,back);
     	 
     	//scene
-    	scene = new Scene(layout,800,800);
+    	scene = new Scene(layout,500,600);
     	scene.getStylesheets().add("Frontend/GUI/style.css");
-
+    	
+    	dialogStage = new Stage();
+    	dialogStage.setScene(scene);
+    	
     	System.out.println("forgot pass screen initialized");
 
     }
@@ -86,6 +91,11 @@ public class ForgotPassScene {
 	}
 	public static Button getSubmit() {
 		return submit;
+	}
+
+
+	public static Stage getDialogStage() {
+		return dialogStage;
 	}
     
 	

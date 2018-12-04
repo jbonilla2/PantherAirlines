@@ -69,8 +69,7 @@ public class ViewBookingScene {
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getColumns().addAll(dateColumn, routeColumn, nameColumn);    // edit these columns 
         table.relocate(32,34);
-        table.setMinWidth(610);
-        table.setMinHeight(580);
+        table.setMinSize(1116,580);
 
         //searchField
         searchField=new TextField();

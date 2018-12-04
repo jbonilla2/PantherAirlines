@@ -43,9 +43,10 @@ public class MainControl {
     	ForgotPassControl.initialize();
     	
     	//set scene
-    	window.setScene(ForgotPassScene.getScene());
-    	window.setTitle("Panther Airlines - Forgot Password");
-    	window.centerOnScreen();
+    	ForgotPassScene.getDialogStage().initOwner(window);
+        ForgotPassScene.getDialogStage().setTitle("Panther Airlines - Forgot Password");
+        ForgotPassScene.getDialogStage().showAndWait();
+
     }
     
     //menu scene
