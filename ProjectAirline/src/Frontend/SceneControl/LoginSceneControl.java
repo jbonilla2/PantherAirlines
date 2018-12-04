@@ -47,8 +47,8 @@ public class LoginSceneControl {
         });
       
         //registerButton
-       // forgotpassButton = LoginScene.getRegisterButton();
-        //forgotpassButton.setOnAction(f -> handle_forgotpassButton());
+        forgotpassButton = LoginScene.getRegisterButton();
+        forgotpassButton.setOnAction(f -> handle_forgotpassButton());
         
     }
 
@@ -61,7 +61,7 @@ public class LoginSceneControl {
     private static void handle_forgotpassButton() {
     	//verify the username in database to have popup appear
         for(User user: UserData.getUsers()) {
-        	if (user.getUsername() == username) {
+        	if (user.getUsername().equals(username)) {
 
         		MainControl.showMenuScene(); //valid username and pass
         		System.out.println("login successful");
