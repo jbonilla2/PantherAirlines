@@ -53,10 +53,11 @@ public class UserData {
 
     public static void insertUser(User user) {
         try{
-            String qry = ("INSERT INTO user " 
-        + "(SSN, FirstName, LastName, Address, ZIP, State, Username, Password, Email, SecurityQuestion, SecurityAnswer)" + 
-        "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            pstatement = conn.prepareStatement(qry);
+        	String qry = "INSERT INTO user" +
+        			"(SSN, FirstName, LastName, Address, ZIP, State, Username, Password, Email, SecurityQuestion, SecurityAnswer)" + 
+        			"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+        	pstatement = conn.prepareStatement(qry);
             
             pstatement.setInt(1, user.getSSN());
             pstatement.setString(2, user.getFirstname());
@@ -70,13 +71,15 @@ public class UserData {
             pstatement.setString(10, user.getSecurityQ());
             pstatement.setString(11, user.getSecurityA());
             
+            pstatement.executeUpdate();
+            
             
             // user.getSSN, user.getFirstname(), user.getLastname(), user.getAddress(), user.getZip(), user.getState(), user.getUsername(), user.getPassword(), user.getEmail(), user.getSecurityQ(), user.getSecurityA()"    
-            users.add(user); // observable array list
+            //users.add(user); // observable array list
             
         }
 
-        catch(Exception e){
+        catch(SQLException e){
             e.printStackTrace();
         }
     }
