@@ -35,7 +35,7 @@ public class ViewFlightSceneControl {
         editB.setOnAction(e -> handle_editB());
 
         deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
-        //exportFlightsB.setOnAction(event -> handle_exportFlightsB());
+        deleteFlightsB.setOnAction(event -> handle_deleteFlightsB());
 
 
         search = ViewFlightsScene.getSearch();
@@ -55,7 +55,6 @@ public class ViewFlightSceneControl {
         if(okPressed) {
             flight = FlightEditSceneControl.getFlight();
 
-  /*  
             FlightData.insertFlight(flight); //add flight to database
 
             table.setItems(FlightTableData.getFlightTableItems()); //set the table items
@@ -65,7 +64,6 @@ public class ViewFlightSceneControl {
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Flight added!");
             alert.showAndWait();
-*/
             System.out.println("new flight added");
         }
     }
@@ -128,14 +126,14 @@ public class ViewFlightSceneControl {
                 }
 
                 tableItems = FXCollections.observableArrayList();
-/*
+
                 for(FlightTable f : flights){
-                    if(f.getDeparture_city().toUpperCase().contains(search.getText().toUpperCase()) ||
-                            f.getArrival_city().toUpperCase().contains(search.getText().toUpperCase())){
+                    if(f.getDepartingCity().toUpperCase().contains(search.getText().toUpperCase()) ||
+                            f.getArrivalCity().toUpperCase().contains(search.getText().toUpperCase())){
                         tableItems.add(f);
                     }
                 }
-*/
+
                 table.setItems(tableItems);
             }
         });
