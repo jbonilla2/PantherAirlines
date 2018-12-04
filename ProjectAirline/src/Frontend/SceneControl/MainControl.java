@@ -98,22 +98,6 @@ public class MainControl {
         window.centerOnScreen();
     }
 
-
-    //view customers scene
-    public static void showViewCustomerScene(){
-        //initialization of scene
-        ViewCustomersScene.initialize();
-
-        //initialization of controller
-        ViewCustomerSceneControl.initialize();
-
-        //set scene
-        window.setScene(ViewCustomersScene.getScene());
-        window.setTitle("Panther Airlines™  -  Customers");
-        window.centerOnScreen();
-    }
-
-
     //view flights scene
     public static void showViewFlightsScene(){
         //initialization of scene
