@@ -5,15 +5,15 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class User extends Customer {
+public abstract class Customer implements Person {
 
-    //fields
+	//fields
     private IntegerProperty ssn, zip;
     private StringProperty firstname, lastname, address, state, username, password, email, securityQ, securityA;
 
 
     //constructors
-    public User() {
+    public Customer() {
         ssn = new SimpleIntegerProperty();
         firstname = new SimpleStringProperty("");
         lastname = new SimpleStringProperty("");
@@ -27,7 +27,7 @@ public class User extends Customer {
         securityA = new SimpleStringProperty("");
     }
 
-    public User(int ssn, String firstname, String lastname, String address, int zip,
+    public Customer(int ssn, String firstname, String lastname, String address, int zip,
     		String state, String username, String password, String email, String securityQ, String securityA) {
     	this.ssn = new SimpleIntegerProperty(ssn);
         
@@ -50,7 +50,7 @@ public class User extends Customer {
     public IntegerProperty ssnProperty() {
 		return ssn;
 	}
-    @Override
+
 	public void setSSN(int ssn) {
 		this.ssn.set(ssn);
 	}
@@ -62,7 +62,7 @@ public class User extends Customer {
 	public IntegerProperty zipProperty() {
 		return zip;
 	}
-	
+
 	public void setZip(int zip) {
 		this.zip.set(zip);
 	}
@@ -163,17 +163,11 @@ public class User extends Customer {
         this.securityQ.set(securityQ);
     }
 
-    public String getSecurityA() {
-        return securityA.get();
-    }
+    public abstract String getSecurityA();
 
-    public StringProperty securityAProperty() {
-        return securityA;
-    }
+    public abstract StringProperty securityAProperty();
 
-    public void setSecurityA(String securityA) {
-        this.securityA.set(securityA);
-    }
+    public abstract void setSecurityA(String securityA);
 
 	 //toString method
     @Override
@@ -184,8 +178,6 @@ public class User extends Customer {
 				"\n*Username: " + getUsername() +
 				"\n*Password: " +  getPassword();
     }
-
-	
 
 	
 }
