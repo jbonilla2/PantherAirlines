@@ -29,6 +29,10 @@ public class LoginSceneControl {
         //password field
         passwordField = LoginScene.getPasswordField();
 
+        //registerButton
+        registerButton = LoginScene.getRegisterButton();
+        registerButton.setOnAction(e -> handle_registerButton());
+        
         //loginButton
         loginButton = LoginScene.getLoginButton();
         //loginButton.setDefaultButton(true);
@@ -41,21 +45,17 @@ public class LoginSceneControl {
 
             handle_loginButton();
         });
-        
+      
         //registerButton
-        registerButton = LoginScene.getRegisterButton();
-        registerButton.setOnAction(r -> handle_registerButton());
-        
-        //registerButton
-        forgotpassButton = LoginScene.getRegisterButton();
-        forgotpassButton.setOnAction(f -> handle_forgotpassButton());
+       // forgotpassButton = LoginScene.getRegisterButton();
+        //forgotpassButton.setOnAction(f -> handle_forgotpassButton());
         
     }
 
     //handle register button
     private static void handle_registerButton() {
 		MainControl.showRegisterScene(); //Switch to register screen
-	}
+    }
 
   //handle forgot password button
     private static void handle_forgotpassButton() {
@@ -77,7 +77,7 @@ public class LoginSceneControl {
         if(isInputValid()) {
         	//verify the user credentials in database
         	for(User user: UserData.getUsers()) {
-        		if (user.getUsername() == username && user.getPassword().equalsIgnoreCase(password)) {
+        		if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 
         			MainControl.showMenuScene(); //valid username and pass
         			System.out.println("login successful");
@@ -108,12 +108,10 @@ public class LoginSceneControl {
 
         if(username.isEmpty())
             error+="Insert username!\n";
-        else if(password.isEmpty())
+        if(password.isEmpty())
             error += "Insert password!\n";
-
         if(error=="")
             return true;
-
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText(error);
@@ -122,6 +120,10 @@ public class LoginSceneControl {
             alert.showAndWait();
             return false;
         }
+    }
+    
+    public static void main(String[] args) {
+    	
     }
 
 }

@@ -1,12 +1,10 @@
 package Frontend.SceneControl;
 
 import java.sql.Connection;
-
 import Backend.*;
 import databaseAccess.*;
 import Frontend.GUI.*;
 import databaseAccess.DBconnect;
-import Frontend.GUI.LoginScene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -76,8 +74,7 @@ public class MainControl {
 
         //initialization of actions
         LoginSceneControl.initialize();
-
-
+        
         //set scene
         window.setScene(LoginScene.getScene());
         window.setTitle("Panther Airlines™");      
@@ -164,8 +161,6 @@ public class MainControl {
         return BookingEditSceneControl.isOkPressed();
 
     }
-
-
 
     //getters
     public static Stage getWindow() {
