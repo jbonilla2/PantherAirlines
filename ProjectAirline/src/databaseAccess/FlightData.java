@@ -31,7 +31,7 @@ public class FlightData {
                     Flight flight = new Flight();
                     flight.setFlightID(rs.getInt(1));
                     flight.setDepartingCity(rs.getString(2));
-                    flight.setDepartingDate(rs.getDate(3).toString());
+                    flight.setDepartingDate(rs.getString(3));
                     flight.setDepartingTime(rs.getString(4));
                     flight.setArrivalCity(rs.getString(5));
                     flight.setArrivalDate(rs.getString(6));                   
@@ -50,9 +50,9 @@ public class FlightData {
     }
 
 
-    public static void insertFlight(Flight flight)
-    {
-        try{
+    public static void insertFlight(Flight flight) {
+        
+    	try{
             statement.executeUpdate("INSERT INTO flight VALUE(default, " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining() +");");
         }
 
@@ -63,7 +63,8 @@ public class FlightData {
 
 
     public static void updateFlight(Flight flight){
-        try{
+        
+    	try{
             statement.executeUpdate("UPDATE flight SET FlightID = " + flight.getFlightID() + ", DepartingCity = " + flight.getDepartingCity() + ", DepartingDate = " + flight.getDepartingDate() + ", DepartingTime = " + flight.getDepartingTime()+", ArrivalCity = "+flight.getArrivalCity() + ", ArrivalDate = "+flight.getArrivalDate() + ", price = " +  flight.getPrice() + ", SeatsRemaining = " + flight.getSeatsRemaining() + ", WHERE flightID = " + flight.getFlightID() + ";");
         }
 

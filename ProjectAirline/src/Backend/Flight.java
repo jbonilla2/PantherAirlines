@@ -16,6 +16,15 @@ public class Flight {
     
     public Flight() {
     	
+    	this.departingDate = new SimpleStringProperty("");
+		this.arrivalDate = new SimpleStringProperty("");
+        this.departingCity = new SimpleStringProperty("");
+        this.arrivalCity = new SimpleStringProperty("");
+        this.price = new SimpleDoubleProperty(0);
+        this.flightID = new SimpleIntegerProperty(0);
+        this.seatsRemaining = new SimpleIntegerProperty(0);
+        this.departingTime = new SimpleStringProperty("");
+    	
     }
     
     public Flight(String departingDate, String arrivalDate, String departingCity, 

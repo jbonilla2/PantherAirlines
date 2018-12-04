@@ -29,11 +29,12 @@ public class ViewFlightsScene {
     //fields
     private static Pane layout;
     private static Scene scene;
+   
     private static TableView<FlightTable> table;
     private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
     private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn;
+    private static TableColumn<FlightTable, Double> priceColumn;
     
-	private static TableColumn<FlightTable, Double> priceColumn;
     private static TextField search;
     private static HBox buttonLayout;
     private static Button backB, addB, editB, deleteFlightsB;
@@ -51,8 +52,6 @@ public class ViewFlightsScene {
         //initialize columns
         flightIDColumn = new TableColumn<>("ID");
         flightIDColumn.setCellValueFactory(cellData -> cellData.getValue().flightIDProperty().asObject());
-        flightIDColumn.setMaxWidth(70);
-        flightIDColumn.setMinWidth(60);
 
         departingDateColumn = new TableColumn<>("Departing date");
         departingDateColumn.setCellValueFactory(cellData -> cellData.getValue().departingDateProperty());
@@ -72,11 +71,10 @@ public class ViewFlightsScene {
         priceColumn = new TableColumn<>("Basic price");
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
 
-
         seatsRemainingColumn = new TableColumn<>("Available seats");
         seatsRemainingColumn.setCellValueFactory(cellData -> cellData.getValue().seatsRemainingProperty().asObject());
 
-        table.getColumns().addAll(flightIDColumn,departingCityColumn,departingDateColumn,departingTimeColumn,arrivalCityColumn,arrivalDateColumn,priceColumn,seatsRemainingColumn);
+        table.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn, priceColumn, seatsRemainingColumn);
 
         //search field
         search = new TextField();

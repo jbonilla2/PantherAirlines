@@ -25,8 +25,8 @@ public class FlightTable {
 	
 	}
 	
-	public FlightTable(String departingDate, String arrivalDate, String departingCity, 
-			String arrivalCity, int flightID, int seatsRemaining, double price, String departingTime) {
+	public FlightTable(int flightID, String departingCity, String departingDate, String departingTime,  
+			String arrivalCity, String arrivalDate, double price, int seatsRemaining) {
 		
 		this.departingDate = new SimpleStringProperty(departingDate);
 		this.arrivalDate = new SimpleStringProperty(arrivalDate);
