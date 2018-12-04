@@ -9,13 +9,52 @@ import java.util.ArrayList;
 
 
 
+
 public class UserData {
 
     private static Statement statement;
     private static PreparedStatement pstatement;
-    private static ObservableList<User> users;
+    private static ArrayList<User> users;
+    //private static ObservableList<User> users1;
     private static Connection conn = DBconnect.connect();
 
+    //Gets user data from user database
+    public static ArrayList<User> getUsers(){
+        users = new ArrayList<>();
+
+        try{
+        	 statement = conn.createStatement();
+
+        	 ResultSet rs = statement.executeQuery("SELECT * FROM user");
+
+
+            if(rs != null)
+                while (rs.next()) {
+                	User user = new User();
+                    user.setSSN(rs.getInt(1));
+                    user.setFirstname(rs.getString(2));
+                    user.setLastname(rs.getString(3));
+                    user.setAddress(rs.getString(4));
+                    user.setZip(rs.getInt(5));
+                    user.setState(rs.getString(6));
+                    user.setUsername(rs.getString(7));
+                    user.setPassword(rs.getString(8));
+                    user.setEmail(rs.getString(9));
+                    user.setSecurityQ(rs.getString(10));
+                    user.setSecurityA(rs.getString(11));
+
+                    users.add(user);
+                }
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+   /* 
     public static ObservableList<User> getUsers(){
         users = FXCollections.observableArrayList();  
 
@@ -49,7 +88,7 @@ public class UserData {
 
         return users;
     }
-
+*/
 
     public static void insertUser(User user) {
         try{
