@@ -92,8 +92,8 @@ public class RegisterSceneControl {
                     passwordField.clear();
 
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setHeaderText("Login failed");
-                    alert.setContentText("Invalid username or password");
+                    alert.setHeaderText("Registration failed");
+                    alert.setContentText("Username unavailable.");
                     alert.initOwner(MainControl.getWindow());
                     alert.showAndWait();
             		
