@@ -1,7 +1,6 @@
 package Frontend.SceneControl;
 
-import Backend.Reservations;
-import Backend.ReservationsTable;
+import Backend.*;
 import databaseAccess.*;
 import Frontend.GUI.*;
 import javafx.beans.InvalidationListener;
@@ -34,7 +33,7 @@ public class ViewBookingSceneControl {
     private static Button backButton;
     private static Button editButton;
 
-    private static ObservableList<ReservationsTable> bookings, tableItems;
+    private static ObservableList<ReservationsTable> reservations, tableItems;
     private static double refund;
 
 
@@ -43,8 +42,8 @@ public class ViewBookingSceneControl {
 
         //table
         table = ViewBookingScene.getTable();
-//        table.setItems(BookingTableData.getBookingTableItems());
-//        table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayBookingInfo(newValue));
+        table.setItems(ReservationsTableData.getReservationsTableItems());
+        table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayBookingInfo(newValue));
 
         //flight info labels
         departure_dateObs = ViewBookingScene.getDeparture_dateObs();
@@ -75,7 +74,7 @@ public class ViewBookingSceneControl {
 
         //search field setup
         search = ViewBookingScene.getSearchField();
-        bookings = table.getItems();
+        reservations = table.getItems();
         initializeSearch();
     }
 
@@ -88,17 +87,15 @@ public class ViewBookingSceneControl {
 
     //add button action
     public static void handle_addButton(){
-    	ReservationsTable bookingTable = new ReservationsTable();
-    	Reservations booking = new Reservations();
+    	ReservationsTable reservationTable = new ReservationsTable();
+    	Reservations reservation = new Reservations();
 
-        boolean okPressed = MainControl.showBookingEditScene(bookingTable, booking);
+        boolean okPressed = MainControl.showBookingEditScene(reservationTable, reservation);
 
         if (okPressed) {
-            booking = BookingEditSceneControl.getBooking();
-           // BookingData.insertBooking(booking); //add booking to database
-
-          //  table.setItems(BookingTableData.getBookingTableItems()); //set the table items
-            bookings = table.getItems();
+        	reservation = BookingEditSceneControl.getReservation();
+        	
+            reservations = table.getItems();
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
@@ -160,44 +157,26 @@ public class ViewBookingSceneControl {
 
     //remove button action
     public static void handle_cancelButton() {
-        ReservationsTable bookingTable = table.getSelectionModel().getSelectedItem();
-        Reservations booking = new Reservations();
+        ReservationsTable reservationsTable = table.getSelectionModel().getSelectedItem();
+        Reservations reservation = new Reservations();
 
-        if (bookingTable != null) {
+        if (reservationsTable != null) {
             refund = 0.0;
-            for (Reservations b : BookingData.getBookings())
-                if (bookingTable.getBooking_id() == b.getBooking_id()) {
-                    booking = b;
+            for (Reservations b : ReservationsData.getReservations())
+                if (reservationsTable.getTicketNum() == b.getTicketNum()) {
+                    reservation = b;
                     break;
                 }
 
-            //no booking can be canceled with less than 2 days before flight
-            if (LocalDate.parse(bookingTable.getDeparture_date()).isBefore(LocalDate.now().plusDays(2))) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.initOwner(MainControl.getWindow());
-                alert.setHeaderText("Cancel not possible");
-                alert.setContentText("It is impossible to cancel a booking with less than 2 days before flight");
-                alert.showAndWait();
-            }
-
-            else { //set the refund amount
                 for (Flight f : FlightData.getFlight())
-                    if (f.getFlight_id() == booking.getFlight_id()) {
-                        if (booking.getFare_class().equalsIgnoreCase("First class"))
-                                refund = f.getPrice() + f.getPrice() * 1/2;
-                        else if (booking.getFare_class().equalsIgnoreCase("Coach"))
-                            refund = (f.getPrice() + f.getPrice() * 1/4) * 85/100;
-                        else if (LocalDate.parse(bookingTable.getDeparture_date()).isBefore(LocalDate.now().plusWeeks(2)))
-                            refund = 0;
-                        else
+                    if (f.getFlightID() == reservation.getFlightID()) {
                             refund = f.getPrice() * 70/100;
 
                         break;
                     }
 
-                cancelBooking(bookingTable,booking);
+                cancelReservation(reservationsTable, reservation);
             }
-        }
 
         else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -210,38 +189,33 @@ public class ViewBookingSceneControl {
 
 
     //method to cancel a booking
-    public static void cancelBooking(BookingTable bookingTable, Booking booking) {
+    public static void cancelReservation(ReservationsTable reservationTable, Reservations reservation) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initOwner(MainControl.getWindow());
         alert.setHeaderText("Remove booking");
-        alert.setContentText("Are you sure you want to cancel " + bookingTable.getCustomer() + "'s booking?" +
+        alert.setContentText("Are you sure you want to cancel " + reservationTable.getUser() + "'s booking?" +
                 "\nThe refund will be " + refund + " kr.");
 
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == ButtonType.OK) { //confirmed
 
-            BookingData.deleteBooking(booking); //delete booking from database
+            ReservationsData.deleteReservation(reservation); //delete booking from database
 
-            table.setItems(BookingTableData.getBookingTableItems()); //set table items
-            bookings = table.getItems();
+            table.setItems(ReservationsTableData.getReservationsTableItems()); //set table items
+            reservations = table.getItems();
 
             Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
             alert1.initOwner(MainControl.getWindow());
             alert1.setContentText("Booking canceled!\n"
-                    + bookingTable.getCustomer() + " was refunded " + refund + " kr.");
+                    + reservationTable.getUser() + " was refunded " + refund + " kr.");
             alert1.showAndWait();
 
             //set left seats
             for (Flight f : FlightData.getFlight())
-                if (f.getFlight_id() == booking.getFlight_id()) {
-                    if (booking.getFare_class().equalsIgnoreCase("First class"))
-                        f.setFirst_class_left(f.getFirst_class_left() + 1);
-                    else if (booking.getFare_class().equalsIgnoreCase("Coach"))
-                        f.setCoach_left(f.getCoach_left() + 1);
-                    else
-                        f.setEconomy_left(f.getEconomy_left() + 1);
+                if (f.getFlightID() == reservation.getFlightID()) {
+                        f.setSeatsRemaining(f.getSeatsRemaining() + 1);
                 }
 
             System.out.println("a booking removed");
@@ -251,29 +225,29 @@ public class ViewBookingSceneControl {
         }
     }
 
-/*
+
     //method to display the booking details
     public static void displayBookingInfo(ReservationsTable buk) {
         if(buk != null) {
 
-            Reservations booking = new Reservations();
-            for(Reservations b : BookingData.getBookings())
-                if(b.getBooking_id() == buk.getBooking_id()) {
-                    booking = b;
+            Reservations reservations = new Reservations();
+            for(Reservations b : ReservationsData.getReservations())
+                if(b.getTicketNum() == buk.getTicketNum()) {
+                	reservations = b;
                     break;
                 }
 
             FlightTable flight = new FlightTable();
             for(FlightTable f : FlightTableData.getFlightTableItems())
-                if(f.getFlight_id() == booking.getFlight_id()) {
+                if(f.getFlightID() == reservations.getFlightID()) {
                     flight = f;
                     break;
                 }
 
-            Customer customer = new Customer();
-            for(Customer c : CustomerData.getCustomers())
-                if(c.getCustomer_id() == booking.getCustomer_id()) {
-                    customer = c;
+            User user = new User();
+            for(User u : UserData.getUsers())
+                if(u.getUsername() == reservations.getUserID()) {
+                    user = u;
                     break;
                 }
 
@@ -309,7 +283,7 @@ public class ViewBookingSceneControl {
             phone_numberObs.setText("");
         }
     }
-*/
+
 
     //search bar setup
     public static void initializeSearch(){
@@ -318,13 +292,13 @@ public class ViewBookingSceneControl {
         	@Override
             public void invalidated(Observable observable) {
                 if (search.textProperty().get().isEmpty()) {
-                    table.setItems(bookings);
+                    table.setItems(reservations);
                     return;
                 }
 
                 tableItems = FXCollections.observableArrayList();
 
-                for(ReservationsTable b : bookings){
+                for(ReservationsTable b : reservations){
                     if(b.getRoute().toUpperCase().contains(search.getText().toUpperCase())||
                             b.getUser().toUpperCase().contains(search.getText().toUpperCase())) {
 
