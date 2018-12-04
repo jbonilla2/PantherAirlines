@@ -37,6 +37,8 @@ public class ForgotPassScene {
     	secaField.setPromptText("Security answer");
     	secaField.setMaxWidth(200);
     	
+    	
+    	
     }
     
 	
