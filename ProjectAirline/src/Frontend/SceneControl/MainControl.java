@@ -128,24 +128,6 @@ public class MainControl {
         return FlightEditSceneControl.isOkPressed();
     }
 
-
-    //booking edit dialog
-    public static boolean showBookingEditScene(ReservationsTable bookingTable, Reservations booking) {
-        //initialization of scene
-        BookingEditScene.initialize();
-
-        //initialization of controller
-        BookingEditSceneControl.initialize();
-// Come back to edit  BookingEditSceneControl.setBooking(bookingTable, booking);
-
-        BookingEditScene.getDialogStage().initOwner(window);
-        BookingEditScene.getDialogStage().setTitle("Booking menu");
-        BookingEditScene.getDialogStage().showAndWait();
-
-        return BookingEditSceneControl.isOkPressed();
-
-    }
-
     //getters
     public static Stage getWindow() {
         return window;
