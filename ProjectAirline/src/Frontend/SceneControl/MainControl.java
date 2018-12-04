@@ -58,7 +58,7 @@ public class MainControl {
 
         //set scene
         window.setScene(MenuScene.getScene());
-        window.setTitle("Panther Airlines™");
+        window.setTitle("Panther Airlines");
         window.centerOnScreen();
 
     }
@@ -77,7 +77,7 @@ public class MainControl {
         
         //set scene
         window.setScene(LoginScene.getScene());
-        window.setTitle("Panther Airlines™");      
+        window.setTitle("Panther Airlines");      
 
         window.show();
         window.centerOnScreen();
@@ -94,7 +94,7 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewBookingScene.getScene());
-        window.setTitle("Panther Airlines™  -  Bookings");
+        window.setTitle("Panther Airlines - Bookings");
         window.centerOnScreen();
     }
 
@@ -108,7 +108,7 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewFlightsScene.getScene());
-        window.setTitle("Panther Airlines™  -  Flights");
+        window.setTitle("Panther Airlines - Flights");
         window.centerOnScreen();
     }
 

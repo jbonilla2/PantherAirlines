@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class MenuSceneControl {
 
     //fields
-    private static Button bookingsB, customersB, flightsB, planesB, exitB, logoutB;
+    private static Button bookingsB, flightsB, exitB, logoutB;
 
     //initialization of fields
     public static void initialize(){
@@ -31,7 +31,7 @@ public class MenuSceneControl {
 
     }
     
-    //hanlde logoutB
+    //handle logoutB
 	public static void handle_logoutB() {
 		MainControl.showLoginScene();
 	}
