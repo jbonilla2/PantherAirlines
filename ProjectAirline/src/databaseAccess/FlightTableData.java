@@ -25,7 +25,7 @@ public class FlightTableData {
 	                    
 	                    f.setFlightID(rs.getInt(1));
 	                    f.setDepartingCity(rs.getString(2));
-	                    f.setDepartingDate(rs.getDate(3).toString());
+	                    f.setDepartingDate(rs.getString(3));
 	                    f.setDepartingTime(rs.getString(4));
 	                    f.setArrivalCity(rs.getString(5));
 	                    f.setArrivalDate(rs.getString(6));                   

@@ -28,7 +28,7 @@ public class ReservationsData {
                 while (rs.next()) {
                     Reservations reservation = new Reservations();
                     reservation.setTicketNum(rs.getInt(1));
-                    reservation.setUserID(rs.getInt(2));
+                    reservation.setUserID(rs.getString(2));
                     reservation.setFlightID(rs.getInt(3));
 
                     reservations.add(reservation);

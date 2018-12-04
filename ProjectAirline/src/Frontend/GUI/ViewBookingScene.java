@@ -54,7 +54,7 @@ public class ViewBookingScene {
 
         //table columns
         dateColumn=new TableColumn<>("Departure date");
-        dateColumn.setCellValueFactory(cellData -> cellData.getValue().departureDateProperty());
+        dateColumn.setCellValueFactory(cellData -> cellData.getValue().departingDateProperty());
 
         nameColumn=new TableColumn<>("Customer name");
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().userProperty());
