@@ -64,20 +64,6 @@ public class ViewBookingSceneControl {
     	ReservationsTable reservationTable = new ReservationsTable();
     	Reservations reservation = new Reservations();
 
-        boolean okPressed = MainControl.showBookingEditScene(reservationTable, reservation);
-
-        if (okPressed) {
-        	reservation = BookingEditSceneControl.getReservation();
-        	
-            reservations = table.getItems();
-
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.initOwner(MainControl.getWindow());
-            alert.setContentText("Booking added!");
-            alert.showAndWait();
-
-            System.out.println("new booking added");
-        }
 
     }
 

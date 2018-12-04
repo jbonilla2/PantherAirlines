@@ -30,7 +30,6 @@ public class ReservationsTableData {
 	                while(rs.next()){
 	                    
 	                	reservationsTableItems.add(new ReservationsTable(rs.getInt(5), rs.getString(2), rs.getString(1), rs.getString(3)));
-
 	                    
 	                }
 	        }
