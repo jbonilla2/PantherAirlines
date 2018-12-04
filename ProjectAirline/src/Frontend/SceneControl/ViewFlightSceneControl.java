@@ -14,8 +14,8 @@ import java.time.LocalDate;
 public class ViewFlightSceneControl {
 
     //fields
-    private static TableView<FlightTable> table;
-    private static ObservableList<FlightTable> flights, tableItems;
+    private static TableView<Flight> table;
+    private static ObservableList<Flight> flights, tableItems;
     private static TextField search;
     private static Button backB, addB, editB, deleteFlightsB;
 
