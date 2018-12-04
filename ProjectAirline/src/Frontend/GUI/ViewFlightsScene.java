@@ -3,6 +3,7 @@ package Frontend.GUI;
 //Change the red, add or change Table columns
 
 import Backend.FlightTable;
+import databaseAccess.FlightTableData;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,7 +42,7 @@ public class ViewFlightsScene {
 
 
     //initialization of objects
-    public static void initialize() {
+    public static void initialize() throws Exception {
 
         //table
         table = new TableView<>();
@@ -76,6 +77,11 @@ public class ViewFlightsScene {
 
         table.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn, priceColumn, seatsRemainingColumn);
 
+        table = FlightTableData.getAllRecords(); // move the flight data to flight table data, name it getAllRecords.
+        populateTable(table); // create method, important
+        
+        
+        
         //search field
         search = new TextField();
         search.setPromptText("search");

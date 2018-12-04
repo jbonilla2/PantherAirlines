@@ -6,9 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.io.FileOutputStream;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 
 public class FlightData {
@@ -18,13 +16,15 @@ public class FlightData {
     private static Connection conn = DBconnect.connect();
 
     
-    public static ObservableList<Flight> getFlight(){
-        flights = FXCollections.observableArrayList();
+    public static ObservableList<Flight> getFlight() throws ClassNotFoundException, SQLException{
+        
+    	String sql = "SELECT * FROM flight";
+    	flights = FXCollections.observableArrayList();
 	
         
         try{
-            statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM flight");
+        	statement = conn.createStatement();           
+            ResultSet rs = statement.executeQuery(sql);
 
             if(rs != null)
                 while (rs.next()) {

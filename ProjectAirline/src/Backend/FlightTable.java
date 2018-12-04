@@ -11,6 +11,14 @@ public class FlightTable {
 	
 	public FlightTable() {
 		
+		this.departingDate = new SimpleStringProperty();
+		flightID = new SimpleIntegerProperty();
+		seatsRemaining = new SimpleIntegerProperty();
+		departingCity = new SimpleStringProperty();
+		arrivalCity = new SimpleStringProperty();
+		price = new SimpleDoubleProperty();
+		departingTime = new SimpleStringProperty();
+		
 	}
 	
 	public FlightTable(String departingDate) {

@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class ViewFlightSceneControl {
@@ -23,7 +24,15 @@ public class ViewFlightSceneControl {
     public static void initialize(){
 
         table = ViewFlightsScene.getTable();
-        table.setItems(FlightTableData.getFlightTableItems());
+        try {
+			table.setItems(FlightTableData.getFlightItems());
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
         backB = ViewFlightsScene.getBackB();
         backB.setOnAction(e -> handle_backB());
@@ -57,7 +66,15 @@ public class ViewFlightSceneControl {
 
             FlightData.insertFlight(flight); //add flight to database
 
-            table.setItems(FlightTableData.getFlightTableItems()); //set the table items
+            try {
+				table.setItems(FlightTableData.getFlightItems());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} //set the table items
             flights = table.getItems();
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -82,7 +99,15 @@ public class ViewFlightSceneControl {
                 flight = FlightEditSceneControl.getFlight();
    //             FlightData.updateFlight(flight); //update flight in database
 
-                table.setItems(FlightTableData.getFlightTableItems()); //set the table items
+                try {
+					table.setItems(FlightTableData.getFlightItems());
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} //set the table items
                 flights = table.getItems();
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
