@@ -4,20 +4,21 @@ import javafx.beans.property.*;
 
 public class Reservations {
 	
-	private IntegerProperty ticketNum, userID, flightID;
+	private IntegerProperty ticketNum, flightID;
+	private StringProperty userID;
     
     public Reservations() {
     	
     	ticketNum = new SimpleIntegerProperty();
-        userID = new SimpleIntegerProperty();
+        userID = new SimpleStringProperty();
         flightID = new SimpleIntegerProperty();
  
     	
     }
     
-    public Reservations(int ticketNum, int userID, int flightID) {
+    public Reservations(int ticketNum, String userID, int flightID) {
         this.ticketNum = new SimpleIntegerProperty(ticketNum);
-        this.userID = new SimpleIntegerProperty(userID);
+        this.userID = new SimpleStringProperty(userID);
         this.flightID = new SimpleIntegerProperty(flightID);
     }
     
@@ -33,15 +34,15 @@ public class Reservations {
         this.ticketNum.set(ticketNum);
     }
 
-    public int getUserID() {
+    public String getUserID() {
         return userID.get();
     }
 
-    public IntegerProperty userIDProperty() {
+    public StringProperty userIDProperty() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID.set(userID);
     }
 

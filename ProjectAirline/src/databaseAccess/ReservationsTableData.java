@@ -19,8 +19,8 @@ public class ReservationsTableData {
 	        try{
 	            statement = conn.createStatement();
 	            ResultSet rs = statement.executeQuery("SELECT DepartingDate, DepartingCity, DepartingTime, ArrivalCity, ArrivalDate, FlightID " +
-	                    "FROM reservations r JOIN flight f " +
-	                    "ON r.flightID = f.flightID " +
+	                    "FROM flight f JOIN reservation r " +
+	                    "ON f.flightID = r.flightID " +
 	                    "JOIN user u " +
 	                    "ON r.UserID = u.UserID " +
 	                    "ORDER BY departureDate;");
