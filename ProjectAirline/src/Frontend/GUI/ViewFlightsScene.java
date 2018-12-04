@@ -30,8 +30,8 @@ public class ViewFlightsScene {
     private static Pane layout;
     private static Scene scene;
     private static TableView<FlightTable> table;
-    private static TableColumn<FlightTable, Integer> flight_idColumn, economyColumn, coachColumn, first_classColumn;
-    private static TableColumn<FlightTable, String> departure_dateColumn, departure_cityColumn, arrival_cityColumn;
+    private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
+    private static TableColumn<FlightTable, String> departingDateColumn, departingCityColumn, arrivalCityColumn;
     private static TableColumn<FlightTable, Double> priceColumn;
     private static TextField search;
     private static HBox buttonLayout;
@@ -48,21 +48,21 @@ public class ViewFlightsScene {
         table.relocate(42,32);
 
         //initialize columns
-        flight_idColumn = new TableColumn<>("ID");
+        flightIDColumn = new TableColumn<>("ID");
         //flight_idColumn.setCellValueFactory(cellData -> cellData.getValue().flight_idProperty().asObject());
-        flight_idColumn.setMaxWidth(70);
-        flight_idColumn.setMinWidth(60);
+        flightIDColumn.setMaxWidth(70);
+        flightIDColumn.setMinWidth(60);
 
 
-        departure_dateColumn = new TableColumn<>("Departure date");
+        departingDateColumn = new TableColumn<>("Departing date");
        // departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
 
 
-        departure_cityColumn = new TableColumn<>("Departure city");
+        departingCityColumn = new TableColumn<>("Departing city");
        // departure_cityColumn.setCellValueFactory(cellData -> cellData.getValue().departure_cityProperty());
 
 
-        arrival_cityColumn = new TableColumn<>("Arrival city");
+        arrivalCityColumn = new TableColumn<>("Arrival city");
        // arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
 
 
@@ -70,19 +70,12 @@ public class ViewFlightsScene {
        // priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
 
 
-        economyColumn = new TableColumn<>("Eco seat");
+        seatsRemainingColumn = new TableColumn<>("Available seats");
       //  economyColumn.setCellValueFactory(cellData -> cellData.getValue().economyLeftProperty().asObject());
 
 
-        coachColumn = new TableColumn<>("Coach seat");
-       // coachColumn.setCellValueFactory(cellData -> cellData.getValue().coachLeftProperty().asObject());
 
-
-        first_classColumn = new TableColumn<>("First seat");
-      //  first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classLeftProperty().asObject());
-
-
-        table.getColumns().addAll(flight_idColumn,departure_dateColumn,departure_cityColumn,arrival_cityColumn,priceColumn,economyColumn,coachColumn,first_classColumn);
+        table.getColumns().addAll(flightIDColumn,departingDateColumn,departingCityColumn,arrivalCityColumn,priceColumn,seatsRemainingColumn);
 
         //search field
         search = new TextField();
@@ -133,32 +126,24 @@ public class ViewFlightsScene {
         return table;
     }
 
-    public static TableColumn<FlightTable, Integer> getFlight_idColumn() {
-        return flight_idColumn;
+    public static TableColumn<FlightTable, Integer> getFlightIDColumn() {
+        return flightIDColumn;
     }
 
-    public static TableColumn<FlightTable, Integer> getEconomyColumn() {
-        return economyColumn;
+    public static TableColumn<FlightTable, Integer> getSeatsRemainingColumn() {
+        return seatsRemainingColumn;
     }
 
-    public static TableColumn<FlightTable, Integer> getCoachColumn() {
-        return coachColumn;
+    public static TableColumn<FlightTable, String> getDepartingDateColumn() {
+        return departingDateColumn;
     }
 
-    public static TableColumn<FlightTable, Integer> getFirst_classColumn() {
-        return first_classColumn;
+    public static TableColumn<FlightTable, String> getDepartingCityColumn() {
+        return departingCityColumn;
     }
 
-    public static TableColumn<FlightTable, String> getDeparture_dateColumn() {
-        return departure_dateColumn;
-    }
-
-    public static TableColumn<FlightTable, String> getDeparture_cityColumn() {
-        return departure_cityColumn;
-    }
-
-    public static TableColumn<FlightTable, String> getArrival_cityColumn() {
-        return arrival_cityColumn;
+    public static TableColumn<FlightTable, String> getArrivalCityColumn() {
+        return arrivalCityColumn;
     }
 
     public static TableColumn<FlightTable, Double> getPriceColumn() {
