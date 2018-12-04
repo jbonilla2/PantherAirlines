@@ -52,15 +52,32 @@ public class LoginSceneControl {
         //registerButton
         registerButton = LoginScene.getRegisterButton();
         registerButton.setOnAction(e -> handle_registerButton());
-
+        
+        //registerButton
+        forgotpassButton = LoginScene.getRegisterButton();
+        forgotpassButton.setOnAction(e -> handle_forgotpassButton());
+        
     }
 
-
+    //handle register button
     private static void handle_registerButton() {
 		MainControl.showRegisterScene(); //Switch to register screen
 	}
 
+  //handle forgot password button
+    private static void handle_forgotpassButton() {
+    	//verify the username in database to have popup appear
+        for(User user: UserData.getUsers()) {
+        	if (user.getUsername() == username) {
 
+        		MainControl.showMenuScene(); //valid username and pass
+        		System.out.println("login successful");
+        		ok = 1;
+        		break;
+        	}
+        }
+	}
+    
 	//handle login button
     public static void handle_loginButton(){
         int ok = 0;

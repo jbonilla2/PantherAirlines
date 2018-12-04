@@ -1,5 +1,6 @@
 package Frontend.GUI;
 
+import Frontend.SceneControl.ForgotPassControl;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,7 +20,7 @@ public class ForgotPassScene {
     
     //initialize
     public static void initialize(){
-    
+   /* 
     	usernameLabel = new Label("Enter your username");
     	usernameLabel.setAlignment(Pos.CENTER);
     	
@@ -28,7 +29,13 @@ public class ForgotPassScene {
     	usernameField.setPromptText("Username");
     	usernameField.setMaxWidth(220);
     	usernameField.setAlignment(Pos.CENTER);
+    */	
+    	secqLabel = new Label("");
+    	secqLabel.setAlignment(Pos.CENTER);
     	
+    	secaField = new TextField();
+    	secaField.setPromptText("Security answer");
+    	secaField.setMaxWidth(200);
     	
     }
     
