@@ -36,7 +36,7 @@ public class FlightsEditScene {
     private static Label flightL,timeL,dcityL,acityL,depdateL,arrivdateL,fidL,priceL,seatsL;
     private static ComboBox<String> dcityC, acityC, departure_time;
     private static DatePicker departure_date, arrival_date;
-    private static TextField flight_id, price;
+    private static TextField flight_id, price, seatsT;
     private static Button okB, cancelB;
     private static VBox vBox1, vBox2;
 
@@ -48,14 +48,14 @@ public class FlightsEditScene {
 
         //labels
         flightL = new Label("Flight details");
-        flightL.relocate(190,100);
+        flightL.relocate(190,10);
         flightL.setAlignment(Pos.CENTER);
         flightL.setStyle("-fx-font-size:20pt");
 
         dcityL = new Label("Departing City");
         acityL = new Label("Arrival City");
-        depdateL = new Label("Date");
-        arrivdateL = new Label("Date");
+        depdateL = new Label("Departing Date");
+        arrivdateL = new Label("Arrival Date");
         timeL = new Label("Departing Time");
         fidL = new Label ("Flight ID");
         priceL = new Label("Base price");
@@ -65,8 +65,8 @@ public class FlightsEditScene {
         //labels layout
         vBox1 = new VBox();
         vBox1.getChildren().addAll(dcityL, acityL, depdateL, arrivdateL, timeL,fidL, priceL, seatsL);
-        vBox1.relocate(41,202);
-        vBox1.setSpacing(34);
+        vBox1.relocate(20,55);
+        vBox1.setSpacing(36);
 
         //combo boxes
         dcityC = new ComboBox<>();
@@ -82,6 +82,9 @@ public class FlightsEditScene {
 
         //price field
         price = new TextField();
+
+        //input remaining seats
+        seatsT = new TextField();
 
         //departure date picker
         departure_date = new DatePicker();
@@ -103,9 +106,9 @@ public class FlightsEditScene {
 
         //selectors layout
         vBox2 = new VBox();
-        vBox2.getChildren().addAll(dcityC, acityC,departure_date,arrival_date,departure_time,flight_id, price, buttons);
+        vBox2.getChildren().addAll(dcityC, acityC,departure_date,arrival_date,departure_time,flight_id, price, seatsT, buttons);
         vBox2.setSpacing(24);
-        vBox2.relocate(160,200);
+        vBox2.relocate(170,50);
 
 
         //layout
@@ -125,7 +128,13 @@ public class FlightsEditScene {
 
 
 
-    //getters
+    public static TextField getSeatsT() {
+		return seatsT;
+	}
+
+
+
+	//getters
     public static Stage getDialogStage() {
         return dialogStage;
     }

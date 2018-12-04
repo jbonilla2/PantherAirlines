@@ -72,7 +72,17 @@ public class FlightData {
             e.printStackTrace();
         }
     }
+    
+    public static void deleteFlight(Flight flight){
         
+    	try{
+            statement.executeUpdate("DELETE FROM flight WHERE flightID = " + flight.getFlightID() + ";");
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
         
         
 }

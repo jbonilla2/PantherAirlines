@@ -5,13 +5,10 @@ import databaseAccess.*;
 import Frontend.GUI.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+
 
 import java.awt.*;
 import java.sql.Date;
@@ -21,10 +18,9 @@ import java.util.ArrayList;
 
 public class FlightEditSceneControl {
 
-    private static TextField price;
-    private static ComboBox<String> routeC,departure_time, arrival_time;
-    private static ComboBox<Integer> plane_id;
-    private static DatePicker departure_date;
+    private static TextField price,flight_id,seatsT;
+    private static ComboBox<String> dcityC, acityC, departure_time;
+    private static DatePicker departure_date, arrival_date;
     private static Button okB, cancelB;
     private static boolean okPressed = false;
     private static Flight flight;
@@ -36,44 +32,40 @@ public class FlightEditSceneControl {
 
         //price
         price = FlightsEditScene.getPrice();
+        //remaining seats
+        seatsT = FlightsEditScene.getSeatsT();
+        //depart city
+        dcityC = FlightsEditScene.getDcityC();
+        dcityC.getItems().addAll("ATL", "MIA", "LAX");
+        
+        //arrival city
+        acityC = FlightsEditScene.getAcityC();
+        acityC.getItems().addAll("ATL", "MIA", "LAX");
 
-        //route
-        routeC = FlightsEditScene.getRouteC();
-/*       
-        for(Airline airline: AirlineData.getAirlines()){
-            if(!routeC.getItems().contains(airline.getDeparture_city() + " -> " + airline.getArrival_city()))
-                routeC.getItems().add(airline.getDeparture_city() + " -> " + airline.getArrival_city());
-        }
-*/
-        //plane
-        plane_id = FlightsEditScene.getPlane_id();
-  /*
-        for(Plane p : PlaneData.getPlanes()){
-            if(!plane_id.getItems().contains(p.getPlane_id()))
-                plane_id.getItems().add(p.getPlane_id());
-        }
-*/
-
+        //flight id
+        flight_id = FlightsEditScene.getFlight_id();
+  
         //flight times setup
         departure_time= FlightsEditScene.getDeparture_time();
-        arrival_time = FlightsEditScene.getArrival_time();
-
+        //adds 24 hours to times to be displayed
         ObservableList<String> times = FXCollections.observableArrayList();
         for(int i=1; i<=24; i++) {
             times.add(i + ":00");
         }
-
         departure_time.setItems(times);
-        arrival_time.setItems(times);
-
-
         //departure date picker
         departure_date = FlightsEditScene.getDeparture_date();
+        //arrival date picker
+        arrival_date = FlightsEditScene.getArrival_date();
 
+        Flight newflight = new Flight(departure_date.toString(), arrival_date.toString(), dcityC.toString(), 
+			acityC.toString(), Integer.parseInt(flight_id.getText()), Integer.parseInt(seatsT.getText()), Double.parseDouble(price.getText()), departure_time.toString());
+        
+        FlightData.insertFlight(newflight);
 
         //ok button
         okB = FlightsEditScene.getOkB();
-        //okB.setOnAction( e -> handle_okB());
+        okB.setOnAction( e -> handle_okB());
 
 
         //cancel button
@@ -113,41 +105,32 @@ public class FlightEditSceneControl {
 
     }
 
-
+*/
 
     //ok button action
     public static void handle_okB(){
         if(isInputValid()){
 
-        flight.setFlight_id(plane_id.getValue());
+        flight.setFlightID(Integer.parseInt(flight_id.getText()));
 
-        String route = routeC.getValue();
 
-        for(Airline a : AirlineData.getAirlines()){
-            if((a.getDeparture_city() + " -> " + a.getArrival_city()).equalsIgnoreCase(route)){
-                flight.setAirline_id(a.getAirline_id());
+        for(Flight f: FlightData.getFlight()) {
+        	if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
+        		
+        		Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("Flight exists!");
+                alert.setContentText("Input data again!");
+                alert.initOwner(MainControl.window);
+                alert.showAndWait();
+         	   
             }
         }
-
-        Schedule schedule = new Schedule();
-        schedule.setDeparture_time(departure_time.getValue());
-        schedule.setArrival_time(arrival_time.getValue());
-        schedule.setDeparture_date(Date.valueOf(departure_date.getValue()));
-        schedule.setArrival_date(Date.valueOf(departure_date.getValue()));
-        ScheduleData.insertSchedule(schedule);
-
-        for(Schedule s: ScheduleData.getSchedules())
-           if(s.getDeparture_date().equals(schedule.getDeparture_date()) && s.getArrival_date().equals(schedule.getArrival_date()))
-               flight.setSchedule_id(s.getSchedule_id());
-
-            flight.setPrice(Double.parseDouble(price.getText()));
-
-        okPressed = true;
+        
         FlightsEditScene.getDialogStage().close();
         }
 
     }
-*/
+
 
     //cancel button action
     public static void handleClose(){
@@ -160,7 +143,7 @@ public class FlightEditSceneControl {
     public static boolean isInputValid(){
         String error = "";
 
-       if(routeC.getValue().equalsIgnoreCase(" -> "))
+       if(dcityC.getValue().equalsIgnoreCase(" -> "))
         error += "Invalid route!\n";
 
         try {
