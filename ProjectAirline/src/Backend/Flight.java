@@ -4,10 +4,13 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Flight {
 
-    private IntegerProperty flightID, seatsLeft;
+    private IntegerProperty flightID, seatsRemaining;
+    private StringProperty departingDate, arrivalDate, departingCity, arrivalCity, departingTime;
     private DoubleProperty price;
 
     
@@ -15,34 +18,64 @@ public class Flight {
     	
     }
     
-    public Flight(int flightID, int seatsLeft, int price) {
-        this.flightID = new SimpleIntegerProperty(flightID);
-        this.seatsLeft = new SimpleIntegerProperty(seatsLeft);
+    public Flight(String departingDate, String arrivalDate, String departingCity, 
+			String arrivalCity, int flightID, int seatsRemaining, double price, String departingTime) {
+    	this.departingDate = new SimpleStringProperty(departingDate);
+		this.arrivalDate = new SimpleStringProperty(arrivalDate);
+        this.departingCity = new SimpleStringProperty(departingCity);
+        this.arrivalCity = new SimpleStringProperty(arrivalCity);
         this.price = new SimpleDoubleProperty(price);
+        this.flightID = new SimpleIntegerProperty(flightID);
+        this.seatsRemaining = new SimpleIntegerProperty(seatsRemaining);
+        this.departingTime = new SimpleStringProperty(departingTime);
     }
 
-    public int getFlightID() {
-        return flightID.get();
+    public String getDepartingDate() {
+        return departingDate.get();
     }
 
-    public IntegerProperty flightIDProperty() {
-        return flightID;
+    public StringProperty departingDateProperty() {
+        return departingDate;
     }
 
-    public void setFlight_id(int flightID) {
-        this.flightID.set(flightID);
+    public void setDepartingDate(String departingDate) {
+        this.departingDate.set(departingDate);
     }
     
-    public int getSeatsLeft() {
-        return seatsLeft.get();
+    public String getArrivalDate() {
+        return arrivalDate.get();
     }
 
-    public IntegerProperty seatsLeftProperty() {
-        return seatsLeft;
+    public StringProperty arrivalDateProperty() {
+        return arrivalDate;
     }
 
-    public void setSeatsLeft(int seatsLeft) {
-        this.seatsLeft.set(seatsLeft);
+    public void setArrivalDate(String arrivalDate) {
+        this.arrivalDate.set(arrivalDate);
+    }
+    
+    public String getDepartingCity() {
+        return departingCity.get();
+    }
+
+    public StringProperty departingCityProperty() {
+        return departingCity;
+    }
+
+    public void setDepartingCity(String departingCity) {
+        this.departingCity.set(departingCity);
+    }
+    
+    public String getArrivalCity() {
+        return arrivalCity.get();
+    }
+
+    public StringProperty arrivalCityProperty() {
+        return arrivalCity;
+    }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity.set(arrivalCity);
     }
     
     public double getPrice() {
@@ -57,7 +90,41 @@ public class Flight {
         this.price.set(price);
     }
     
-    
+    public int getFlightID() {
+        return flightID.get();
+    }
+
+    public IntegerProperty flightIDProperty() {
+        return flightID;
+    }
+
+    public void setFlightID(int flightID) {
+        this.flightID.set(flightID);
+    }
+
+    public int getSeatsRemaining() {
+        return seatsRemaining.get();
+    }
+
+    public IntegerProperty seatsRemainingProperty() {
+        return seatsRemaining;
+    }
+
+    public void setSeatsRemaining(int seatsRemaining) {
+        this.seatsRemaining.set(seatsRemaining);
+    }
+
+    public String getDepartingTime() {
+        return departingTime.get();
+    }
+
+    public StringProperty departingTimeProperty() {
+        return departingTime;
+    }
+
+    public void setDepartingTime(String departingTime) {
+        this.departingTime.set(departingTime);
+    }
 
 }
 

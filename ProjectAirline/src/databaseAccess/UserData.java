@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class UserData {
 
     private static Statement statement;
+    private static PreparedStatement pstatement;
     private static ObservableList<User> users;
     private static Connection conn = DBconnect.connect();
 
@@ -20,6 +21,7 @@ public class UserData {
 
         try{
             statement = conn.createStatement();
+            
             ResultSet rs = statement.executeQuery("SELECT * FROM user");
 
             if(rs != null)
@@ -51,10 +53,27 @@ public class UserData {
 
     public static void insertUser(User user) {
         try{
-            statement.executeUpdate("INSERT INTO user" + 
-        "VALUES(user.getSSN, user.getFirstname(), user.getLastname(), user.getAddress(), user.getZip(), user.getState(), user.getUsername(), user.getPassword(), user.getEmail(), user.getSecurityQ(), user.getSecurityA()");            
+            String qry = ("INSERT INTO user " 
+        + "(SSN, FirstName, LastName, Address, ZIP, State, Username, Password, Email, SecurityQuestion, SecurityAnswer)" + 
+        "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pstatement = conn.prepareStatement(qry);
+            
+            pstatement.setInt(1, user.getSSN());
+            pstatement.setString(2, user.getFirstname());
+            pstatement.setString(3, user.getLastname());
+            pstatement.setString(4, user.getAddress());
+            pstatement.setInt(5, user.getZip());
+            pstatement.setString(6, user.getState());
+            pstatement.setString(7, user.getUsername());
+            pstatement.setString(8, user.getPassword());
+            pstatement.setString(9, user.getEmail());
+            pstatement.setString(10, user.getSecurityQ());
+            pstatement.setString(11, user.getSecurityA());
+            
+            
+            // user.getSSN, user.getFirstname(), user.getLastname(), user.getAddress(), user.getZip(), user.getState(), user.getUsername(), user.getPassword(), user.getEmail(), user.getSecurityQ(), user.getSecurityA()"    
             users.add(user); // observable array list
-            //customer.setSSN(customers.indexOf(customer) + 1);
+            
         }
 
         catch(Exception e){

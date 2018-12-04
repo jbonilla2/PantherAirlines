@@ -4,15 +4,20 @@ import javafx.beans.property.*;
 
 public class Reservations {
 	
-	private IntegerProperty ticketNum, SSN, flightID;
+	private IntegerProperty ticketNum, userID, flightID;
     
     public Reservations() {
     	
+    	ticketNum = new SimpleIntegerProperty();
+        userID = new SimpleIntegerProperty();
+        flightID = new SimpleIntegerProperty();
+ 
+    	
     }
     
-    public Reservations(int ticketNum, int SSN, int flightID) {
+    public Reservations(int ticketNum, int userID, int flightID) {
         this.ticketNum = new SimpleIntegerProperty(ticketNum);
-        this.SSN = new SimpleIntegerProperty(SSN);
+        this.userID = new SimpleIntegerProperty(userID);
         this.flightID = new SimpleIntegerProperty(flightID);
     }
     
@@ -28,16 +33,16 @@ public class Reservations {
         this.ticketNum.set(ticketNum);
     }
 
-    public int getSSN() {
-        return SSN.get();
+    public int getuserID() {
+        return userID.get();
     }
 
-    public IntegerProperty SSNProperty() {
-        return SSN;
+    public IntegerProperty userIDProperty() {
+        return userID;
     }
 
-    public void setSSN(int SSN) {
-        this.SSN.set(SSN);
+    public void setUserID(int userID) {
+        this.userID.set(userID);
     }
 
     public int getFlightID() {
@@ -50,6 +55,15 @@ public class Reservations {
 
     public void setFlight_id(int flightID) {
         this.flightID.set(flightID);
+    }
+    
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "ticketNumber =" + ticketNum +
+                ", UserID =" + userID +
+                ", FlightID=" + flightID +
+                '}';
     }
 
 
