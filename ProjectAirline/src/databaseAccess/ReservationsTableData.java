@@ -18,20 +18,18 @@ public class ReservationsTableData {
 
 	        try{
 	            statement = conn.createStatement();
-	            ResultSet rs = statement.executeQuery("SELECT DepartingDate, DepartingCity, DepartingTime, ArrivalCity, ArrivalDate, FlightID " +
-	                    "FROM flight f JOIN reservation r " +
-	                    "ON f.flightID = r.flightID " +
-	                    "JOIN user u " +
-	                    "ON r.UserID = u.UserID " +
-	                    "ORDER BY departureDate;");
+	            ResultSet rs = statement.executeQuery("SELECT f.DepartingDate, f.DepartingCity, f.ArrivalCity, f.FlightID, r.ticketNumber " +
+	                    "FROM flight f JOIN reservations r " +
+	                    "ON f.FlightID = r.FlightID " +
+	                    "ORDER BY DepartingDate;");
 
 	            if(rs!=null)
 	                while(rs.next()){
 	                    ReservationsTable b = new ReservationsTable();
-	                    b.setDepartureDate(rs.getDate(1).toString());
-	                    b.setRoute(rs.getString(2) + " -> " + rs.getString(3));
-	                    b.setUser(rs.getString(4) + " " + rs.getString(5));
-	                    b.setTicketNum(rs.getInt(6));
+	                    b.setDepartingDate(rs.getDate(1).toString());
+	                    b.setDepartingCity(rs.getString(2));
+	                    b.setArrivalCity(rs.getString(4));
+	                    b.setTicketNum(rs.getInt(5));
 
 	                    reservationsTableItems.add(b);
 	                }

@@ -16,16 +16,6 @@ public class ViewBookingSceneControl {
 
     //fields
     private static TableView<ReservationsTable> table;
-    private static Label departure_dateObs;
-    private static Label arrival_dateObs;
-    private static Label categoryObs;
-    private static Label priceObs;
-
-    private static Label first_nameObs;
-    private static Label last_nameObs;
-    private static Label ageObs;
-    private static Label passportObs;
-    private static Label phone_numberObs;
 
     private static TextField search;
     private static Button add_bookingButton;
@@ -44,19 +34,6 @@ public class ViewBookingSceneControl {
         table = ViewBookingScene.getTable();
         table.setItems(ReservationsTableData.getReservationsTableItems());
         table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayBookingInfo(newValue));
-
-        //flight info labels
-        departure_dateObs = ViewBookingScene.getDeparture_dateObs();
-        arrival_dateObs = ViewBookingScene.getArrival_dateObs();
-        categoryObs = ViewBookingScene.getCategoryObs();
-        priceObs = ViewBookingScene.getPriceObs();
-
-        //customer info labels
-        first_nameObs = ViewBookingScene.getFirst_nameObs();
-        last_nameObs = ViewBookingScene.getLast_nameObs();
-        ageObs = ViewBookingScene.getAgeObs();
-        passportObs = ViewBookingScene.getPassportObs();
-        phone_numberObs = ViewBookingScene.getPhone_numberObs();
 
         //buttons
         add_bookingButton = ViewBookingScene.getAdd_bookingButton();
@@ -250,38 +227,9 @@ public class ViewBookingSceneControl {
                     user = u;
                     break;
                 }
-
-
-            departure_dateObs.setText(flight.getDeparture_date() + ", " + flight.getDeparture_city());
-            arrival_dateObs.setText(flight.getDeparture_date() + ", " + flight.getArrival_city());
-            categoryObs.setText(booking.getFare_class());
-
-            if(booking.getFare_class().equalsIgnoreCase("first class"))
-            priceObs.setText(String.valueOf(flight.getPrice()+flight.getPrice()*1/2) + " kr.");
-            else if(booking.getFare_class().equalsIgnoreCase("coach"))
-                priceObs.setText(String.valueOf((flight.getPrice()+flight.getPrice()*1/4) + " kr."));
-            else
-                priceObs.setText(String.valueOf(flight.getPrice() + " kr."));
-
-
-            first_nameObs.setText(customer.getFirst_name());
-            last_nameObs.setText(customer.getLast_name());
-            ageObs.setText(String.valueOf(customer.getAge()));
-            passportObs.setText(customer.getPassport_number());
-            phone_numberObs.setText(customer.getPhone_nr());
         }
 
-        else { //no selection
-            departure_dateObs.setText("");
-            arrival_dateObs.setText("");
-            categoryObs.setText("");
-            priceObs.setText("");
-            first_nameObs.setText("");
-            last_nameObs.setText("");
-            ageObs.setText("");
-            passportObs.setText("");
-            phone_numberObs.setText("");
-        }
+
     }
 
 

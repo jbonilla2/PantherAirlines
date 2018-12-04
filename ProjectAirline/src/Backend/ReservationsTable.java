@@ -8,15 +8,15 @@ import javafx.beans.property.StringProperty;
 public class ReservationsTable {
 	
 	private IntegerProperty ticketNum;
-    private StringProperty departureDate, user, route;
+    private StringProperty departingDate, user, route, departingCity, arrivalCity;
     
     public ReservationsTable() {
     	
     }
     
-    public ReservationsTable(int ticketNum, String departureDate, String user, String route) {
+    public ReservationsTable(int ticketNum, String departingDate, String user, String route) {
         this.ticketNum = new SimpleIntegerProperty(ticketNum);
-        this.departureDate = new SimpleStringProperty(departureDate);
+        this.departingDate = new SimpleStringProperty(departingDate);
         this.user = new SimpleStringProperty(user);
         this.route = new SimpleStringProperty(route);
     }
@@ -33,16 +33,16 @@ public class ReservationsTable {
         this.ticketNum.set(ticketNum);
     }
     
-    public String getDepartureDate() {
-        return departureDate.get();
+    public String getDepartingDate() {
+        return departingDate.get();
     }
 
-    public StringProperty departureDateProperty() {
-        return departureDate;
+    public StringProperty departingDateProperty() {
+        return departingDate;
     }
 
-    public void setDepartureDate(String departureDate) {
-        this.departureDate.set(departureDate);
+    public void setDepartingDate(String departingDate) {
+        this.departingDate.set(departingDate);
     }
     
     public String getUser() {
@@ -57,22 +57,34 @@ public class ReservationsTable {
         this.user.set(user);
     }
     
-    public String getRoute() {
-        return route.get();
+    public String getDepartingCity() {
+        return departingCity.get();
     }
 
-    public StringProperty routeProperty() {
-        return route;
+    public StringProperty departingCityProperty() {
+        return departingCity;
     }
 
-    public void setRoute(String route) {
-        this.route.set(route);
+    public void setDepartingCity(String DepartingCity) {
+        this.departingCity.set(DepartingCity);
+    }
+    
+    public String getArrivalCity() {
+        return arrivalCity.get();
+    }
+
+    public StringProperty arrivalCityProperty() {
+        return arrivalCity;
+    }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity.set(arrivalCity);
     }
     
     public String toString() {
         return "BookingTable{" +
                 "ticketNumber=" + ticketNum +
-                ", departureDate=" + departureDate +
+                ", departingDate=" + departingDate +
                 ", route=" + route +
                 ", user=" + user +
                 '}';
