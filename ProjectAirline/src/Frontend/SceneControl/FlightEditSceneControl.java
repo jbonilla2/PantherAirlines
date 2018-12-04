@@ -74,7 +74,7 @@ public class FlightEditSceneControl {
 
     }
 
-/*
+
     //setting flight for edit
     public static void setFlight(FlightTable f,Flight flig){
     	
@@ -82,30 +82,23 @@ public class FlightEditSceneControl {
             flight = flig;
 
             for(Flight fl: FlightData.getFlight()) {
-                if (fl.getFlight_id() == flightTable.getFlight_id()) {
+                if (fl.getFlightID() == flightTable.getFlightID()) {
                     flight = fl;
                     break;
                 }
             }
-
-            Schedule schedule = new Schedule();
-            for(Schedule s : ScheduleData.getSchedules()) {
-                if (s.getSchedule_id() == flight.getSchedule_id()) {
-                    schedule = s;
-                    break;
-                }
-            }
-
-            routeC.setValue(flightTable.getDeparture_city() + " -> " + f.getArrival_city());
+/*
+            dcityC.setValue(flightTable.getDepartingCity());
+            acityC.setValue(f.);
             plane_id.setValue(flight.getPlane_id());
             departure_date.setValue(LocalDate.parse(flightTable.getDeparture_date()));
             departure_time.setValue(schedule.getDeparture_time());
             arrival_time.setValue(schedule.getArrival_time());
             price.setText(Double.toString(flightTable.getPrice()));
-
+*/
     }
 
-*/
+
 
     //ok button action
     public static void handle_okB(){
