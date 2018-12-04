@@ -7,7 +7,6 @@ import databaseAccess.*;
 import Frontend.GUI.*;
 import databaseAccess.DBconnect;
 import Frontend.GUI.LoginScene;
-import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -21,7 +20,7 @@ public class MainControl {
     public static void showRegisterScene() {
     	//connect to database
     	Connection conn = DBconnect.connect();
-    	
+
     	//initialization of scene
     	RegisterScene.initialize();
     	
@@ -34,6 +33,23 @@ public class MainControl {
     	window.centerOnScreen();
     }
 
+    //register scene
+    public static void showForgotPassScene() {
+    	//connect to database
+    	Connection conn = DBconnect.connect();
+
+    	//initialization of scene
+    	RegisterScene.initialize();
+    	
+    	//initialization of controller
+    	//RegisterSceneControl.initialize();
+    	
+    	//set scene
+    	window.setScene(RegisterScene.getScene());
+    	window.setTitle("Panther Airlines - Forgot Password");
+    	window.centerOnScreen();
+    }
+    
     //menu scene
     public static void showMenuScene(){
         //initialization of scene

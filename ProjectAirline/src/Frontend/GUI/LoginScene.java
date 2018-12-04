@@ -32,7 +32,7 @@ public class LoginScene {
         loginLabel.setStyle("-fx-font-size: 24pt");
 
 
-        //hermesLabel
+        //panther label
         pantherLabel = new Label("Welcome to Panther Airlines");
         pantherLabel.setId("welcome");
         pantherLabel.setStyle("-fx-font-size: 24pt");

@@ -1,9 +1,6 @@
 package Frontend.SceneControl;
 
 import Frontend.SceneControl.MainControl;
-
-import java.util.ArrayList;
-
 import Backend.*;
 import Frontend.GUI.RegisterScene;
 import databaseAccess.UserData;
@@ -15,7 +12,6 @@ import javafx.scene.control.TextField;
 public class RegisterSceneControl {
 
 	//fields
-	private static ArrayList<User> users;
 	
 	//text fields 
     private static TextField firstName;
@@ -45,15 +41,11 @@ public class RegisterSceneControl {
     
     //button
     private static Button registerButton;
-	
-	
+    private static Button backButton;
 	
 	//initialize
     public static void initialize() {
     
-    	//users list
-        users = UserData.getUsers();
-    	
     	//get text field
     	firstName = RegisterScene.getFirstName();
     	lastName = RegisterScene.getLastName();
@@ -93,10 +85,13 @@ public class RegisterSceneControl {
             
             handle_registerButton();
         });
+        
+        backButton = RegisterScene.getBackButton();
+        backButton.setOnAction(e -> handle_backButton());
     	
     }
 	
-  //handle login button
+    //handle login button
     public static void handle_registerButton(){
         
         int ok = 0;
@@ -132,6 +127,9 @@ public class RegisterSceneControl {
         
    }
  
+    public static void handle_backButton() {
+    	MainControl.showLoginScene();
+    }
 
     
 }
