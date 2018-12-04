@@ -1,6 +1,7 @@
 package databaseAccess;
 
 import Backend.Flight;
+import Backend.FlightTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -50,10 +51,10 @@ public class FlightData {
     }
 
 
-    public static void insertFlight(Flight flight) {
+    public static void insertFlight(FlightTable flight) {
         
     	try{
-            statement.executeUpdate("INSERT INTO flight VALUE(default, " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining() +");");
+            statement.executeUpdate("INSERT INTO flight VALUE(default, " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.seatsRemaining() +");");
         }
 
         catch(Exception e){

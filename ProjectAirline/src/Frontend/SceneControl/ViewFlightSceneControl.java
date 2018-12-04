@@ -59,8 +59,8 @@ public class ViewFlightSceneControl {
         FlightTable flightTable = new FlightTable(LocalDate.now().toString());
         Flight flight = new Flight();
 
-        boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
-
+        MainControl.showFlightEditScene();
+/*
         if(okPressed) {
             flight = FlightEditSceneControl.getFlight();
 
@@ -76,13 +76,13 @@ public class ViewFlightSceneControl {
 				e.printStackTrace();
 			} //set the table items
             flights = table.getItems();
-
+*/
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Flight added!");
             alert.showAndWait();
             System.out.println("new flight added");
-        }
+        //}
     }
 
 
@@ -93,7 +93,8 @@ public class ViewFlightSceneControl {
         Flight flight = new Flight();
 
         if(flightTable != null) {
-            boolean okPressed = MainControl.showFlightEditScene(flightTable, flight);
+            boolean okPressed = true;
+            MainControl.showFlightEditScene();
 
             if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();

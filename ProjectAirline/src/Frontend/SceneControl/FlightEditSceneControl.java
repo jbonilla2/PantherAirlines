@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.awt.*;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -58,8 +59,7 @@ public class FlightEditSceneControl {
         //arrival date picker
         arrival_date = FlightsEditScene.getArrival_date();
 
-        Flight newflight = new Flight(departure_date.toString(), arrival_date.toString(), dcityC.toString(), 
-			acityC.toString(), Integer.parseInt(flight_id.getText()), Integer.parseInt(seatsT.getText()), Double.parseDouble(price.getText()), departure_time.toString());
+        FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.toString(), departure_date.toString(), departure_time.toString(), acityC.toString(), arrival_date.toString(), Double.parseDouble(price.getText()), Integer.parseInt(seatsT.getText()) );
         
         FlightData.insertFlight(newflight);
 
@@ -81,12 +81,20 @@ public class FlightEditSceneControl {
             flightTable = f;
             flight = flig;
 
-            for(Flight fl: FlightData.getFlight()) {
-                if (fl.getFlightID() == flightTable.getFlightID()) {
-                    flight = fl;
-                    break;
-                }
-            }
+            try {
+				for(Flight fl: FlightData.getFlight()) {
+				    if (fl.getFlightID() == flightTable.getFlightID()) {
+				        flight = fl;
+				        break;
+				    }
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 /*
             dcityC.setValue(flightTable.getDepartingCity());
             acityC.setValue(f.);
@@ -107,17 +115,28 @@ public class FlightEditSceneControl {
         flight.setFlightID(Integer.parseInt(flight_id.getText()));
 
 
-        for(Flight f: FlightData.getFlight()) {
-        	if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
-        		
-        		Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText("Flight exists!");
-                alert.setContentText("Input data again!");
-                alert.initOwner(MainControl.window);
-                alert.showAndWait();
-         	   
-            }
-        }
+        try {
+			for(Flight f: FlightData.getFlight()) {
+				if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
+					
+					Alert alert = new Alert(Alert.AlertType.WARNING);
+			        alert.setHeaderText("Flight exists!");
+			        alert.setContentText("Input data again!");
+			        alert.initOwner(MainControl.window);
+			        alert.showAndWait();
+			 	   
+			    }
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         FlightsEditScene.getDialogStage().close();
         }

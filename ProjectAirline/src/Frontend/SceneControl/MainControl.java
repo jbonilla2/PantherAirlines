@@ -119,7 +119,7 @@ public class MainControl {
     }
 
     //flight edit dialog
-    public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
+    public static void showFlightEditScene(){
         //initialization of scene
         FlightsEditScene.initialize();
 
@@ -131,7 +131,6 @@ public class MainControl {
         FlightsEditScene.getDialogStage().setTitle("Flight menu");
         FlightsEditScene.getDialogStage().showAndWait();
 
-        return FlightEditSceneControl.isOkPressed();
     }
 
     //getters

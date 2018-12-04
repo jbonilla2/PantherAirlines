@@ -21,20 +21,6 @@ public class ViewBookingScene {
     private static TableColumn<ReservationsTable, String> dateColumn;
     private static TableColumn<ReservationsTable, String> nameColumn;
     private static TableColumn<ReservationsTable, String> routeColumn;
-    private static Label flightLabel;
-    private static Label departureDateLabel;
-    private static Label departureDateObs;
-    private static Label arrivalDateLabel;
-    private static Label arrivalDateObs;
-    private static Label flightIDObs;    // instead of depDate, A
-    private static Label ticketNumObs;
-    private static Label userIDObs;
-    private static Label categoryLabel;
-    private static Label categoryObs;
-    private static Label priceLabel;
-    private static Label priceObs;
-    private static VBox flight_details;
-    private static VBox flight_detailsObs;
 
     private static Label customer_detailsLabel;
     
@@ -43,9 +29,7 @@ public class ViewBookingScene {
 
     private static TextField searchField;
     private static Button add_bookingButton;
-    private static Button cancelButton;
     private static Button backButton;
-    private static Button editButton;
     private static HBox buttonLayout;
 
 
@@ -79,14 +63,13 @@ public class ViewBookingScene {
 
         //buttons
         backButton=new Button("Back");
-        add_bookingButton=new Button("Add..");
-        editButton=new Button("Edit..");
-        cancelButton=new Button("Remove");
+        add_bookingButton=new Button("Book");
+        
 
 
         // layout for buttons
         buttonLayout=new HBox();
-        buttonLayout.getChildren().addAll(add_bookingButton,editButton,cancelButton,backButton);
+        buttonLayout.getChildren().addAll(add_bookingButton,backButton);
         buttonLayout.relocate(720,642);
         buttonLayout.setSpacing(20);
 
@@ -128,49 +111,6 @@ public class ViewBookingScene {
         return routeColumn;
     }
 
-    public static Label getFlightLabel() {
-        return flightLabel;
-    }
-
-    public static Label getDepartureDateLabel() {
-        return departureDateLabel;
-    }
-
-    public static Label getDepartureDateObs() {
-        return departureDateObs;
-    }
-
-    public static Label getArrivalDateLabel() {
-        return arrivalDateLabel;
-    }
-
-    public static Label getArrivalDateObs() {
-        return arrivalDateObs;
-    }
-
-    public static Label getCategoryLabel() {
-        return categoryLabel;
-    }
-
-    public static Label getCategoryObs() {
-        return categoryObs;
-    }
-
-    public static Label getPriceLabel() {
-        return priceLabel;
-    }
-
-    public static Label getPriceObs() {
-        return priceObs;
-    }
-
-    public static VBox getFlight_details() {
-        return flight_details;
-    }
-
-    public static VBox getFlight_detailsObs() {
-        return flight_detailsObs;
-    }
 
     public static Label getCustomer_detailsLabel() {
         return customer_detailsLabel;
@@ -192,17 +132,11 @@ public class ViewBookingScene {
         return add_bookingButton;
     }
 
-    public static Button getCancelButton() {
-        return cancelButton;
-    }
 
     public static Button getBackButton() {
         return backButton;
     }
 
-    public static Button getEditButton() {
-        return editButton;
-    }
 
     public static HBox getButtonLayout() {
         return buttonLayout;
