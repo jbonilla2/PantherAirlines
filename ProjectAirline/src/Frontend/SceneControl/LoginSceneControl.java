@@ -6,9 +6,6 @@ import Frontend.GUI.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class LoginSceneControl {
 
@@ -20,7 +17,6 @@ public class LoginSceneControl {
     
     private static TextField usernameField;
     private static TextField passwordField;
-    private static ArrayList<User> users;
     private static String username;
     private static String password;
 
@@ -33,12 +29,9 @@ public class LoginSceneControl {
         //password field
         passwordField = LoginScene.getPasswordField();
 
-        //users list
-        users = UserData.getUsers();
-
         //loginButton
         loginButton = LoginScene.getLoginButton();
-        loginButton.setDefaultButton(true);
+        //loginButton.setDefaultButton(true);
         loginButton.setOnAction(e->{
         	//username
             username = usernameField.getText();
@@ -51,11 +44,11 @@ public class LoginSceneControl {
         
         //registerButton
         registerButton = LoginScene.getRegisterButton();
-        registerButton.setOnAction(e -> handle_registerButton());
+        registerButton.setOnAction(r -> handle_registerButton());
         
         //registerButton
         forgotpassButton = LoginScene.getRegisterButton();
-        forgotpassButton.setOnAction(e -> handle_forgotpassButton());
+        forgotpassButton.setOnAction(f -> handle_forgotpassButton());
         
     }
 
@@ -72,7 +65,6 @@ public class LoginSceneControl {
 
         		MainControl.showMenuScene(); //valid username and pass
         		System.out.println("login successful");
-        		ok = 1;
         		break;
         	}
         }
@@ -83,24 +75,18 @@ public class LoginSceneControl {
         int ok = 0;
 
         if(isInputValid()) {
-        	
-        	MainControl.showMenuScene(); //valid username and pass
-            System.out.println("login successful");
-            ok = 1;
-            
-        }
+        	//verify the user credentials in database
+        	for(User user: UserData.getUsers()) {
+        		if (user.getUsername() == username && user.getPassword().equalsIgnoreCase(password)) {
 
-        //verify the user credentials in database
-        for(User user: UserData.getUsers()) {
-        	if (user.getUsername() == username && user.getPassword().equalsIgnoreCase(password)) {
-
-        		MainControl.showMenuScene(); //valid username and pass
-        		System.out.println("login successful");
-        		ok = 1;
+        			MainControl.showMenuScene(); //valid username and pass
+        			System.out.println("login successful");
+        			ok = 1;
         		break;
-        	}
+        
+        		}
+    		}	
         }
- 
         //wrong username or pass
         if(ok == 0) {
 

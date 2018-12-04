@@ -45,7 +45,6 @@ public class UserData {
 
                     users.add(user);
                     
-                    pstatement.executeQuery();
                 }
         }
 
