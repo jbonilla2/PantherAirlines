@@ -49,6 +49,8 @@ public class FlightTableData {
 	}
 
 	 
+	 
+	 
 /*public static ObservableList<FlightTable> getFlightItems(ResultSet rs) throws ClassNotFoundException, SQLException{
 		 
 		 flightTableItems = FXCollections.observableArrayList(); // delete or not?

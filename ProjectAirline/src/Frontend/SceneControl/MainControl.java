@@ -102,7 +102,12 @@ public class MainControl {
     //view flights scene
     public static void showViewFlightsScene(){
         //initialization of scene
-        ViewFlightsScene.initialize();
+        try {
+			ViewFlightsScene.initialize();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         //initialization of controller
         ViewFlightSceneControl.initialize();

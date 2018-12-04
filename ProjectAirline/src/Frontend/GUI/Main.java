@@ -12,14 +12,16 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        //launch(args);
-    	
+        launch(args);
+    	/*
     	for(FlightTable temp : FlightTableData.getFlightItems()) {
     		System.out.println(temp.getFlightID() + " " + temp.getArrivalCity() + " " + temp.getDepartingCity());
     	}
     	
     	System.out.println(FlightTableData.getFlightItems().get(0).getFlightID());
+		*/    
     }
+    
 
 
     //start method

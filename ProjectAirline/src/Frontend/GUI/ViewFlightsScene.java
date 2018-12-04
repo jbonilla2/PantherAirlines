@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -51,35 +52,33 @@ public class ViewFlightsScene {
         table.relocate(42,32);
 
         //initialize columns
-        flightIDColumn = new TableColumn<>("ID");
-        flightIDColumn.setCellValueFactory(cellData -> cellData.getValue().flightIDProperty().asObject());
+        flightIDColumn = new TableColumn<FlightTable, Integer>("ID");
+        flightIDColumn.setCellValueFactory(new PropertyValueFactory<>("FlightID"));
 
-        departingDateColumn = new TableColumn<>("Departing date");
-        departingDateColumn.setCellValueFactory(cellData -> cellData.getValue().departingDateProperty());
+        departingCityColumn = new TableColumn<FlightTable, String>("Departing city");
+        departingCityColumn.setCellValueFactory(new PropertyValueFactory<>("DepartingCity"));
 
-        departingCityColumn = new TableColumn<>("Departing city");
-        departingCityColumn.setCellValueFactory(cellData -> cellData.getValue().departingCityProperty());
-
-        departingTimeColumn = new TableColumn<>("Departing time");
-        departingTimeColumn.setCellValueFactory(cellData -> cellData.getValue().departingTimeProperty());
+        departingDateColumn = new TableColumn<FlightTable, String>("Departing date");
+        departingDateColumn.setCellValueFactory(new PropertyValueFactory<>("DepartingDate"));
+ 
+        departingTimeColumn = new TableColumn<FlightTable, String>("Departing time");
+        departingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("DepartingTime"));
         
-        arrivalCityColumn = new TableColumn<>("Arrival city");
-        arrivalCityColumn.setCellValueFactory(cellData -> cellData.getValue().arrivalCityProperty());
+        arrivalCityColumn = new TableColumn<FlightTable, String>("Arrival city");
+        arrivalCityColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalCity"));
 
-        arrivalDateColumn = new TableColumn<>("Arrival Date");
-        arrivalDateColumn.setCellValueFactory(cellData -> cellData.getValue().arrivalDateProperty());
+        arrivalDateColumn = new TableColumn<FlightTable, String>("Arrival Date");
+        arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalDate"));
 
-        priceColumn = new TableColumn<>("Basic price");
-        priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+        priceColumn = new TableColumn<FlightTable, Double>("Basic price");
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
 
-        seatsRemainingColumn = new TableColumn<>("Available seats");
-        seatsRemainingColumn.setCellValueFactory(cellData -> cellData.getValue().seatsRemainingProperty().asObject());
+        seatsRemainingColumn = new TableColumn<FlightTable, Integer>("Available seats");
+        seatsRemainingColumn.setCellValueFactory(new PropertyValueFactory<>("SeatsRemaining"));
 
         table.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn, priceColumn, seatsRemainingColumn);
 
-        table = FlightTableData.getAllRecords(); // move the flight data to flight table data, name it getAllRecords.
-        populateTable(table); // create method, important
-        
+               
         
         
         //search field
