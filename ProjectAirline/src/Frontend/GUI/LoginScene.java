@@ -70,8 +70,6 @@ public class LoginScene {
         scene = new Scene(loginLayout,800,800);
         scene.getStylesheets().add("Frontend/GUI/style.css");
 
-
-
         System.out.println("login screen initialized");
     }
 

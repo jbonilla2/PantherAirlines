@@ -47,8 +47,8 @@ public class LoginSceneControl {
         });
       
         //registerButton
-        forgotpassButton = LoginScene.getRegisterButton();
-        forgotpassButton.setOnAction(f -> handle_forgotpassButton());
+        forgotpassButton = LoginScene.getForgotpassButton();
+        forgotpassButton.setOnAction(e -> handle_forgotpassButton());
         
     }
 
@@ -59,16 +59,12 @@ public class LoginSceneControl {
 
   //handle forgot password button
     private static void handle_forgotpassButton() {
-    	//verify the username in database to have popup appear
-        for(User user: UserData.getUsers()) {
-        	if (user.getUsername().equals(username)) {
+    	
+    	MainControl.showForgotPassScene(); 
+    	System.out.println("forgot password scene open successful");
+    	
+    }
 
-        		MainControl.showMenuScene(); //valid username and pass
-        		System.out.println("login successful");
-        		break;
-        	}
-        }
-	}
     
 	//handle login button
     public static void handle_loginButton(){

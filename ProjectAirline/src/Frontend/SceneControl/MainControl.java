@@ -31,19 +31,19 @@ public class MainControl {
     	window.centerOnScreen();
     }
 
-    //register scene
+    //forgot password scene
     public static void showForgotPassScene() {
     	//connect to database
-    	Connection conn = DBconnect.connect();
+    	//Connection conn = DBconnect.connect();
 
     	//initialization of scene
-    	RegisterScene.initialize();
+    	ForgotPassScene.initialize();
     	
     	//initialization of controller
-    	//RegisterSceneControl.initialize();
+    	ForgotPassControl.initialize();
     	
     	//set scene
-    	window.setScene(RegisterScene.getScene());
+    	window.setScene(ForgotPassScene.getScene());
     	window.setTitle("Panther Airlines - Forgot Password");
     	window.centerOnScreen();
     }
