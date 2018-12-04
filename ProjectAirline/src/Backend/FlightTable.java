@@ -118,7 +118,7 @@ public class FlightTable {
         this.flightID.set(flightID);
     }
 
-    public int seatsRemaining() {
+    public int getSeatsRemaining() {
         return seatsRemaining.get();
     }
 

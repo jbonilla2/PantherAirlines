@@ -36,43 +36,27 @@ public class FlightTableData {
 	        }
 	        return  flightTableItems;
 	}
-
 	 
-	 
-	 
-/*public static ObservableList<FlightTable> getFlightItems(ResultSet rs) throws ClassNotFoundException, SQLException{
-		 
-		 flightTableItems = FXCollections.observableArrayList(); // delete or not?
-	        
+	 public static void insertFlight(FlightTable flight)
+	    {
 	        try{
-	            statement = conn.createStatement();           
-	            ObservableList<FlightTable> fTable =  FXCollections.observableArrayList();
-	            
-	            if(rs!=null)
-	                while(rs.next()){
-	              //     FlightTable f = new FlightTable();
-	                	FlightTable fTable1 = new FlightTable();
-	                	fTable1.setFlightID(rs.getInt(1));
-	                	fTable1.setDepartingCity(rs.getString(2));
-	                	fTable1.setDepartingDate(rs.getString(3));
-	                	fTable1.setDepartingTime(rs.getString(4));
-	                	fTable1.setArrivalCity(rs.getString(5));
-	                	fTable1.setArrivalDate(rs.getString(6));                   
-	                	fTable1.setPrice(rs.getDouble(7));
-	                	fTable1.setSeatsRemaining(rs.getInt(8));
-
-	                    flightTableItems.add(f);
-	                }
+	            statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
 	        }
 
 	        catch(Exception e){
-	        	System.out.println("Error occurred while fetching records from the flights database.");
 	            e.printStackTrace();
 	        }
-	        return  flightTableItems;
-	}
-	
-	*/ 
+	    }
+	 
+	 public static void updateFlight(FlightTable flight){
+	        try{
+	            statement.executeUpdate("UPDATE flight SET FlightID = " + flight.getFlightID()+", DepartingCity = "+flight.getDepartingCity()+", DepartingDate = "+flight.getDepartingDate()+", DepartingTime = "+flight.getDepartingTime()+", ArrivalCity = "+flight.getArrivalCity()+",ArrivalDate = "+flight.getArrivalDate()+",Price = "+flight.getPrice()+",SeatsRemaining = "+flight.getSeatsRemaining()+" WHERE FlightID = "+flight.getFlightID()+ ";");
+	        }
+
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }
+	    }
 
 	
 }

@@ -64,6 +64,7 @@ public class ViewBookingSceneControl {
     	ReservationsTable reservationTable = new ReservationsTable();
     	Reservations reservation = new Reservations();
     	System.out.println("new booking added");
+
     }
 
 
