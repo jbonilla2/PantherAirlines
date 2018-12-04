@@ -24,7 +24,7 @@ public class LoginSceneControl {
     
     private static TextField usernameField;
     private static TextField passwordField;
-   // private static ArrayList<Admin> admins;
+    private static ArrayList<User> users;
     private static String username;
     private static String password;
 
@@ -37,8 +37,8 @@ public class LoginSceneControl {
         //password field
         passwordField = LoginScene.getPasswordField();
 
-        //admins list
-     //   admins = AdminData.getAdmins();
+        //users list
+        users = UserData.getUsers();
 
         //loginButton
         loginButton = LoginScene.getLoginButton();
@@ -76,30 +76,29 @@ public class LoginSceneControl {
             ok = 1;
             
         }
-/*
-            //verify the user credentials in database
-            for(Admin admin : AdminData.getAdmins()) {
-                if (admin.getAdmin_id() == Integer.parseInt(username) && admin.getPassword().equalsIgnoreCase(password)) {
 
-                    MainControl.showMenuScene(); //valid username and pass
-                    System.out.println("login successful");
-                    ok = 1;
-                    break;
-                }
-            }
-*/ 
-            //wrong username or pass
-            if(ok == 0) {
+        //verify the user credentials in database
+        for(User user: UserData.getUsers()) {
+        	if (user.getUsername() == username && user.getPassword().equalsIgnoreCase(password)) {
 
-        		usernameField.clear();
-                passwordField.clear();
+        		MainControl.showMenuScene(); //valid username and pass
+        		System.out.println("login successful");
+        		ok = 1;
+        		break;
+        	}
+        }
+ 
+        //wrong username or pass
+        if(ok == 0) {
 
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText("Login failed");
-                alert.setContentText("Invalid username or password");
-                alert.initOwner(MainControl.getWindow());
-                alert.showAndWait();
-           // }
+        	usernameField.clear();
+        	passwordField.clear();
+
+        	Alert alert = new Alert(Alert.AlertType.WARNING);
+        	alert.setHeaderText("Login failed");
+        	alert.setContentText("Invalid username or password");
+        	alert.initOwner(MainControl.getWindow());
+        	alert.showAndWait();
         }
     }
 
@@ -110,18 +109,7 @@ public class LoginSceneControl {
 
         if(username.isEmpty())
             error+="Insert username!\n";
-        else 
-        	
-        	/*try{
-            Integer.parseInt(username);
-        }
-        
-        //Delete
-        catch(NumberFormatException e){
-            error +="Invalid username!\n";
-        } */
-
-        if(password.isEmpty())
+        else if(password.isEmpty())
             error += "Insert password!\n";
 
         if(error=="")

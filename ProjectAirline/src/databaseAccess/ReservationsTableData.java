@@ -27,13 +27,13 @@ public class ReservationsTableData {
 
 	            if(rs!=null)
 	                while(rs.next()){
-	                    BookingTable b = new BookingTable();
-	                    b.setDeparture_date(rs.getDate(1).toString());
+	                    ReservationsTable b = new ReservationsTable();
+	                    b.setDepartureDate(rs.getDate(1).toString());
 	                    b.setRoute(rs.getString(2) + " -> " + rs.getString(3));
-	                    b.setCustomer(rs.getString(4) + " " + rs.getString(5));
-	                    b.setBooking_id(rs.getInt(6));
+	                    b.setUser(rs.getString(4) + " " + rs.getString(5));
+	                    b.setFlightNum(rs.getInt(6));
 
-	                    bookingTableItems.add(b);
+	                    reservationTableItems.add(b);
 	                }
 	        }
 
@@ -41,7 +41,7 @@ public class ReservationsTableData {
 	            e.printStackTrace();
 	        }
 
-	        return  bookingTableItems;
+	        return  reservationTableItems;
 	    }
 
 	}
