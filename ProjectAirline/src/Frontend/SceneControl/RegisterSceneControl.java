@@ -1,5 +1,6 @@
 package Frontend.SceneControl;
 
+import Frontend.SceneControl.MainControl;
 import Backend.*;
 import Frontend.GUI.RegisterScene;
 import databaseAccess.UserData;
@@ -87,7 +88,14 @@ public class RegisterSceneControl {
             	
             	if (user.getUsername() == username) {
             		
-            		
+            		usernameField.clear();
+                    passwordField.clear();
+
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setHeaderText("Login failed");
+                    alert.setContentText("Invalid username or password");
+                    alert.initOwner(MainControl.getWindow());
+                    alert.showAndWait();
             		
             	}
             	
