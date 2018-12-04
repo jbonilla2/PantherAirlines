@@ -1,6 +1,9 @@
 package Frontend.SceneControl;
 
 import Frontend.SceneControl.MainControl;
+
+import java.util.ArrayList;
+
 import Backend.*;
 import Frontend.GUI.RegisterScene;
 import databaseAccess.UserData;
@@ -12,6 +15,7 @@ import javafx.scene.control.TextField;
 public class RegisterSceneControl {
 
 	//fields
+	private static ArrayList<User> users;
 	
 	//text fields 
     private static TextField firstName;
@@ -47,6 +51,9 @@ public class RegisterSceneControl {
 	//initialize
     public static void initialize() {
     
+    	//users list
+        users = UserData.getUsers();
+    	
     	//get text field
     	firstName = RegisterScene.getFirstName();
     	lastName = RegisterScene.getLastName();
