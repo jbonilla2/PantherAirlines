@@ -10,10 +10,6 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-/**
- * Created by Administrator on 5/19/2016.
- */
-
 public class LoginSceneControl {
 
     //fields

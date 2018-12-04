@@ -15,7 +15,6 @@ public class MenuScene {
 
     //fields
     private static Scene scene;
-    //private static Pane layout;
     private static VBox vbox;
     private static Label quoteLabel, welcomeLabel;
     private static ImageView img;
@@ -25,47 +24,22 @@ public class MenuScene {
     //initialization of objects
     public static void initialize() {
 
-        //quoteLabel
-        //quoteLabel = new Label("\"The reason birds can fly and we can't is simply because\n " +
-        //        "\t\t\tthey have perfect faith, for to have faith is to have wings..\"");
-        //quoteLabel.setId("quote");
-        //quoteLabel.relocate(50,520);
 
         //welcomeLabel
         welcomeLabel = new Label("      Welcome\n\t   to\n Panther Airlines");
         welcomeLabel.setId("welcome");
         welcomeLabel.setAlignment(Pos.CENTER);
         welcomeLabel.setStyle("-fx-font-size: 24pt");
-        //welcomeLabel.relocate(810,90);
-
-        /*
-        //img
-        img = new ImageView("/Presentation/img.png");
-        img.setFitHeight(380);
-        img.setFitWidth(680);
-        img.relocate(30,85);
-		*/
-
+        
         //bookingsB
         bookingsB = new Button("Bookings");
         bookingsB.setAlignment(Pos.CENTER);
-        //bookingsB.setDefaultButton(true);
         bookingsB.getStyleClass().add("menu-button");
-
-        //customersB
-        customersB = new Button("Customers");
-        customersB.setAlignment(Pos.CENTER);
-        customersB.getStyleClass().add("menu-button");
 
         //flightsB
         flightsB = new Button("Flights");
         flightsB.setAlignment(Pos.CENTER);
         flightsB.getStyleClass().add("menu-button");
-
-        //planesB
-        planesB = new Button("Planes");
-        planesB.setAlignment(Pos.CENTER);
-        planesB.getStyleClass().add("menu-button");
 
         //EXITB
         exitB = new Button("Exit");
@@ -79,7 +53,7 @@ public class MenuScene {
         //VBox make into layout
         vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().addAll(welcomeLabel, bookingsB,customersB,flightsB,planesB,exitB,logoutB);
+        vbox.getChildren().addAll(welcomeLabel, bookingsB,flightsB,exitB,logoutB);
 
         //scene
         scene = new Scene(vbox, 800, 800);
@@ -93,11 +67,6 @@ public class MenuScene {
     public static Scene getScene() {
         return scene;
     }
-
-   /* public static Pane getLayout() {
-        return layout;
-    }
-*/
 
     public static VBox getVbox() {
         return vbox;

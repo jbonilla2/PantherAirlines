@@ -31,6 +31,7 @@ public class RegisterScene {
     
     //button
     private static Button registerButton;
+    private static Button backButton;
     
 	//initialization of objects
     public static  void initialize(){
@@ -100,7 +101,7 @@ public class RegisterScene {
         secQ.setMaxWidth(220);
         secQ.setAlignment(Pos.CENTER);
 
-        //security aswer
+        //security answer
         secA = new TextField();
         secA.setPromptText("Input a security answer");
         secA.setMaxWidth(220);
@@ -110,10 +111,15 @@ public class RegisterScene {
         registerButton=new Button("Register");
         registerButton.setMaxWidth(120);
 
+        //backbutton
+        backButton=new Button("Back");
+        backButton.setMaxWidth(120);
+
+        
         //layout
         registerLayout = new VBox(10);
         registerLayout.setAlignment(Pos.CENTER);
-        registerLayout.getChildren().addAll(registerLabel,firstName,lastName,address,state,zip,usernameField,passwordField,email,ssn,secQ,secA,registerButton);
+        registerLayout.getChildren().addAll(registerLabel,firstName,lastName,address,state,zip,usernameField,passwordField,email,ssn,secQ,secA,registerButton,backButton);
 
         //scene
         scene = new Scene(registerLayout,800,800);
@@ -187,5 +193,8 @@ public class RegisterScene {
 		return secA;
 	}
 
-	
+	public static Button getBackButton() {
+		return backButton;
+	}
+
 }
