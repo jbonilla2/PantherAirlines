@@ -90,35 +90,7 @@ public class RegisterSceneControl {
             User newuser = new User(Integer.parseInt(ssnStr), firstStr, lastStr, addressStr, Integer.parseInt(zipStr), stateStr, username, password, emailStr, secqStr, secaStr);
         	
             UserData.insertUser(newuser); //add customer to database
-            
-            for (User user : UserData.getUsers()) {
-            	
-            	if (user.getUsername() == username) {
-            		
-            		usernameField.clear();
-                    passwordField.clear();
-
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setHeaderText("Login failed");
-                    alert.setContentText("Invalid username or password");
-                    alert.initOwner(MainControl.getWindow());
-                    alert.showAndWait();
-            		
-            	}
-            	
-            	else {
-                    
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.initOwner(MainControl.getWindow());
-                    alert.setContentText("Customer added!");
-                    alert.showAndWait();
-
-                    System.out.println("new customer added");
-                    
-                    }
-            	
-            } 
-            
+              
             handle_registerButton();
         });
     	
@@ -126,7 +98,38 @@ public class RegisterSceneControl {
 	
   //handle login button
     public static void handle_registerButton(){
-        MainControl.showLoginScene();
+        
+        int ok = 0;
+        
+        for (User user : UserData.getUsers()) {
+        	if (user.getUsername() == username) {
+        		
+        		usernameField.clear();
+                passwordField.clear();
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("Login failed");
+                alert.setContentText("Invalid username or password");
+                alert.initOwner(MainControl.getWindow());
+                alert.showAndWait();
+                ok = 1;
+                break;
+        		
+        	}
+        }	
+        if(ok == 0) {
+                
+        	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        	alert.initOwner(MainControl.getWindow());
+        	alert.setContentText("Customer added!");
+        	alert.showAndWait();
+
+        	System.out.println("new customer added");
+        	
+        	MainControl.showLoginScene();
+                
+        }
+        
    }
  
 

@@ -44,6 +44,8 @@ public class UserData {
                     user.setSecurityA(rs.getString(11));
 
                     users.add(user);
+                    
+                    pstatement.executeQuery();
                 }
         }
 
