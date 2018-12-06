@@ -6,6 +6,7 @@ import Backend.User;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -18,10 +19,9 @@ public class ViewBookingScene {
     private static Scene scene;
     private static Pane layout;
     private static TableView<ReservationsTable> table;
-    private static TableColumn<ReservationsTable, String> dateColumn;
-    private static TableColumn<ReservationsTable, String> nameColumn;
-    private static TableColumn<ReservationsTable, String> routeColumn;
-
+    private static TableColumn<ReservationsTable, Integer> ticketNumber, flightID;
+    private static TableColumn<ReservationsTable, String> dCity, aCity, userid;
+  
     private static Label customer_detailsLabel;
     
     private static VBox customer_detailsVertical;
@@ -37,21 +37,26 @@ public class ViewBookingScene {
     public static void initialize(){
 
         //table columns
-        dateColumn=new TableColumn<>("Departure date");
-        dateColumn.setCellValueFactory(cellData -> cellData.getValue().departingDateProperty());
+    	ticketNumber=new TableColumn<>("Ticket");
+    	ticketNumber.setCellValueFactory(new PropertyValueFactory<>("ticketNumber"));
 
-        nameColumn=new TableColumn<>("Customer name");
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().userProperty());
+    	userid=new TableColumn<>("Username");
+    	userid.setCellValueFactory(new PropertyValueFactory<>("UserID"));
 
-        routeColumn=new TableColumn<>("\t\t\tRoute");
-        routeColumn.setMinWidth(160);
-       // routeColumn.setCellValueFactory(cellData -> cellData.getValue().routeProperty());
+    	flightID=new TableColumn<>("Flight ID");
+    	flightID.setCellValueFactory(new PropertyValueFactory<>("FlightID"));
+
+        dCity=new TableColumn<>("Departing City");
+        dCity.setCellValueFactory(new PropertyValueFactory<>("DepartingCity"));
+
+        aCity=new TableColumn<>("Arrival City");
+        aCity.setCellValueFactory(new PropertyValueFactory<>("ArrivalCity"));
 
 
         //table
         table=new TableView<>();
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.getColumns().addAll(dateColumn, routeColumn, nameColumn);    // edit these columns 
+        table.getColumns().addAll(ticketNumber, userid, flightID,dCity,aCity); 
         table.relocate(32,34);
         table.setMinSize(1116,580);
 
@@ -99,20 +104,7 @@ public class ViewBookingScene {
         return table;
     }
 
-    public static TableColumn<ReservationsTable, String> getDateColumn() {
-        return dateColumn;
-    }
-
-    public static TableColumn<ReservationsTable, String> getNameColumn() {
-        return nameColumn;
-    }
-
-    public static TableColumn<ReservationsTable, String> getRouteColumn() {
-        return routeColumn;
-    }
-
-
-    public static Label getCustomer_detailsLabel() {
+       public static Label getCustomer_detailsLabel() {
         return customer_detailsLabel;
     }
 

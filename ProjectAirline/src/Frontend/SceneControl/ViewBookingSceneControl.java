@@ -31,7 +31,7 @@ public class ViewBookingSceneControl {
         //table
     	table = ViewBookingScene.getTable();
         try {
-			table.setItems(FlightTableData.getFlightItems());
+			table.setItems(ReservationsTableData.getReservationsTableItems());
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -63,7 +63,7 @@ public class ViewBookingSceneControl {
     public static void handle_addButton(){
     	ReservationsTable reservationTable = new ReservationsTable();
     	Reservations reservation = new Reservations();
-
+    	System.out.println("new booking added");
 
     }
 
@@ -82,7 +82,7 @@ public class ViewBookingSceneControl {
                 tableItems = FXCollections.observableArrayList();
 
                 for(ReservationsTable b : reservations){
-                    if(b.getRoute().toUpperCase().contains(search.getText().toUpperCase())||
+                    if(b.getDepartingCity().toUpperCase().contains(search.getText().toUpperCase())||
                             b.getUser().toUpperCase().contains(search.getText().toUpperCase())) {
 
                         tableItems.add(b);
