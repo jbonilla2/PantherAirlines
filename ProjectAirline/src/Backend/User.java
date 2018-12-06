@@ -7,12 +7,9 @@ import javafx.beans.property.StringProperty;
 
 public class User extends Customer {
 
-    //fields
     private IntegerProperty ssn, zip;
     private StringProperty firstname, lastname, address, state, username, password, email, securityQ, securityA;
 
-
-    //constructors
     public User() {
         ssn = new SimpleIntegerProperty();
         firstname = new SimpleStringProperty("");
@@ -30,138 +27,128 @@ public class User extends Customer {
     public User(int ssn, String firstname, String lastname, String address, int zip,
     		String state, String username, String password, String email, String securityQ, String securityA) {
     	
+    	super(ssn, firstname, lastname, address, zip, state, username, password, email,securityQ,securityA);	
     	
-    	this.ssn = new SimpleIntegerProperty(ssn); 
-        this.firstname = new SimpleStringProperty(firstname);
-        this.lastname = new SimpleStringProperty(lastname);
-        this.address = new SimpleStringProperty(address);
-        this.zip = new SimpleIntegerProperty(zip);
-        this.state = new SimpleStringProperty(state);
-        this.username = new SimpleStringProperty(username);
-        this.password = new SimpleStringProperty(password);
-        this.email = new SimpleStringProperty(email);
-        this.securityQ = new SimpleStringProperty(securityQ);
-        this.securityA = new SimpleStringProperty(securityA);
     }
 
 	public int getSSN() {
-		return ssn.get();
+		return super.getSSN();
 	}
 	
     public IntegerProperty ssnProperty() {
-		return ssn;
+		return super.ssnProperty();
 	}
     @Override
 	public void setSSN(int ssn) {
-		this.ssn.set(ssn);
+		super.setSSN(ssn);
 	}
 
 	public int getZip() {
-		return zip.get();
+		return super.getZip();
 	}
 	
 	public IntegerProperty zipProperty() {
-		return zip;
+		return super.zipProperty();
 	}
 	
 	public void setZip(int zip) {
-		this.zip.set(zip);
+		super.setZip(zip);
 	}
 
 	public String getFirstname() {
-		return firstname.get();
+		return super.getFirstname();
 	}
 	
 	public StringProperty firstnameProperty() {
-		return firstname;
+		return super.firstnameProperty();
 	}
 
 	public void setFirstname(String firstname) {
-		this.firstname.set(firstname);
+		super.setFirstname(firstname);
 	}
 
 	public String getLastname() {
-		return lastname.get();
+		return super.getLastname();
 	}
 	
 	 public StringProperty lastnameProperty() {
-	        return lastname;
+	        return super.lastnameProperty();
 	    }
 
 	public void setLastname(String lastname) {
-		this.lastname.set(lastname);
+		super.setLastname(lastname);
 	}
 
 	public String getAddress() {
-        return address.get();
+        return super.getAddress();
     }
 
     public StringProperty addressProperty() {
-        return address;
+        return super.addressProperty();
     }
 
     public void setAddress(String address) {
-        this.address.set(address);
+        super.setAddress(address);;
     }
 
     public String getState() {
-        return state.get();
+        return super.getState();
     }
 
     public StringProperty stateProperty() {
-        return state;
+        return super.stateProperty();
     }
 
     public void setState(String state) {
-        this.state.set(state);
+        super.setState(state);
     }
 
     public String getUsername() {
-        return username.get();
+        return super.getUsername();
     }
 
     public StringProperty usernameProperty() {
-        return username;
+        return super.usernameProperty();
     }
 
     public void setUsername(String username) {
-        this.username.set(username);
+        super.setUsername(username);
     }
 
     public String getPassword() {
-        return password.get();
+        return super.getPassword();
     }
 
     public StringProperty passwordProperty() {
-        return password;
+        return super.passwordProperty();
     }
 
     public void setPassword(String password) {
-        this.password.set(password);
+        super.setPassword(password);
     }
 
     public String getEmail() {
-        return email.get();
+        return super.getEmail();
     }
 
     public StringProperty emailProperty() {
-        return email;
+        return super.emailProperty();
     }
 
     public void setEmail(String email) {
-        this.email.set(email);
+        super.setEmail(email);
     }
 
     public String getSecurityQ() {
-        return securityQ.get();
+        return super.getSecurityQ();
     }
 
     public StringProperty securityQProperty() {
-        return securityQ;
+        return super.securityQProperty();
     }
 
     public void setSecurityQ(String securityQ) {
-        this.securityQ.set(securityQ);
+        super.setSecurityQ(securityQ);
     }
 
     public String getSecurityA() {

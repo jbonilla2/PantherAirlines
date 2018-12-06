@@ -70,7 +70,7 @@ public class LoginSceneControl {
     public static void handle_loginButton(){
         int ok = 0;
        //test run delete comment
-        MainControl.showMenuScene(); //valid username and pass
+        //MainControl.showMenuScene(); //valid username and pass
         if(isInputValid()) {
         	//verify the user credentials in database
         	for(User user: UserData.getUsers()) {

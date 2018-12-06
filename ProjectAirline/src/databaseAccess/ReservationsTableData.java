@@ -15,10 +15,7 @@ public class ReservationsTableData {
 	    
 	    public static ObservableList<ReservationsTable> getReservationsTableItems() throws ClassNotFoundException, SQLException{
 	        
-	    	String sql = "SELECT f.DepartingDate, f.DepartingCity, f.ArrivalCity, f.FlightID, r.ticketNumber " +
-                    "FROM flight f JOIN reservations r " +
-                    "ON f.FlightID = r.FlightID " +
-                    "ORDER BY DepartingDate;";
+	    	String sql = "SELECT * FROM reservations";
 	    	
 	    	reservationsTableItems = FXCollections.observableArrayList();
 
@@ -29,7 +26,7 @@ public class ReservationsTableData {
 	            if(rs!=null)
 	                while(rs.next()){
 	                    
-	                	reservationsTableItems.add(new ReservationsTable(rs.getInt(5), rs.getString(2), rs.getString(1), rs.getString(3)));
+	                	reservationsTableItems.add(new ReservationsTable(rs.getInt(1), rs.getString(2), rs.getInt(3)));
 	                    
 	                }
 	        }

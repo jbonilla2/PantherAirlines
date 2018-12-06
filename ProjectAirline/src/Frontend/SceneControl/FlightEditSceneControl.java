@@ -24,36 +24,31 @@ public class FlightEditSceneControl {
     private static DatePicker departure_date, arrival_date;
     private static Button okB, cancelB;
     private static boolean okPressed = false;
-    private static Flight flight;
-    private static FlightTable flightTable;
+    private static FlightTable flight;
 
 
-    //initialize
     public static void initialize(){
 
-        //price
         price = FlightsEditScene.getPrice();
-        //remaining seats
-        seatsT = FlightsEditScene.getSeatsT();
-        //depart city
-        dcityC = FlightsEditScene.getDcityC();
-        dcityC.getItems().addAll("ATL", "MIA", "LAX");
         
-        //arrival city
+        seatsT = FlightsEditScene.getSeatsT();
+       
+        dcityC = FlightsEditScene.getDcityC();
+        dcityC.getItems().addAll("ATL", "MIA", "LAX");      
+        
         acityC = FlightsEditScene.getAcityC();
         acityC.getItems().addAll("ATL", "MIA", "LAX");
-
-        //flight id
+        
         flight_id = FlightsEditScene.getFlight_id();
-  
-        //flight times setup
+         
         departure_time= FlightsEditScene.getDeparture_time();
-        //adds 24 hours to times to be displayed
+        
+        //adds 24 hours to times to be displayed in combo box 
         ObservableList<String> times = FXCollections.observableArrayList();
         for(int i=1; i<=24; i++) {
             times.add(i + ":00");
         }
-        departure_time.setItems(times);
+        departure_time.setItems(times);       
         //departure date picker
         departure_date = FlightsEditScene.getDeparture_date();
         //arrival date picker
@@ -61,7 +56,7 @@ public class FlightEditSceneControl {
 
         FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.toString(), departure_date.toString(), departure_time.toString(), acityC.toString(), arrival_date.toString(), Double.parseDouble(price.getText()), Integer.parseInt(seatsT.getText()) );
         
-        FlightData.insertFlight(newflight);
+        FlightTableData.insertFlight(newflight);
 
         //ok button
         okB = FlightsEditScene.getOkB();
@@ -75,37 +70,6 @@ public class FlightEditSceneControl {
     }
 
 
-    //setting flight for edit
-    public static void setFlight(FlightTable f,Flight flig){
-    	
-            flightTable = f;
-            flight = flig;
-
-            try {
-				for(Flight fl: FlightData.getFlight()) {
-				    if (fl.getFlightID() == flightTable.getFlightID()) {
-				        flight = fl;
-				        break;
-				    }
-				}
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-/*
-            dcityC.setValue(flightTable.getDepartingCity());
-            acityC.setValue(f.);
-            plane_id.setValue(flight.getPlane_id());
-            departure_date.setValue(LocalDate.parse(flightTable.getDeparture_date()));
-            departure_time.setValue(schedule.getDeparture_time());
-            arrival_time.setValue(schedule.getArrival_time());
-            price.setText(Double.toString(flightTable.getPrice()));
-*/
-    }
-
 
 
     //ok button action
@@ -116,7 +80,7 @@ public class FlightEditSceneControl {
 
 
         try {
-			for(Flight f: FlightData.getFlight()) {
+			for(FlightTable f: FlightTableData.getFlightItems()) {
 				if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
 					
 					Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -182,7 +146,7 @@ public class FlightEditSceneControl {
 
 
     //getters
-    public static Flight getFlight() {
+    public static FlightTable getFlight() {
         return flight;
     }
 

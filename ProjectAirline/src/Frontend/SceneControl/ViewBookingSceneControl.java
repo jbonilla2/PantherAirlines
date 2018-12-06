@@ -10,25 +10,19 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Optional;
 
 public class ViewBookingSceneControl {
 
-    //fields
     private static TableView<ReservationsTable> table;
     private static ObservableList<ReservationsTable> reservations, tableItems;  
     
     private static TextField search;
     private static Button add_bookingButton;
-    private static Button cancelButton;
     private static Button backButton;
-    private static Button editButton;
     
-    //initialize method
+    
     public static void initialize() {
 
-        //table
     	table = ViewBookingScene.getTable();
         try {
 			table.setItems(ReservationsTableData.getReservationsTableItems());
@@ -39,37 +33,31 @@ public class ViewBookingSceneControl {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-        //buttons
+        
         add_bookingButton = ViewBookingScene.getAdd_bookingButton();
         add_bookingButton.setOnAction(e -> handle_addButton());
 
         backButton = ViewBookingScene.getBackButton();
         backButton.setOnAction(e -> handle_backButton());
 
-        //search field setup
         search = ViewBookingScene.getSearchField();
         reservations = table.getItems();
         initializeSearch();
     }
 
-
-    //back button action
     public static void handle_backButton() {
         MainControl.showMenuScene();
     }
 
 
-    //add button action
     public static void handle_addButton(){
-    	ReservationsTable reservationTable = new ReservationsTable();
-    	Reservations reservation = new Reservations();
+    	MainControl.showFlightEditScene();
     	System.out.println("new booking added");
 
     }
 
 
-    //search bar setup
-    public static void initializeSearch(){
+   public static void initializeSearch() {
         search.textProperty().addListener(new InvalidationListener() {
            
         	@Override
@@ -82,8 +70,8 @@ public class ViewBookingSceneControl {
                 tableItems = FXCollections.observableArrayList();
 
                 for(ReservationsTable b : reservations){
-                    if(b.getDepartingCity().toUpperCase().contains(search.getText().toUpperCase())||
-                            b.getUser().toUpperCase().contains(search.getText().toUpperCase())) {
+                    if(b.getFlightID() == Integer.parseInt(search.getText())||
+                            b.getTicketNum() == Integer.parseInt(search.getText())) {
 
                         tableItems.add(b);
                     }
@@ -92,6 +80,6 @@ public class ViewBookingSceneControl {
                 table.setItems(tableItems);
             }
         });
-    }
+   }
 
 }
