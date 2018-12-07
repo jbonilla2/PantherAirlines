@@ -36,23 +36,16 @@ public class ViewFlightSceneControl {
 
         backB = ViewFlightsScene.getBackB();
         backB.setOnAction(e -> handle_backB());
-<<<<<<< HEAD
         
         addB = ViewFlightsScene.getAddB();
         addB.setOnAction(e -> handle_addB());
 
-=======
-
- //       addB = ViewFlightsScene.getAddB();
- //       addB.setOnAction(e -> handle_addB());
-        /*
->>>>>>> branch 'master' of https://github.com/fmbarrera/ProjectAirline.git
         editB = ViewFlightsScene.getEditB();
         //editB.setOnAction(e -> handle_editB());
 
         deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
         deleteFlightsB.setOnAction(event -> handle_deleteFlightsB());
-*/
+
 
         search = ViewFlightsScene.getSearch();
         flights = table.getItems(); //set search arrayList items
@@ -61,7 +54,7 @@ public class ViewFlightSceneControl {
     }
 
 
-<<<<<<< HEAD
+
     //add button action
     public static void handle_addB() {
         FlightTable flightTable = new FlightTable(LocalDate.now().toString());
@@ -139,22 +132,17 @@ public class ViewFlightSceneControl {
     }
 */
 
-=======
->>>>>>> branch 'master' of https://github.com/fmbarrera/ProjectAirline.git
+
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
   
     //delete button action
-<<<<<<< HEAD
+
     public static void handle_deleteFlightsB() {
     	
     	ObservableList<FlightTable> selFlight;
     	ObservableList<FlightTable> allFlight;
-=======
- /*   public static void handle_deleteFlightsB() {
->>>>>>> branch 'master' of https://github.com/fmbarrera/ProjectAirline.git
-        
-<<<<<<< HEAD
+
         allFlight = table.getItems();
         selFlight = table.getSelectionModel().getSelectedItems();
         //selFlight = table.getSelectionModel();
@@ -169,11 +157,9 @@ public class ViewFlightSceneControl {
         
         
         //FlightData.deleteFlight(FlightEditSceneControl.getFlight());
-=======
-        Flight.deleteFlight(FlightEditSceneControl.getFlight());
->>>>>>> branch 'master' of https://github.com/fmbarrera/ProjectAirline.git
+        
     }
-*/
+
     
     public static void initializeSearch(){
         search.textProperty().addListener(new InvalidationListener() {
