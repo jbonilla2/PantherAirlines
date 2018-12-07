@@ -70,7 +70,8 @@ public class FlightTableData {
 	 
 	 public static void updateFlight(FlightTable flight){
 	        try{
-	            statement.executeUpdate("UPDATE flight SET FlightID = " + flight.getFlightID()+", DepartingCity = "+flight.getDepartingCity()+", DepartingDate = "+flight.getDepartingDate()+", DepartingTime = "+flight.getDepartingTime()+", ArrivalCity = "+flight.getArrivalCity()+",ArrivalDate = "+flight.getArrivalDate()+",Price = "+flight.getPrice()+",SeatsRemaining = "+flight.getSeatsRemaining()+" WHERE FlightID = "+flight.getFlightID()+ ";");
+	            statement.executeUpdate("UPDATE flight SET FlightID = " + flight.getFlightID()+", DepartingCity = "+flight.getDepartingCity()+", DepartingDate = "+flight.getDepartingDate()+", DepartingTime = "+flight.getDepartingTime()+", ArrivalCity = "+flight.getArrivalCity()+",ArrivalDate = "+flight.getArrivalDate()+",Price = "+flight.getPrice()+",SeatsRemaining = "+flight.getSeatsRemaining()+
+	            		" WHERE FlightID = "+flight.getFlightID()+ ";");
 	        }
 
 	        catch(Exception e){
