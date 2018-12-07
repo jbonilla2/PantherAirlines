@@ -69,6 +69,17 @@ public class FlightTableData {
 	        }			
 	}
 	
+	 public static void deleteFlight(int row) {		
+			
+		 row = row -1;
+		 	
+		 try{
+			 statement.executeUpdate("DELETE FROM flight WHERE rowIndex = " + row + ";");					
+		 }	
+		 catch(Exception e){
+			 e.printStackTrace();
+		 }			
+	 }
 
 	
 }

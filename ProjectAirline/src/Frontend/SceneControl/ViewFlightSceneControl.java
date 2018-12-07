@@ -136,27 +136,23 @@ public class ViewFlightSceneControl {
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
   
-    //delete button action
 
+    //delete button action
     public static void handle_deleteFlightsB() {
     	
     	ObservableList<FlightTable> selFlight;
     	ObservableList<FlightTable> allFlight;
+    	
+    	FlightTable selectFlight = new FlightTable();
 
         allFlight = table.getItems();
         selFlight = table.getSelectionModel().getSelectedItems();
-        //selFlight = table.getSelectionModel();
-      
-        selFlight.get(table.getSelectionModel().getSelectedIndex());
-        //selFlight.get(table.getSelectionModel().getSelectedIndex());
         
+        selFlight.forEach(allFlight::remove);
         
+        selectFlight = table.getSelectionModel().getSelectedItem();
         
-        
-        //selFlight.forEach(action);
-        
-        
-        //FlightData.deleteFlight(FlightEditSceneControl.getFlight());
+        FlightTableData.deleteFlight(selectFlight);
         
     }
 
