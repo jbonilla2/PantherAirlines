@@ -125,7 +125,6 @@ public class MainControl {
 
         //initialization of controller
         FlightEditSceneControl.initialize();
-        //FlightEditSceneControl.setFlight(flightTable,flight);
 
         FlightsEditScene.getDialogStage().initOwner(window);
         FlightsEditScene.getDialogStage().setTitle("Flight menu");

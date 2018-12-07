@@ -15,8 +15,7 @@ public class FlightTableData {
 	 
 	 public static ObservableList<FlightTable> getFlightItems() throws ClassNotFoundException, SQLException{
 	     
-		 String sql = "SELECT FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, ArrivalDate, Price, SeatsRemaining " +
-                 "FROM flight ORDER BY DepartingDate";
+		 String sql = "SELECT * FROM flight ORDER BY DepartingDate";
 		 
 		 flightTableItems = FXCollections.observableArrayList();
 	        
@@ -59,6 +58,17 @@ public class FlightTableData {
 	            e.printStackTrace();
 	        }
 	    }
+	 
+	 public static void deleteFlight(FlightTable flight) {		
+			
+			try{
+				statement.executeUpdate("DELETE FROM flight WHERE FlightID = " + flight.getFlightID() + ";");					
+	        }
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }			
+	}
+	
 
 	
 }

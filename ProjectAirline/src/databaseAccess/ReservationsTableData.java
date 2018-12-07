@@ -1,6 +1,7 @@
 package databaseAccess;
 
 import Backend.ReservationsTable;
+import Frontend.SceneControl.LoginSceneControl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -15,10 +16,7 @@ public class ReservationsTableData {
 	    
 	    public static ObservableList<ReservationsTable> getReservationsTableItems() throws ClassNotFoundException, SQLException{
 	        
-	    	String sql = "SELECT f.DepartingDate, f.DepartingCity, f.ArrivalCity, f.FlightID, r.ticketNumber " +
-                    "FROM flight f JOIN reservations r " +
-                    "ON f.FlightID = r.FlightID " +
-                    "ORDER BY DepartingDate;";
+	    	String sql = "SELECT * FROM reservations WHERE " + LoginSceneControl.getUsername() + ";";
 	    	
 	    	reservationsTableItems = FXCollections.observableArrayList();
 
@@ -29,17 +27,28 @@ public class ReservationsTableData {
 	            if(rs!=null)
 	                while(rs.next()){
 	                    
-	                	reservationsTableItems.add(new ReservationsTable(rs.getInt(5), rs.getString(2), rs.getString(1), rs.getString(3)));
+	                	reservationsTableItems.add(new ReservationsTable(rs.getInt(1), rs.getString(2), rs.getInt(3)));
 	                    
 	                }
 	        }
 
 	        catch(Exception e){
-	        	System.out.println("Error occurred while fetching records from the flights database.");
+	        	System.out.println("Error occurred while fetching records from the booking database.");
 	            e.printStackTrace();
 	        }
 
 	        return  reservationsTableItems;
+	    }
+	    
+	    public static void insertReservation(ReservationsTable table){        
+			// this is when the user selects a flight to book
+			try{
+	            statement.executeUpdate("INSERT INTO reservations VALUE(default, " + booking.getCustomer_id() + ", " + booking.getFlight_id() + ", '" + booking.getFare_class() + "');");
+	        }
+
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }
 	    }
 
 	
