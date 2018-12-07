@@ -48,15 +48,16 @@ public class FlightEditSceneControl {
         for(int i=1; i<=24; i++) {
             times.add(i + ":00");
         }
+        
         departure_time.setItems(times);       
         //departure date picker
         departure_date = FlightsEditScene.getDeparture_date();
         //arrival date picker
         arrival_date = FlightsEditScene.getArrival_date();
 
-        FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.toString(), departure_date.toString(), departure_time.toString(), acityC.toString(), arrival_date.toString(), Double.parseDouble(price.getText()), Integer.parseInt(seatsT.getText()) );
+        //FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.toString(), departure_date.getValue().toString(), departure_time.toString(), acityC.toString(), arrival_date.getValue().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
         
-        FlightTableData.insertFlight(newflight);
+        //FlightTableData.insertFlight(newflight);
 
         //ok button
         okB = FlightsEditScene.getOkB();
@@ -74,37 +75,49 @@ public class FlightEditSceneControl {
 
     //ok button action
     public static void handle_okB(){
+    	int ok = 0;
+    	FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), arrival_date.getValue().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
+    	
         if(isInputValid()){
+        	
+        	//flight.setFlightID(Integer.parseInt(flight_id.getText()));
 
-        flight.setFlightID(Integer.parseInt(flight_id.getText()));
-
-
-        try {
-			for(FlightTable f: FlightTableData.getFlightItems()) {
-				if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
+        	try {
+        		for(FlightTable f: FlightTableData.getFlightItems()) {
+        			if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
 					
-					Alert alert = new Alert(Alert.AlertType.WARNING);
-			        alert.setHeaderText("Flight exists!");
-			        alert.setContentText("Input data again!");
-			        alert.initOwner(MainControl.window);
-			        alert.showAndWait();
-			 	   
-			    }
-			}
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+        				Alert alert = new Alert(Alert.AlertType.WARNING);
+        				alert.setHeaderText("Flight exists!");
+        				alert.setContentText("Input data again!");
+        				alert.initOwner(MainControl.window);
+        				alert.showAndWait();
+        				
+        				ok = 1;
+        				break;
+        			}
+        		
+        		}
+			
+			
+			
+        	} catch (NumberFormatException e) {
+        		// TODO Auto-generated catch block
+        		e.printStackTrace();
+        	} catch (ClassNotFoundException e) {
+        		// TODO Auto-generated catch block
+        		e.printStackTrace();
+        	} catch (SQLException e) {
+        		// TODO Auto-generated catch block
+        		e.printStackTrace();
+        	}
+        
+        }
+        
+        if(ok==0) {
+			FlightTableData.insertFlight(newflight);
+			FlightsEditScene.getDialogStage().close();
 		}
         
-        FlightsEditScene.getDialogStage().close();
-        }
-
     }
 
 
@@ -120,7 +133,7 @@ public class FlightEditSceneControl {
         String error = "";
 
        if(dcityC.getValue().equalsIgnoreCase(" -> "))
-        error += "Invalid route!\n";
+        error += "Invalid departing city!\n";
 
         try {
 

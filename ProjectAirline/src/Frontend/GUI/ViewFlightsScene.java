@@ -32,6 +32,7 @@ public class ViewFlightsScene {
     private static Pane layout;
     private static Scene scene;
    
+    //FOR TABLE
     private static TableView<FlightTable> table;
     private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
     private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn;
@@ -79,8 +80,6 @@ public class ViewFlightsScene {
         table.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn, priceColumn, seatsRemainingColumn);
 
                
-        
-        
         //search field
         search = new TextField();
         search.setPromptText("search");

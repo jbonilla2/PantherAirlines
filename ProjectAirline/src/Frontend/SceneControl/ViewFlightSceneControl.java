@@ -41,7 +41,7 @@ public class ViewFlightSceneControl {
         addB.setOnAction(e -> handle_addB());
 
         editB = ViewFlightsScene.getEditB();
-        //editB.setOnAction(e -> handle_editB());
+        editB.setOnAction(e -> handle_editB());
 
         deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
         deleteFlightsB.setOnAction(event -> handle_deleteFlightsB());
@@ -87,19 +87,19 @@ public class ViewFlightSceneControl {
     }
 
 
-/*
+
     //edit button action
     public static void handle_editB(){
-        FlightTable flightTable = table.getSelectionModel().getSelectedItem();
-        Flight flight = new Flight();
+    	ObservableList<FlightTable> selFlight = table.getSelectionModel().getSelectedItems();
+        FlightTable flight = new FlightTable();
 
-        if(flightTable != null) {
+        if(selFlight != null) {
             boolean okPressed = true;
             MainControl.showFlightEditScene();
 
             if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();
-   //             FlightData.updateFlight(flight); //update flight in database
+                FlightTableData.updateFlight(flight); //update flight in database
 
                 try {
 					table.setItems(FlightTableData.getFlightItems());
@@ -130,7 +130,7 @@ public class ViewFlightSceneControl {
             }
 
     }
-*/
+
 
 
     //back button action
@@ -140,8 +140,7 @@ public class ViewFlightSceneControl {
     //delete button action
     public static void handle_deleteFlightsB() {
     	
-    	ObservableList<FlightTable> selFlight;
-    	ObservableList<FlightTable> allFlight;
+    	ObservableList<FlightTable> selFlight, allFlight;
     	
     	FlightTable selectFlight = new FlightTable();
 

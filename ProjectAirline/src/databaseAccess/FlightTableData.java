@@ -8,6 +8,7 @@ import java.sql.*;
 public class FlightTableData {
 
 	 private static Statement statement;
+	 private static PreparedStatement pstatement;
 	 private static ObservableList<FlightTable> flightTableItems;
 	 private static Connection conn = DBconnect.connect();
 	 
@@ -41,7 +42,25 @@ public class FlightTableData {
 	 public static void insertFlight(FlightTable flight)
 	    {
 	        try{
-	            statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
+	            //statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
+	        
+	        	String qry = "INSERT INTO flight" +
+	        			"(FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, ArrivalDate, Price, SeatsRemaining)" + 
+	        			"VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+	            
+	        	pstatement = conn.prepareStatement(qry);
+	            
+	            pstatement.setInt(1, flight.getFlightID());
+	            pstatement.setString(2, flight.getDepartingCity());
+	            pstatement.setString(3, flight.getDepartingDate());
+	            pstatement.setString(4, flight.getDepartingTime());
+	            pstatement.setString(5, flight.getArrivalCity());
+	            pstatement.setString(6, flight.getArrivalDate());
+	            pstatement.setDouble(7, flight.getPrice());
+	            pstatement.setInt(8, flight.getSeatsRemaining());
+	            
+	            pstatement.executeUpdate();
+	        	
 	        }
 
 	        catch(Exception e){

@@ -71,6 +71,7 @@ public class LoginSceneControl {
         int ok = 0;
        //test run delete comment
         //MainControl.showMenuScene(); //valid username and pass
+       
         if(isInputValid()) {
         	//verify the user credentials in database
         	for(User user: UserData.getUsers()) {
