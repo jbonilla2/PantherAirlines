@@ -11,6 +11,8 @@ public class FlightTableData {
 	 private static ObservableList<FlightTable> flightTableItems;
 	 private static Connection conn = DBconnect.connect();
 	 
+	 
+	 
 	 public static ObservableList<FlightTable> getFlightItems() throws ClassNotFoundException, SQLException{
 	     
 		 String sql = "SELECT FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, ArrivalDate, Price, SeatsRemaining " +

@@ -36,12 +36,12 @@ public class ViewFlightSceneControl {
 
         backB = ViewFlightsScene.getBackB();
         backB.setOnAction(e -> handle_backB());
-
+        
         addB = ViewFlightsScene.getAddB();
         addB.setOnAction(e -> handle_addB());
 
         editB = ViewFlightsScene.getEditB();
-        editB.setOnAction(e -> handle_editB());
+        //editB.setOnAction(e -> handle_editB());
 
         deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
         deleteFlightsB.setOnAction(event -> handle_deleteFlightsB());
@@ -57,7 +57,7 @@ public class ViewFlightSceneControl {
     //add button action
     public static void handle_addB() {
         FlightTable flightTable = new FlightTable(LocalDate.now().toString());
-        Flight flight = new Flight();
+        //Flight flight = new Flight();
 
         MainControl.showFlightEditScene();
 /*
@@ -86,7 +86,7 @@ public class ViewFlightSceneControl {
     }
 
 
-
+/*
     //edit button action
     public static void handle_editB(){
         FlightTable flightTable = table.getSelectionModel().getSelectedItem();
@@ -129,16 +129,31 @@ public class ViewFlightSceneControl {
             }
 
     }
-
+*/
 
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
-
-
+  
     //delete button action
     public static void handle_deleteFlightsB() {
+    	
+    	ObservableList<FlightTable> selFlight;
+    	ObservableList<FlightTable> allFlight;
         
-        FlightData.deleteFlight(FlightEditSceneControl.getFlight());
+        allFlight = table.getItems();
+        selFlight = table.getSelectionModel().getSelectedItems();
+        //selFlight = table.getSelectionModel();
+      
+        selFlight.get(table.getSelectionModel().getSelectedIndex());
+        //selFlight.get(table.getSelectionModel().getSelectedIndex());
+        
+        
+        
+        
+        //selFlight.forEach(action);
+        
+        
+        //FlightData.deleteFlight(FlightEditSceneControl.getFlight());
     }
 
     //search bar setup
