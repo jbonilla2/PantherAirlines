@@ -38,7 +38,7 @@ public class LoginSceneControl {
         //loginButton.setDefaultButton(true);
         loginButton.setOnAction(e->{
         	//username
-            username = usernameField.getText();
+            setUsername(usernameField.getText());
 
             //password
             password = passwordField.getText();
@@ -74,7 +74,7 @@ public class LoginSceneControl {
         if(isInputValid()) {
         	//verify the user credentials in database
         	for(User user: UserData.getUsers()) {
-        		if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+        		if (user.getUsername().equals(getUsername()) && user.getPassword().equals(password)) {
 
         			MainControl.showMenuScene(); //valid username and pass
         			System.out.println("login successful");
@@ -103,7 +103,7 @@ public class LoginSceneControl {
     public static boolean isInputValid(){
         String error = "";
 
-        if(username.isEmpty())
+        if(getUsername().isEmpty())
             error+="Insert username!\n";
         if(password.isEmpty())
             error += "Insert password!\n";
@@ -122,5 +122,13 @@ public class LoginSceneControl {
     public static void main(String[] args) {
     	
     }
+
+	public static String getUsername() {
+		return username;
+	}
+
+	public static void setUsername(String username) {
+		LoginSceneControl.username = username;
+	}
 
 }
