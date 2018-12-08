@@ -119,6 +119,9 @@ public class ViewBookingSceneControl {
         selectFlight = ftable.getSelectionModel().getSelectedItem();
         ReservationsTableData.addReservation(selectFlight, user);
         
+        int flightID = selectFlight.getFlightID();
+        ReservationsTableData.deleteSeat(flightID);
+        
         try {
 			btable.setItems(ReservationsTableData.getReservationsTableItems(user));
 		} catch (ClassNotFoundException e1) {
@@ -126,6 +129,17 @@ public class ViewBookingSceneControl {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+        
+        try {
+			ftable.setItems(FlightTableData.getFlightItems());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
     
     	System.out.println("new booking added");
 
@@ -143,15 +157,28 @@ public class ViewBookingSceneControl {
         selectReserv = btable.getSelectionModel().getSelectedItem();
         ReservationsTableData.deleteReservation(selectReserv);
         
+        String user = LoginSceneControl.getUsername();
+        
         try {
-			btable.setItems(ReservationsTableData.getReservationsTableItems());
+			btable.setItems(ReservationsTableData.getReservationsTableItems(user));
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
     	
-    	
+        int flightID = selectReserv.getFlightID();
+        ReservationsTableData.addSeat(flightID);
+        
+        try {
+			ftable.setItems(FlightTableData.getFlightItems());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 

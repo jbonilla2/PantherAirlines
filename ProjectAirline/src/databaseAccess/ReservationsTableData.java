@@ -84,6 +84,8 @@ public class ReservationsTableData {
 	            
 	            pstatement.executeUpdate();
 	            
+	            String sql1 = ("UPDATE flight SET SeatsRemaining = SeatsRemaining - 1 WHERE FlightID = " + 1001 + " AND SeatsRemaining > 0;");
+	            
 	            
 	        }
 
@@ -93,6 +95,33 @@ public class ReservationsTableData {
 	    	
 	    }
 
+	    public static void deleteSeat(int flightID){        
+			// this is when the user selects a flight to book
+			try{
+	            statement.executeUpdate("UPDATE flight SET SeatsRemaining = SeatsRemaining - 1 WHERE FlightID = " + flightID + " AND SeatsRemaining > 0;");
+	            
+	        }
+
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }
+	    	
+	    }
+	    
+	    public static void addSeat(int flightID){        
+			// this is when the user selects a flight to book
+			try{
+	            statement.executeUpdate("UPDATE flight SET SeatsRemaining = SeatsRemaining + 1 WHERE FlightID = " + flightID + " AND SeatsRemaining > 0;");
+	            
+	        }
+
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }
+	    	
+	    }
+	    
+	    
 	    public static void deleteReservation(ReservationsTable res) {		
 			
 			try{
