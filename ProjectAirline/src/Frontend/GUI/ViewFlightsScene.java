@@ -40,7 +40,7 @@ public class ViewFlightsScene {
     
     private static TextField search;
     private static HBox buttonLayout;
-    private static Button backB, addB, editB, deleteFlightsB;
+    private static Button backB, addB, deleteFlightsB;
 
 
     //initialization of objects
@@ -83,17 +83,15 @@ public class ViewFlightsScene {
         //search field
         search = new TextField();
         search.setPromptText("search");
-        search.setMinWidth(545);
+        search.setMinWidth(150);
         search.relocate(42,642);
 
         //back butt
         backB = new Button("Back");
 
         //add butt
-        addB = new Button("Add...");
-
-        //edit butt
-        editB = new Button("Edit...");
+        addB = new Button("Add/Edit Flight..");
+        addB.setMinWidth(100);
 
         //exportFlightsB
         deleteFlightsB = new Button("Delete");
@@ -102,7 +100,7 @@ public class ViewFlightsScene {
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
         buttonLayout.relocate(740,642);
-        buttonLayout.getChildren().addAll(addB,editB,deleteFlightsB,backB);
+        buttonLayout.getChildren().addAll(addB,deleteFlightsB,backB);
 
         //layout setup
         layout = new Pane();
@@ -175,10 +173,6 @@ public class ViewFlightsScene {
 
     public static Button getAddB() {
         return addB;
-    }
-
-    public static Button getEditB() {
-        return editB;
     }
 
     public static Button getDeleteFlightsB() {
