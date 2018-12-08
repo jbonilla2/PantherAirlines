@@ -6,7 +6,7 @@ import java.util.Date;
 public class FlightTable {
 	
 	private IntegerProperty flightID, seatsRemaining;
-	private StringProperty departingDate, arrivalDate, departingCity, arrivalCity, departingTime;
+	private StringProperty departingDate, departingCity, arrivalCity, departingTime;
 	private DoubleProperty price;
 	
 	public FlightTable() {
@@ -34,10 +34,9 @@ public class FlightTable {
 	}
 	
 	public FlightTable(int flightID, String departingCity, String departingDate, String departingTime,  
-			String arrivalCity, String arrivalDate, double price, int seatsRemaining) {
+			String arrivalCity, double price, int seatsRemaining) {
 		
 		this.departingDate = new SimpleStringProperty(departingDate);
-		this.arrivalDate = new SimpleStringProperty(arrivalDate);
         this.departingCity = new SimpleStringProperty(departingCity);
         this.arrivalCity = new SimpleStringProperty(arrivalCity);
         this.price = new SimpleDoubleProperty(price);
@@ -56,18 +55,6 @@ public class FlightTable {
 
     public void setDepartingDate(String departingDate) {
         this.departingDate.set(departingDate);
-    }
-    
-    public String getArrivalDate() {
-        return arrivalDate.get();
-    }
-
-    public StringProperty arrivalDateProperty() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(String arrivalDate) {
-        this.arrivalDate.set(arrivalDate);
     }
     
     public String getDepartingCity() {

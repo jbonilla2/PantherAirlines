@@ -55,7 +55,7 @@ public class FlightsEditScene {
         dcityL = new Label("Departing City");
         acityL = new Label("Arrival City");
         depdateL = new Label("Departing Date");
-        arrivdateL = new Label("Arrival Date");
+        //arrivdateL = new Label("Arrival Date");
         timeL = new Label("Departing Time");
         fidL = new Label ("Flight ID");
         priceL = new Label("Base price");
@@ -64,7 +64,8 @@ public class FlightsEditScene {
 
         //labels layout
         vBox1 = new VBox();
-        vBox1.getChildren().addAll(dcityL, acityL, depdateL, arrivdateL, timeL,fidL, priceL, seatsL);
+        vBox1.getChildren().addAll(dcityL, acityL, depdateL, timeL,fidL, priceL, seatsL);
+        //vBox1.getChildren().addAll(dcityL, acityL, depdateL, arrivdateL, timeL,fidL, priceL, seatsL);
         vBox1.relocate(20,55);
         vBox1.setSpacing(36);
 
@@ -91,8 +92,8 @@ public class FlightsEditScene {
         departure_date.setMinWidth(248);
         
         //arrival date picker
-        arrival_date = new DatePicker();
-        arrival_date.setMinWidth(248);
+       // arrival_date = new DatePicker();
+       // arrival_date.setMinWidth(248);
         
         //buttons
         okB = new Button("Ok");
@@ -106,7 +107,8 @@ public class FlightsEditScene {
 
         //selectors layout
         vBox2 = new VBox();
-        vBox2.getChildren().addAll(dcityC, acityC,departure_date,arrival_date,departure_time,flight_id, price, seatsT, buttons);
+       // vBox2.getChildren().addAll(dcityC, acityC,departure_date,arrival_date,departure_time,flight_id, price, seatsT, buttons);
+        vBox2.getChildren().addAll(dcityC, acityC,departure_date,departure_time,flight_id, price, seatsT, buttons);
         vBox2.setSpacing(24);
         vBox2.relocate(170,50);
 

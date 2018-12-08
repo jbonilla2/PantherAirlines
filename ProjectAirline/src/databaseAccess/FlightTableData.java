@@ -28,7 +28,7 @@ public class FlightTableData {
 	                while(rs.next()){
 	                    
 	                	flightTableItems.add(new FlightTable(rs.getInt(1),rs.getString(2),rs.getString(3),
-	                    		rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getInt(8)));
+	                    		rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getInt(7)));
 	                }
 	        }
 
@@ -45,8 +45,8 @@ public class FlightTableData {
 	            //statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
 	        
 	        	String qry = "INSERT INTO flight" +
-	        			"(FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, ArrivalDate, Price, SeatsRemaining)" + 
-	        			"VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+	        			"(FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, Price, SeatsRemaining)" + 
+	        			"VALUES(?, ?, ?, ?, ?, ?, ?)";
 	            
 	        	pstatement = conn.prepareStatement(qry);
 	            
@@ -55,9 +55,8 @@ public class FlightTableData {
 	            pstatement.setString(3, flight.getDepartingDate());
 	            pstatement.setString(4, flight.getDepartingTime());
 	            pstatement.setString(5, flight.getArrivalCity());
-	            pstatement.setString(6, flight.getArrivalDate());
-	            pstatement.setDouble(7, flight.getPrice());
-	            pstatement.setInt(8, flight.getSeatsRemaining());
+	            pstatement.setDouble(6, flight.getPrice());
+	            pstatement.setInt(7, flight.getSeatsRemaining());
 	            
 	            pstatement.executeUpdate();
 	        	
@@ -70,13 +69,25 @@ public class FlightTableData {
 	 
 	 public static void updateFlight(FlightTable flight){
 	        try{
-	            statement.executeUpdate("UPDATE flight SET FlightID = " + flight.getFlightID()+", DepartingCity = "+flight.getDepartingCity()+", DepartingDate = "+flight.getDepartingDate()+", DepartingTime = "+flight.getDepartingTime()+", ArrivalCity = "+flight.getArrivalCity()+",ArrivalDate = "+flight.getArrivalDate()+",Price = "+flight.getPrice()+",SeatsRemaining = "+flight.getSeatsRemaining()+" WHERE FlightID = "+flight.getFlightID()+ ";");
+	            String sql = ("UPDATE flight SET DepartingCity = ?, DepartingDate = ?," 
+	        + "DepartingTime = ?, ArrivalCity = ?, Price = ?, SeatsRemaining = ? WHERE FlightID = ?;");
+	        
+	        pstatement = conn.prepareStatement(sql);
+	        pstatement.setString(1, flight.getDepartingCity());
+	        pstatement.setString(2, flight.getDepartingDate());
+	        pstatement.setString(3, flight.getDepartingTime());
+	        pstatement.setString(4, flight.getArrivalCity());
+	        pstatement.setDouble(5, flight.getPrice());
+	        pstatement.setInt(6, flight.getSeatsRemaining());
+	        pstatement.setInt(7, flight.getFlightID());
+	        pstatement.executeUpdate();        
+	        
 	        }
 
 	        catch(Exception e){
 	            e.printStackTrace();
 	        }
-	    }
+	 }
 	 
 	 public static void deleteFlight(FlightTable flight) {		
 			

@@ -43,7 +43,7 @@ public class ReservationsTableData {
 	    public static void insertReservation(ReservationsTable table){        
 			// this is when the user selects a flight to book
 			try{
-	            statement.executeUpdate("INSERT INTO reservations VALUE(default, " + booking.getCustomer_id() + ", " + booking.getFlight_id() + ", '" + booking.getFare_class() + "');");
+	            statement.executeUpdate("INSERT INTO reservations VALUE(default, " + .getCustomer_id() + ", " + booking.getFlight_id() + ", '" + booking.getFare_class() + "');");
 	        }
 
 	        catch(Exception e){
