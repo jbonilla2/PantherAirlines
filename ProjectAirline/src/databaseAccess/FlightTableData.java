@@ -42,11 +42,11 @@ public class FlightTableData {
 	 public static void insertFlight(FlightTable flight)
 	    {
 	        try{
-	            //statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getArrivalDate() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
+	            //statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
 	        
 	        	String qry = "INSERT INTO flight" +
 	        			"(FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, Price, SeatsRemaining)" + 
-	        			"VALUES(?, ?, ?, ?, ?, ?, ?)";
+	        			"VALUES(?, ?, ?, ?, ?, ?, ?);";
 	            
 	        	pstatement = conn.prepareStatement(qry);
 	            
@@ -59,6 +59,8 @@ public class FlightTableData {
 	            pstatement.setInt(7, flight.getSeatsRemaining());
 	            
 	            pstatement.executeUpdate();
+	        
+	        	
 	        	
 	        }
 
