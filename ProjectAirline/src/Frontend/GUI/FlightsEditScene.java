@@ -37,7 +37,7 @@ public class FlightsEditScene {
     private static ComboBox<String> dcityC, acityC, departure_time;
     private static DatePicker departure_date, arrival_date;
     private static TextField flight_id, price, seatsT;
-    private static Button okB, cancelB;
+    private static Button addB,editB, cancelB;
     private static VBox vBox1, vBox2;
 
     private static HBox buttons;
@@ -95,14 +95,17 @@ public class FlightsEditScene {
         arrival_date.setMinWidth(248);
         
         //buttons
-        okB = new Button("Ok");
-        okB.setDefaultButton(true);
+        addB = new Button("Add");
+        addB.setDefaultButton(true);
 
+        editB = new Button("Edit");
+        editB.setDefaultButton(true);
+        
         cancelB = new Button("Cancel");
 
         buttons = new HBox(10);
         buttons.setAlignment(Pos.CENTER);
-        buttons.getChildren().addAll(okB,cancelB);
+        buttons.getChildren().addAll(addB, editB, cancelB);
 
         //selectors layout
         vBox2 = new VBox();
@@ -175,10 +178,14 @@ public class FlightsEditScene {
         return price;
     }
 
-    public static Button getOkB() {
-        return okB;
+    public static Button getAddB() {
+        return addB;
     }
 
+    public static Button getEditB() {
+        return editB;
+    }
+    
     public static Button getCancelB() {
         return cancelB;
     }
