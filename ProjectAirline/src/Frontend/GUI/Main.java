@@ -2,10 +2,7 @@ package Frontend.GUI;
 
 import java.sql.SQLException;
 
-import Backend.FlightTable;
 import Frontend.SceneControl.*;
-import databaseAccess.DBconnect;
-import databaseAccess.FlightTableData;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

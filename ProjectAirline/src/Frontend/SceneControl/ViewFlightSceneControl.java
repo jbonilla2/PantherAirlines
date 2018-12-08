@@ -19,8 +19,8 @@ public class ViewFlightSceneControl {
     private static ObservableList<FlightTable> flights, tableItems;
     private static TextField search;
     private static Button backB, addB, deleteFlightsB;
-
-
+   
+    
     public static void initialize(){
 
         table = ViewFlightsScene.getTable();
@@ -33,17 +33,18 @@ public class ViewFlightSceneControl {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-        backB = ViewFlightsScene.getBackB();
-        backB.setOnAction(e -> handle_backB());
+        
+        
         
         addB = ViewFlightsScene.getAddB();
         addB.setOnAction(e -> handle_addB());
 
         deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
         deleteFlightsB.setOnAction(event -> handle_deleteFlightsB());
-
-
+        
+        backB = ViewFlightsScene.getBackB();
+        backB.setOnAction(e -> handle_backB());
+        
         search = ViewFlightsScene.getSearch();
         flights = table.getItems(); //set search arrayList items
         initializeSearch();
@@ -54,34 +55,11 @@ public class ViewFlightSceneControl {
 
     //add button action
     public static void handle_addB() {
-        //FlightTable flightTable = new FlightTable(LocalDate.now().toString());
-        //Flight flight = new Flight();
-
-        MainControl.showFlightEditScene();
-/*
-        if(okPressed) {
-            flight = FlightEditSceneControl.getFlight();
-
-            FlightData.insertFlight(flight); //add flight to database
-
-            try {
-				table.setItems(FlightTableData.getFlightItems());
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} //set the table items
-            flights = table.getItems();
-*/
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.initOwner(MainControl.getWindow());
-            alert.setContentText("Flight added!");
-            alert.showAndWait();
-            System.out.println("new flight added");
-            
-            try {
+    	int access = 0;
+    	String user = LoginSceneControl.getUsername();
+    	if(user.contentEquals("admin")) {
+    		MainControl.showFlightEditScene();
+    		try {
 				table.setItems(FlightTableData.getFlightItems());
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -90,54 +68,19 @@ public class ViewFlightSceneControl {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        //}
+    		
+    		access =+ 1;
+    	}
+    	if(access == 0) {
+    		
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+    		alert.initOwner(MainControl.getWindow());
+    		alert.setContentText("FOR ADMIN ONLY");
+    		alert.showAndWait();
+    		System.out.println("A CUSTOMER ATTEMPTED TO CHANGE A FLIGHT");
+    	}	
+    	
     }
-
-
-/*
-    //edit button action
-    public static void handle_editB(){
-    	ObservableList<FlightTable> selFlight = table.getSelectionModel().getSelectedItems();
-        FlightTable flight = new FlightTable();
-
-        if(selFlight != null) {
-            boolean okPressed = MainControl.showFlightEditScene();
-
-            if (okPressed) {
-                flight = FlightEditSceneControl.getFlight();
-                //FlightTableData.updateFlight(flight); //update flight in database
-
-                try {
-					table.setItems(FlightTableData.getFlightItems());
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} //set the table items
-                flights = table.getItems();
-
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.initOwner(MainControl.getWindow());
-                alert.setContentText("Flight edited!");
-                alert.showAndWait();
-
-                System.out.println("a flight edited");
-            }
-        }
-
-        else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.initOwner(MainControl.getWindow());
-                alert.setHeaderText("Select flight!");
-                alert.setContentText("No flight selected!");
-                alert.showAndWait();
-            }
-
-    }
-*/
-
 
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
@@ -145,25 +88,36 @@ public class ViewFlightSceneControl {
 
     //delete button action
     public static void handle_deleteFlightsB() {
-    	
-    	ObservableList<FlightTable> selFlight, allFlight;
-    	
-    	FlightTable selectFlight = new FlightTable();
-
-        allFlight = table.getItems();
-        selFlight = table.getSelectionModel().getSelectedItems();
-        
-        selectFlight = table.getSelectionModel().getSelectedItem();
-        FlightTableData.deleteFlight(selectFlight);
-        
-        try {
-			table.setItems(FlightTableData.getFlightItems());
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-        
+    	int access = 0;
+    	String user = LoginSceneControl.getUsername();
+    	if(user.contentEquals("admin")) {
+	    	
+	    	ObservableList<FlightTable> selFlight, allFlight;
+	    	
+	    	FlightTable selectFlight = new FlightTable();
+	
+	        allFlight = table.getItems();
+	        selFlight = table.getSelectionModel().getSelectedItems();
+	        
+	        selectFlight = table.getSelectionModel().getSelectedItem();
+	        FlightTableData.deleteFlight(selectFlight);
+	        
+	        try {
+				table.setItems(FlightTableData.getFlightItems());
+			} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+	        access =+ 1;  
+    	} 
+    	if(access == 0) {
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+    		alert.initOwner(MainControl.getWindow());
+    		alert.setContentText("FOR ADMIN ONLY");
+    		alert.showAndWait();
+    		System.out.println("A CUSTOMER ATTEMPTED TO CHANGE A FLIGHT");
+    	}
     }
 
     
