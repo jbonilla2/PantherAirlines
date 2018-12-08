@@ -162,13 +162,19 @@ public abstract class Customer implements Person {
     public void setSecurityQ(String securityQ) {
         this.securityQ.set(securityQ);
     }
+   
+    public String getSecurityA() {
+        return securityA.get();
+    }
 
-    public abstract String getSecurityA();
+    public StringProperty securityAProperty() {
+        return securityA;
+    }
 
-    public abstract StringProperty securityAProperty();
-
-    public abstract void setSecurityA(String securityA);
-
+    public void setSecurityA(String securityA) {
+        this.securityA.set(securityA);
+    }
+    
 	 //toString method
     @Override
     public String toString() {

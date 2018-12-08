@@ -90,7 +90,7 @@
 
 .button {
     -fx-padding: 5 22 5 22;
-    -fx-max-width: 150;
+    -fx-max-width: 220;
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
@@ -102,7 +102,7 @@
 }
 
 #exit-button{
-    -fx-min-width: 195;
+    -fx-min-width: 200;
     -fx-min-height: 55;
 }
 

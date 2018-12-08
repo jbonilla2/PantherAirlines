@@ -82,7 +82,7 @@ public class ViewFlightsScene {
                
         //search field
         search = new TextField();
-        search.setPromptText("search");
+        search.setPromptText("Search Flight ID");
         search.setMinWidth(150);
         search.relocate(42,642);
 

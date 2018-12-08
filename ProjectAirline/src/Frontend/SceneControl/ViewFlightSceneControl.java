@@ -153,11 +153,16 @@ public class ViewFlightSceneControl {
         allFlight = table.getItems();
         selFlight = table.getSelectionModel().getSelectedItems();
         
-        selFlight.forEach(allFlight::remove);
-        
         selectFlight = table.getSelectionModel().getSelectedItem();
-        
         FlightTableData.deleteFlight(selectFlight);
+        
+        try {
+			table.setItems(FlightTableData.getFlightItems());
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
         
     }
 
@@ -174,7 +179,7 @@ public class ViewFlightSceneControl {
                 tableItems = FXCollections.observableArrayList();
 
                 for(FlightTable f : flights){
-                    if(f.getDepartingCity().toUpperCase().contains(search.getText().toUpperCase()) ||
+                    if(f.getFlightID() == Integer.parseInt(search.getText()) || f.getDepartingCity().toUpperCase().contains(search.getText().toUpperCase()) ||
                             f.getArrivalCity().toUpperCase().contains(search.getText().toUpperCase())){
                         tableItems.add(f);
                     }

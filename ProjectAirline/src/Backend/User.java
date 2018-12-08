@@ -152,15 +152,15 @@ public class User extends Customer {
     }
 
     public String getSecurityA() {
-        return securityA.get();
+        return super.getSecurityA();
     }
 
     public StringProperty securityAProperty() {
-        return securityA;
+        return super.securityAProperty();
     }
 
     public void setSecurityA(String securityA) {
-        this.securityA.set(securityA);
+        super.setSecurityA(securityA);
     }
 
 	 //toString method

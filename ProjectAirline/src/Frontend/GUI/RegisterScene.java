@@ -97,13 +97,13 @@ public class RegisterScene {
 
         //security question
         secQ = new TextField();
-        secQ.setPromptText("Input a security question");
+        secQ.setPromptText("Input security question");
         secQ.setMaxWidth(220);
         secQ.setAlignment(Pos.CENTER);
 
         //security answer
         secA = new TextField();
-        secA.setPromptText("Input a security answer");
+        secA.setPromptText("Input security answer");
         secA.setMaxWidth(220);
         secA.setAlignment(Pos.CENTER);
         

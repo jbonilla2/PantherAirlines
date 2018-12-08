@@ -50,16 +50,16 @@ public class LoginScene {
 
         //Login button
         loginButton=new Button("Login");
-        loginButton.setMaxWidth(300);
+        loginButton.setMaxWidth(220);
         
         //Register button
         registerButton=new Button("Register");
-        registerButton.setMaxWidth(300);
+        registerButton.setMaxWidth(220);
 
         
         //Forgot password button
         forgotpassButton=new Button("Forgot Password");
-        forgotpassButton.setMaxWidth(300);
+        forgotpassButton.setMaxWidth(220);
         
         //layout
         loginLayout = new VBox(10);
@@ -67,7 +67,7 @@ public class LoginScene {
         loginLayout.getChildren().addAll(pantherLabel,loginLabel,usernameField,passwordField,loginButton,registerButton,forgotpassButton);
 
         //scene
-        scene = new Scene(loginLayout,800,800);
+        scene = new Scene(loginLayout,800,600);
         scene.getStylesheets().add("Frontend/GUI/style.css");
 
         System.out.println("login screen initialized");
