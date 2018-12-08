@@ -57,7 +57,7 @@
 }
 
 .table-view .column-header, .table-view .filler {
-    -fx-size: 35;
+    -fx-size: 20;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: papayawhip;
     -fx-border-color:
@@ -68,7 +68,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 13pt;
+    -fx-font-size: 10pt;
     -fx-font-family: "Segoe UI";
     -fx-font-weight: bold;
     -fx-text-fill: #1d1d1d;

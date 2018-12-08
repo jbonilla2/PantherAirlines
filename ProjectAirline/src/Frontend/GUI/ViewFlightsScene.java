@@ -4,6 +4,7 @@ package Frontend.GUI;
 
 import Backend.FlightTable;
 import databaseAccess.FlightTableData;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class ViewFlightsScene {
 
@@ -30,6 +32,7 @@ public class ViewFlightsScene {
 	
     //fields
     private static Pane layout;
+    private static VBox layout2;
     private static Scene scene;
    
     //FOR TABLE
@@ -37,6 +40,7 @@ public class ViewFlightsScene {
     private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
     private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn;
     private static TableColumn<FlightTable, Double> priceColumn;
+    
     
     private static TextField search;
     private static HBox buttonLayout;
@@ -49,7 +53,7 @@ public class ViewFlightsScene {
         //table
         table = new TableView<>();
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setMinSize(1116,591);
+        table.setMinSize(600,300);
         table.relocate(42,32);
 
         //initialize columns
@@ -99,15 +103,19 @@ public class ViewFlightsScene {
         //button layout
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
-        buttonLayout.relocate(740,642);
-        buttonLayout.getChildren().addAll(addB,deleteFlightsB,backB);
+        buttonLayout.relocate(300,442);
+        buttonLayout.getChildren().addAll(search,addB,deleteFlightsB,backB);
 
         //layout setup
-        layout = new Pane();
-        layout.getChildren().addAll(table,search,buttonLayout);
+        //layout = new Pane();
+        //layout.getChildren().addAll(table,search,buttonLayout);
 
+        layout2 = new VBox(30);
+        layout2.setPadding(new Insets(10));
+        layout2.getChildren().addAll(table, buttonLayout);
+        
         //scene
-        scene = new Scene(layout, 1200, 700);
+        scene = new Scene(layout2, 1000, 600);
         scene.getStylesheets().add("/Frontend/GUI/style.css");
 
         System.out.println("flights scene initialized");
