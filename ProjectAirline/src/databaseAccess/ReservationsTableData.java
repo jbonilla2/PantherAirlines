@@ -10,17 +10,16 @@ import java.sql.*;
 public class ReservationsTableData {
 		
 		private static Statement statement;
+		 private static PreparedStatement pstatement;
 	    private static ObservableList<ReservationsTable> reservationsTableItems;
 	    private static Connection conn = DBconnect.connect();
 
 	    
 	    public static ObservableList<ReservationsTable> getReservationsTableItems() throws ClassNotFoundException, SQLException{
 	        
-	    	String sql = "SELECT * FROM reservations WHERE " + LoginSceneControl.getUsername() + ";";
+	    	String sql = "SELECT * FROM reservations;"; // WHERE " + LoginSceneControl.getUsername() + ";";
 	    	
 	    	reservationsTableItems = FXCollections.observableArrayList();
-	    	
-	    	// 
 
 	        try{
 	            statement = conn.createStatement();
@@ -42,10 +41,21 @@ public class ReservationsTableData {
 	        return  reservationsTableItems;
 	    }
 	    
-	    public static void insertReservation(ReservationsTable table){        
+	    public static void addReservation(ReservationsTable table){        
 			// this is when the user selects a flight to book
-			try{
-	            statement.executeUpdate("INSERT INTO reservations VALUE(default, " + .getCustomer_id() + ", " + booking.getFlight_id() + ", '" + booking.getFare_class() + "');");
+			
+	    	try{
+	            String sql = ("INSERT INTO reservations" + 
+	            						"(ticketNumber, UserID, FlightID)" + "VALUES(?, ?, ?");
+	            pstatement = conn.prepareStatement(sql);
+	            
+	            pstatement.setInt(1, table.getTicketNum());
+	            pstatement.setString(2,  table.getUserID());
+	            pstatement.setInt(3, table.getFlightID());
+	            
+	            pstatement.executeUpdate();
+	            
+	            
 	        }
 
 	        catch(Exception e){
