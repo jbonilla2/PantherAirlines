@@ -38,7 +38,7 @@ public class ViewFlightsScene {
     //FOR TABLE
     private static TableView<FlightTable> table;
     private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
-    private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn;
+    private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn;
     private static TableColumn<FlightTable, Double> priceColumn;
     
     
@@ -71,9 +71,6 @@ public class ViewFlightsScene {
         
         arrivalCityColumn = new TableColumn<FlightTable, String>("Arrival city");
         arrivalCityColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalCity"));
-
-        //arrivalDateColumn = new TableColumn<FlightTable, String>("Arrival Date");
-        //arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalDate"));
 
         priceColumn = new TableColumn<FlightTable, Double>("Basic price");
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
@@ -115,7 +112,7 @@ public class ViewFlightsScene {
         layout2.getChildren().addAll(table, buttonLayout);
         
         //scene
-        scene = new Scene(layout2, 1000, 600);
+        scene = new Scene(layout2, 1200, 700);
         scene.getStylesheets().add("/Frontend/GUI/style.css");
 
         System.out.println("flights scene initialized");
@@ -157,10 +154,6 @@ public class ViewFlightsScene {
     
     public static TableColumn<FlightTable, String> getDepartingTimeColumn() {
 		return departingTimeColumn;
-	}
-
-	public static TableColumn<FlightTable, String> getArrivalDateColumn() {
-		return arrivalDateColumn;
 	}
 
     public static TableColumn<FlightTable, Double> getPriceColumn() {

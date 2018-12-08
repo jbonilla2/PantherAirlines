@@ -38,7 +38,7 @@ public class RegisterScene {
 
         //registerLabel
     	registerLabel = new Label("Join us!");
-    	registerLabel.setPadding((new Insets(0, 0, 30, 0)));
+    	registerLabel.setPadding((new Insets(0, 0, 10, 0)));
     	registerLabel.setStyle("-fx-font-size: 24pt");
 
     	//firstName
@@ -122,7 +122,7 @@ public class RegisterScene {
         registerLayout.getChildren().addAll(registerLabel,firstName,lastName,address,state,zip,usernameField,passwordField,email,ssn,secQ,secA,registerButton,backButton);
 
         //scene
-        scene = new Scene(registerLayout,800,800);
+        scene = new Scene(registerLayout,800,750);
         scene.getStylesheets().add("Frontend/GUI/style.css");
 
 

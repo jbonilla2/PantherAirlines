@@ -39,6 +39,39 @@ public class FlightTableData {
 	        return  flightTableItems;
 	}
 	 
+	 public static ObservableList<FlightTable> searchFlightItems(String from, String to, String depdate) throws ClassNotFoundException, SQLException{
+	     
+		 String sql = "SELECT * FROM flight WHERE DepartingCity=? AND ArrivalCity=?  AND DepartingDate=?;";
+		 
+		 flightTableItems = FXCollections.observableArrayList();
+	        
+	        try{
+	            pstatement = conn.prepareStatement(sql);
+	            
+	            pstatement.setString(1, from);
+	            pstatement.setString(2, to);
+	            pstatement.setString(3, depdate);
+	            
+	            ResultSet rs = pstatement.executeQuery();
+	            
+	            if(rs!=null)
+	                while(rs.next()){
+	                    
+	                	flightTableItems.add(new FlightTable(rs.getInt(1),rs.getString(2),rs.getString(3),
+	                    		rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getInt(7)));
+	                }
+	        }
+
+	        catch(Exception e){
+	        	System.out.println("Error occurred while fetching records from the flights database.");
+	            e.printStackTrace();
+	        }
+	        return  flightTableItems;
+	}
+
+	 
+	 
+	 
 	 public static void insertFlight(FlightTable flight)
 	    {
 	        try{

@@ -34,10 +34,10 @@ public class FlightEditSceneControl {
         seatsT = FlightsEditScene.getSeatsT();
        
         dcityC = FlightsEditScene.getDcityC();
-        dcityC.getItems().addAll("ATL", "MIA", "LAX");      
+        dcityC.getItems().addAll("ATL", "MIA", "LAX", "JFK");      
         
         acityC = FlightsEditScene.getAcityC();
-        acityC.getItems().addAll("ATL", "MIA", "LAX");
+        acityC.getItems().addAll("ATL", "MIA", "LAX", "JFK");
         
         flight_id = FlightsEditScene.getFlight_id();
          

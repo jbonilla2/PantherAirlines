@@ -1,6 +1,9 @@
 package Frontend.GUI;
 
+import Backend.FlightTable;
 import Backend.ReservationsTable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -12,37 +15,114 @@ public class ViewBookingScene {
 
     private static Scene scene;
     private static Pane layout;
-    private static TableView<ReservationsTable> table;
-    private static TableColumn<ReservationsTable, Integer> ticketNumber, flightID;
-    private static TableColumn<ReservationsTable, String> userid;
+    private static VBox layout2;
     
-    private static VBox customer_detailsVertical;
-    private static VBox customer_detailsVerticalObs;
+    private static TableView<ReservationsTable> btable;	//new
+    private static TableColumn<ReservationsTable, Integer> ticketNumberCol, flightIDCol;
+    private static TableColumn<ReservationsTable, String> useridCol;
+    
+    private static TableView<FlightTable> ftable;	//new
+    private static TableColumn<FlightTable, Integer> flightIDColumn, seatsRemainingColumn;
+    private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn;
+    private static TableColumn<FlightTable, Double> priceColumn;
+    
+    private static VBox searchVBox, resVBox;	//new 2 searchVBox will have the flight criteria and resVBox will have already made reservations table and delete button
+    private static HBox searchHBox, resHBox, row1HBox;	//new 3
 
+    private static DatePicker depDate; //date picker   new 
+    
     private static TextField searchField;
-    private static Button add_bookingButton;
+    private static ComboBox<String> fromField, toField; //new 2
+    private static Button add_bookingButton, searchB, deleteB; //new
     private static Button backButton;
-    private static HBox buttonLayout;
+    private static HBox buttonLayout; //HBOX for bottom section searchfield, book button, and back
 
 
     @SuppressWarnings("unchecked")
 	public static void initialize(){
 
-    	ticketNumber=new TableColumn<>("Ticket");
-    	ticketNumber.setCellValueFactory(new PropertyValueFactory<>("ticketNumber"));
+    	// Bookings Table
+    	btable = new TableView<>();
+    	//btable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	btable.setMinSize(150,50);
 
-    	userid=new TableColumn<>("Username");
-    	userid.setCellValueFactory(new PropertyValueFactory<>("UserID"));
+    	ticketNumberCol = new TableColumn<ReservationsTable, Integer>("Ticket");
+    	ticketNumberCol.setCellValueFactory(new PropertyValueFactory<>("ticketNum")); //needs to be same as variable declared in ReservationsTable class
 
-    	flightID=new TableColumn<>("Flight ID");
-    	flightID.setCellValueFactory(new PropertyValueFactory<>("FlightID"));
+    	useridCol = new TableColumn<ReservationsTable, String>("Username");
+    	useridCol.setCellValueFactory(new PropertyValueFactory<>("UserID"));
 
-        table=new TableView<>();
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.getColumns().addAll(ticketNumber, userid, flightID); 
-        table.relocate(32,34);
-        table.setMinSize(1116,580);
+    	flightIDCol = new TableColumn<ReservationsTable, Integer>("Flight ID");
+    	flightIDCol.setCellValueFactory(new PropertyValueFactory<>("FlightID"));
 
+    	btable.getColumns().addAll(ticketNumberCol, useridCol, flightIDCol); 
+        //End of bookings table 
+        
+    	// Flights search table
+    	ftable = new TableView<>();
+        ftable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        ftable.setMinSize(600,300);
+        ftable.relocate(42,32);
+
+        flightIDColumn = new TableColumn<FlightTable, Integer>("ID");
+        flightIDColumn.setCellValueFactory(new PropertyValueFactory<>("FlightID"));
+
+        departingCityColumn = new TableColumn<FlightTable, String>("Departing city");
+        departingCityColumn.setCellValueFactory(new PropertyValueFactory<>("DepartingCity"));
+
+        departingDateColumn = new TableColumn<FlightTable, String>("Departing date");
+        departingDateColumn.setCellValueFactory(new PropertyValueFactory<>("DepartingDate"));
+ 
+        departingTimeColumn = new TableColumn<FlightTable, String>("Departing time");
+        departingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("DepartingTime"));
+        
+        arrivalCityColumn = new TableColumn<FlightTable, String>("Arrival city");
+        arrivalCityColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalCity"));
+
+        priceColumn = new TableColumn<FlightTable, Double>("Basic price");
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
+
+        seatsRemainingColumn = new TableColumn<FlightTable, Integer>("Available seats");
+        seatsRemainingColumn.setCellValueFactory(new PropertyValueFactory<>("SeatsRemaining"));
+
+        ftable.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, priceColumn, seatsRemainingColumn);
+        //End of flight search table
+        
+        //VBOX search items
+        //From & To fields go inside searchHBox
+        fromField = new ComboBox<>();
+        fromField.setPromptText("From");
+        
+        toField = new ComboBox<>();
+        toField.setPromptText("To");
+        
+        searchHBox = new HBox(5);
+        searchHBox.setPadding(new Insets(2));
+        searchHBox.getChildren().addAll(fromField, toField);
+        // searchHBOX created
+        
+        depDate = new DatePicker();
+        depDate.setMinWidth(248);
+        
+        searchB = new Button("Search");
+        
+        searchVBox = new VBox(5);
+        searchVBox.setPadding(new Insets(40));
+        searchVBox.getChildren().addAll(searchHBox, depDate, searchB);
+        // VBOX Search created
+        
+        deleteB = new Button("Delete");
+        
+        resVBox = new VBox(10);
+        resVBox.setPadding(new Insets(10));
+        resVBox.getChildren().addAll(btable, deleteB);
+        resVBox.setAlignment(Pos.CENTER);
+        
+        row1HBox = new HBox(10);
+        row1HBox.getChildren().addAll(searchVBox, resVBox);
+        row1HBox.setAlignment(Pos.CENTER);
+        
+        
         searchField=new TextField();
         searchField.setPromptText("search");
         searchField.relocate(32,642);
@@ -53,14 +133,18 @@ public class ViewBookingScene {
         
 
         buttonLayout=new HBox();
-        buttonLayout.getChildren().addAll(add_bookingButton,backButton);
+        buttonLayout.getChildren().addAll(searchField, add_bookingButton,backButton);
         buttonLayout.relocate(720,642);
+        buttonLayout.setPadding(new Insets(20));
         buttonLayout.setSpacing(20);
+        
+        
+        layout2 = new VBox(30);
+        layout2.getChildren().addAll(row1HBox, ftable, buttonLayout);
+        layout2.setPadding(new Insets(50));
+        //layout.getChildren().addAll(btable,buttonLayout,searchField);
 
-        layout=new Pane();
-        layout.getChildren().addAll(table,buttonLayout,searchField);
-
-        scene = new Scene(layout,1200,700);
+        scene = new Scene(layout2,1200,700);
         scene.getStylesheets().add("/Frontend/GUI/style.css");
 
 
@@ -77,16 +161,8 @@ public class ViewBookingScene {
         return layout;
     }
 
-    public static TableView<ReservationsTable> getTable() {
-        return table;
-    }
-
-    public static VBox getCustomer_detailsVertical() {
-        return customer_detailsVertical;
-    }
-
-    public static VBox getCustomer_detailsVerticalObs() {
-        return customer_detailsVerticalObs;
+    public static TableView<ReservationsTable> getBtable() {
+        return btable;
     }
 
     public static TextField getSearchField() {
@@ -98,7 +174,22 @@ public class ViewBookingScene {
     }
 
 
-    public static Button getBackButton() {
+    public static TableColumn<ReservationsTable, Integer> getTicketNumberCol() {
+		return ticketNumberCol;
+	}
+
+
+	public static TableColumn<ReservationsTable, Integer> getFlightIDCol() {
+		return flightIDCol;
+	}
+
+
+	public static TableColumn<ReservationsTable, String> getUseridCol() {
+		return useridCol;
+	}
+
+
+	public static Button getBackButton() {
         return backButton;
     }
 
@@ -106,4 +197,99 @@ public class ViewBookingScene {
     public static HBox getButtonLayout() {
         return buttonLayout;
     }
+
+
+	public static TableView<FlightTable> getFtable() {
+		return ftable;
+	}
+
+
+	public static TableColumn<FlightTable, Integer> getFlightIDColumn() {
+		return flightIDColumn;
+	}
+
+
+	public static TableColumn<FlightTable, Integer> getSeatsRemainingColumn() {
+		return seatsRemainingColumn;
+	}
+
+
+	public static TableColumn<FlightTable, String> getDepartingCityColumn() {
+		return departingCityColumn;
+	}
+
+
+	public static TableColumn<FlightTable, String> getDepartingDateColumn() {
+		return departingDateColumn;
+	}
+
+
+	public static TableColumn<FlightTable, String> getDepartingTimeColumn() {
+		return departingTimeColumn;
+	}
+
+
+	public static TableColumn<FlightTable, String> getArrivalCityColumn() {
+		return arrivalCityColumn;
+	}
+
+
+	public static TableColumn<FlightTable, Double> getPriceColumn() {
+		return priceColumn;
+	}
+
+
+	public static VBox getLayout2() {
+		return layout2;
+	}
+
+
+	public static VBox getSearchVBox() {
+		return searchVBox;
+	}
+
+
+	public static VBox getResVBox() {
+		return resVBox;
+	}
+
+
+	public static HBox getSearchHBox() {
+		return searchHBox;
+	}
+
+
+	public static HBox getResHBox() {
+		return resHBox;
+	}
+
+
+	public static HBox getRow1HBox() {
+		return row1HBox;
+	}
+
+
+	public static DatePicker getDepDate() {
+		return depDate;
+	}
+
+
+	public static ComboBox<String> getFromField() {
+		return fromField;
+	}
+
+
+	public static ComboBox<String> getToField() {
+		return toField;
+	}
+
+
+	public static Button getSearchB() {
+		return searchB;
+	}
+
+
+	public static Button getDeleteB() {
+		return deleteB;
+	}
 }

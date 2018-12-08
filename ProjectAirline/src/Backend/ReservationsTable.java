@@ -11,12 +11,14 @@ public class ReservationsTable {
     private StringProperty userID;
     
     public ReservationsTable() {
-    	
+    	ticketNum = new SimpleIntegerProperty(0);
+    	userID = new SimpleStringProperty("");
+    	flightID = new SimpleIntegerProperty(0);
     }
     
     public ReservationsTable(int ticketNum, String userID, int flightID) {
-        this.userID = new SimpleStringProperty(userID);
         this.ticketNum = new SimpleIntegerProperty(ticketNum);
+        this.userID = new SimpleStringProperty(userID);
         this.flightID = new SimpleIntegerProperty(flightID);
     }
     
