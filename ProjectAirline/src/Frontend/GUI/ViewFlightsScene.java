@@ -68,8 +68,8 @@ public class ViewFlightsScene {
         arrivalCityColumn = new TableColumn<FlightTable, String>("Arrival city");
         arrivalCityColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalCity"));
 
-        arrivalDateColumn = new TableColumn<FlightTable, String>("Arrival Date");
-        arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalDate"));
+        //arrivalDateColumn = new TableColumn<FlightTable, String>("Arrival Date");
+        //arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("ArrivalDate"));
 
         priceColumn = new TableColumn<FlightTable, Double>("Basic price");
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
@@ -77,7 +77,7 @@ public class ViewFlightsScene {
         seatsRemainingColumn = new TableColumn<FlightTable, Integer>("Available seats");
         seatsRemainingColumn.setCellValueFactory(new PropertyValueFactory<>("SeatsRemaining"));
 
-        table.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, arrivalDateColumn, priceColumn, seatsRemainingColumn);
+        table.getColumns().addAll(flightIDColumn, departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn, priceColumn, seatsRemainingColumn);
 
                
         //search field

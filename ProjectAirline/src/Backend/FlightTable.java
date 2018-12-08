@@ -1,7 +1,6 @@
 package Backend;
 
 import javafx.beans.property.*;
-import java.util.Date;
 
 public class FlightTable {
 	
@@ -36,13 +35,13 @@ public class FlightTable {
 	public FlightTable(int flightID, String departingCity, String departingDate, String departingTime,  
 			String arrivalCity, double price, int seatsRemaining) {
 		
-		this.departingDate = new SimpleStringProperty(departingDate);
+		this.flightID = new SimpleIntegerProperty(flightID);
         this.departingCity = new SimpleStringProperty(departingCity);
+        this.departingDate = new SimpleStringProperty(departingDate);
+        this.departingTime = new SimpleStringProperty(departingTime);
         this.arrivalCity = new SimpleStringProperty(arrivalCity);
         this.price = new SimpleDoubleProperty(price);
-        this.flightID = new SimpleIntegerProperty(flightID);
         this.seatsRemaining = new SimpleIntegerProperty(seatsRemaining);
-        this.departingTime = new SimpleStringProperty(departingTime);
 	}
 	
 	public String getDepartingDate() {

@@ -51,6 +51,7 @@ public class FlightEditSceneControl {
         
         departure_time.setItems(times);       
         //departure date picker
+        
         departure_date = FlightsEditScene.getDeparture_date();
         //arrival date picker
         //arrival_date = FlightsEditScene.getArrival_date();
@@ -73,6 +74,7 @@ public class FlightEditSceneControl {
 
     public static void handle_editB() {
     	int ok = 0;
+    	
     	flight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
     	
     	if(isInputValid()){
@@ -118,7 +120,7 @@ public class FlightEditSceneControl {
     public static void handle_addB(){
     	int ok = 0;
 
-    	FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
+    	flight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
     	
         if(isInputValid()){
         	

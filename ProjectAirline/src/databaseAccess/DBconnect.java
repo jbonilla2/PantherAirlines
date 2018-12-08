@@ -9,8 +9,8 @@ public class DBconnect {
 	private final String DRIVER = "com.mysql.jdbc.Driver";
 	private final String PATH = "jdbc:mysql://localhost:3306/airline_reservation";
 	private static final String URL = "jdbc:mysql://localhost:3306/airline_reservation";
-	private static final String usernameDB = "Jarieny";
-	private static final String passwordDB = "CIS3270"; 
+	private static final String usernameDB = "root"; //"Jarieny";
+	private static final String passwordDB = "Fall2016"; //"CIS3270"; 
 
 	
 	public static Connection connect() {

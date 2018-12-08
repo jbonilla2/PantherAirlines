@@ -43,10 +43,9 @@ public class FlightTableData {
 	    {
 	        try{
 	            //statement.executeUpdate("INSERT INTO flight VALUE(" + flight.getFlightID() + ", " + flight.getDepartingCity() + ", " + flight.getDepartingDate() + ", " + flight.getDepartingTime() + ", " + flight.getArrivalCity() + ", " + flight.getPrice() + ", " + flight.getSeatsRemaining()+";");
-	        
-	        	String qry = "INSERT INTO flight" +
-	        			"(FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, Price, SeatsRemaining)" + 
-	        			"VALUES(?, ?, ?, ?, ?, ?, ?);";
+	        	
+	        	
+	        	String qry = "INSERT INTO flight(FlightID, DepartingCity, DepartingDate, DepartingTime, ArrivalCity, Price, SeatsRemaining) VALUES(?, ?, ?, ?, ?, ?, ?)";
 	            
 	        	pstatement = conn.prepareStatement(qry);
 	            
