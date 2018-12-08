@@ -69,8 +69,9 @@ public class FlightTableData {
 	 
 	 public static void updateFlight(FlightTable flight){
 	        try{
+
 	            String sql = ("UPDATE flight SET DepartingCity = ?, DepartingDate = ?," 
-	        + "DepartingTime = ?, ArrivalCity = ?, Price = ?, SeatsRemaining = ? WHERE FlightID = ?;");
+	            		+ "DepartingTime = ?, ArrivalCity = ?, Price = ?, SeatsRemaining = ? WHERE FlightID = ?;");
 	        
 	        pstatement = conn.prepareStatement(sql);
 	        pstatement.setString(1, flight.getDepartingCity());
@@ -81,7 +82,9 @@ public class FlightTableData {
 	        pstatement.setInt(6, flight.getSeatsRemaining());
 	        pstatement.setInt(7, flight.getFlightID());
 	        pstatement.executeUpdate();        
-	        
+
+	         //   statement.executeUpdate("UPDATE flight SET FlightID = " + flight.getFlightID()+", DepartingCity = "+flight.getDepartingCity()+", DepartingDate = "+flight.getDepartingDate()+", DepartingTime = "+flight.getDepartingTime()+", ArrivalCity = "+flight.getArrivalCity()+ ", Price = "+flight.getPrice()+ ", SeatsRemaining = " +flight.getSeatsRemaining()+ " WHERE FlightID = "+flight.getFlightID()+ ";");
+
 	        }
 
 	        catch(Exception e){

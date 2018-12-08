@@ -22,7 +22,7 @@ public class FlightEditSceneControl {
     private static TextField price,flight_id,seatsT;
     private static ComboBox<String> dcityC, acityC, departure_time;
     private static DatePicker departure_date, arrival_date;
-    private static Button okB, cancelB;
+    private static Button addB, editB, cancelB;
     private static boolean okPressed = false;
     private static FlightTable flight;
 
@@ -55,51 +55,90 @@ public class FlightEditSceneControl {
         //arrival date picker
         //arrival_date = FlightsEditScene.getArrival_date();
 
-        //FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.toString(), departure_date.getValue().toString(), departure_time.toString(), acityC.toString(), arrival_date.getValue().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
-        
-        //FlightTableData.insertFlight(newflight);
+        //add button
+        addB = FlightsEditScene.getAddB();
+        addB.setOnAction( e -> handle_addB());
 
-        //ok button
-        okB = FlightsEditScene.getOkB();
-        okB.setOnAction( e -> handle_okB());
-
+        //edit button
+        editB = FlightsEditScene.getEditB();
+        editB.setOnAction( e -> handle_editB());
 
         //cancel button
         cancelB = FlightsEditScene.getCancelB();
         cancelB.setOnAction( e-> handleClose());
 
+        //flight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), arrival_date.getValue().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
+        
+    }
+
+    public static void handle_editB() {
+    	int ok = 0;
+    	flight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
+    	
+    	if(isInputValid()){
+    	
+	    	try {
+	    		for(FlightTable f: FlightTableData.getFlightItems()) {
+	    			if(f.getFlightID() == flight.getFlightID()) {
+						
+	    				okPressed = true;
+	    				FlightTableData.updateFlight(flight);
+	    				FlightsEditScene.getDialogStage().close();
+	    				ok = 1;
+	    				break;
+	    			}
+	    		
+	    		}
+			
+	    	} catch (NumberFormatException e) {
+	    		// TODO Auto-generated catch block
+	    		e.printStackTrace();
+	    	} catch (ClassNotFoundException e) {
+	    		// TODO Auto-generated catch block
+	    		e.printStackTrace();
+	    	} catch (SQLException e) {
+	    		// TODO Auto-generated catch block
+	    		e.printStackTrace();
+	    	}	
+			
+			if(ok==0) {
+				Alert alert = new Alert(Alert.AlertType.WARNING);
+				alert.setHeaderText("Flight ID does not match!");
+				alert.setContentText("Match flight ID to existing ID!" );
+				alert.initOwner(MainControl.window);
+				alert.showAndWait();
+				
+				FlightsEditScene.getDialogStage().close();
+			}
+    	}	
     }
 
 
-
-
     //ok button action
-    public static void handle_okB(){
+    public static void handle_addB(){
     	int ok = 0;
+
     	FlightTable newflight = new FlightTable(Integer.parseInt(flight_id.getText()), dcityC.getSelectionModel().getSelectedItem().toString(), departure_date.getValue().toString(), departure_time.getSelectionModel().getSelectedItem().toString(), acityC.getSelectionModel().getSelectedItem().toString(), Double.parseDouble(price.getText()), Integer.parseInt( seatsT.getText() ) );
     	
         if(isInputValid()){
         	
-        	//flight.setFlightID(Integer.parseInt(flight_id.getText()));
-
+        	//Should insert a new flight to the database
+        	
         	try {
         		for(FlightTable f: FlightTableData.getFlightItems()) {
         			if(f.getFlightID() == Integer.parseInt(flight_id.getText())) {
-					
+    					
         				Alert alert = new Alert(Alert.AlertType.WARNING);
         				alert.setHeaderText("Flight exists!");
         				alert.setContentText("Input data again!");
         				alert.initOwner(MainControl.window);
         				alert.showAndWait();
-        				
+            				
         				ok = 1;
         				break;
         			}
-        		
         		}
-			
-			
-			
+    			
         	} catch (NumberFormatException e) {
         		// TODO Auto-generated catch block
         		e.printStackTrace();
@@ -109,18 +148,18 @@ public class FlightEditSceneControl {
         	} catch (SQLException e) {
         		// TODO Auto-generated catch block
         		e.printStackTrace();
-        	}
-        
-        }
-        
-        if(ok==0) {
-			FlightTableData.insertFlight(newflight);
-			FlightsEditScene.getDialogStage().close();
-		}
+        	}	
+        		
+        	if(ok==0) {
+        		FlightTableData.insertFlight(flight);
+        		FlightsEditScene.getDialogStage().close();
+        	} //closes if(ok==0)
+        } //closes if(ViewFlightSceneControl.getAddB().isPressed())
+        	
         
     }
-
-
+        
+    
     //cancel button action
     public static void handleClose(){
         okPressed = false;

@@ -41,7 +41,7 @@ public class ViewFlightSceneControl {
         addB.setOnAction(e -> handle_addB());
 
         editB = ViewFlightsScene.getEditB();
-        editB.setOnAction(e -> handle_editB());
+       // editB.setOnAction(e -> handle_editB());
 
         deleteFlightsB = ViewFlightsScene.getDeleteFlightsB();
         deleteFlightsB.setOnAction(event -> handle_deleteFlightsB());
@@ -87,19 +87,18 @@ public class ViewFlightSceneControl {
     }
 
 
-
+/*
     //edit button action
     public static void handle_editB(){
     	ObservableList<FlightTable> selFlight = table.getSelectionModel().getSelectedItems();
         FlightTable flight = new FlightTable();
 
         if(selFlight != null) {
-            boolean okPressed = true;
-            MainControl.showFlightEditScene();
+            boolean okPressed = MainControl.showFlightEditScene();
 
             if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();
-                FlightTableData.updateFlight(flight); //update flight in database
+                //FlightTableData.updateFlight(flight); //update flight in database
 
                 try {
 					table.setItems(FlightTableData.getFlightItems());
@@ -130,7 +129,7 @@ public class ViewFlightSceneControl {
             }
 
     }
-
+*/
 
 
     //back button action
@@ -178,5 +177,53 @@ public class ViewFlightSceneControl {
             }
         });
     }
+
+
+
+	public static TableView<FlightTable> getTable() {
+		return table;
+	}
+
+
+
+	public static ObservableList<FlightTable> getFlights() {
+		return flights;
+	}
+
+
+
+	public static ObservableList<FlightTable> getTableItems() {
+		return tableItems;
+	}
+
+
+
+	public static TextField getSearch() {
+		return search;
+	}
+
+
+
+	public static Button getBackB() {
+		return backB;
+	}
+
+
+
+	public static Button getAddB() {
+		return addB;
+	}
+
+
+
+	public static Button getEditB() {
+		return editB;
+	}
+
+
+
+	public static Button getDeleteFlightsB() {
+		return deleteFlightsB;
+	}
 
 }

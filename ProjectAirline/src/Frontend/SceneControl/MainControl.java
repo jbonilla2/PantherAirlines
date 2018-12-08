@@ -1,6 +1,7 @@
 package Frontend.SceneControl;
 
 import java.sql.Connection;
+
 import Backend.*;
 import databaseAccess.*;
 import Frontend.GUI.*;
@@ -119,7 +120,7 @@ public class MainControl {
     }
 
     //flight edit dialog
-    public static void showFlightEditScene(){
+    public static boolean showFlightEditScene(){
         //initialization of scene
         FlightsEditScene.initialize();
 
@@ -130,6 +131,7 @@ public class MainControl {
         FlightsEditScene.getDialogStage().setTitle("Flight menu");
         FlightsEditScene.getDialogStage().showAndWait();
 
+        return FlightEditSceneControl.isOkPressed();
     }
 
     //getters
