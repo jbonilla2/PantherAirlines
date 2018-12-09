@@ -31,6 +31,7 @@ public class ViewBookingScene {
 
     private static DatePicker depDate; //date picker   new 
     
+    private static Label reservationL, searchL, allFlightsL;
     private static TextField searchField;
     private static ComboBox<String> fromField, toField; //new 2
     private static Button add_bookingButton, searchB, deleteB; //new
@@ -44,7 +45,7 @@ public class ViewBookingScene {
     	// Bookings Table
     	btable = new TableView<>();
     	//btable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    	btable.setMinSize(150,50);
+    	btable.setMinSize(150,100);
 
     	ticketNumberCol = new TableColumn<ReservationsTable, Integer>("Ticket");
     	ticketNumberCol.setCellValueFactory(new PropertyValueFactory<>("ticketNum")); //needs to be same as variable declared in ReservationsTable class
@@ -62,7 +63,7 @@ public class ViewBookingScene {
     	ftable = new TableView<>();
         ftable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         ftable.setMinSize(600,300);
-        ftable.relocate(42,32);
+        //ftable.relocate(42,32);
 
         flightIDColumn = new TableColumn<FlightTable, Integer>("ID");
         flightIDColumn.setCellValueFactory(new PropertyValueFactory<>("FlightID"));
@@ -89,6 +90,8 @@ public class ViewBookingScene {
         //End of flight search table
         
         //VBOX search items
+        searchL = new Label("Find your flight");
+        
         //From & To fields go inside searchHBox
         fromField = new ComboBox<>();
         fromField.setPromptText("From");
@@ -106,16 +109,18 @@ public class ViewBookingScene {
         
         searchB = new Button("Search");
         
-        searchVBox = new VBox(5);
-        searchVBox.setPadding(new Insets(40));
-        searchVBox.getChildren().addAll(searchHBox, depDate, searchB);
+        searchVBox = new VBox(33);
+        searchVBox.setPadding(new Insets(10));
+        searchVBox.getChildren().addAll(searchL, searchHBox, depDate, searchB);
         // VBOX Search created
         
         deleteB = new Button("Delete");
         
+        reservationL = new Label("My confirmed bookings");
+
         resVBox = new VBox(10);
         resVBox.setPadding(new Insets(10));
-        resVBox.getChildren().addAll(btable, deleteB);
+        resVBox.getChildren().addAll(reservationL, btable, deleteB);
         resVBox.setAlignment(Pos.CENTER);
         
         row1HBox = new HBox(10);
@@ -124,8 +129,8 @@ public class ViewBookingScene {
         
         
         searchField=new TextField();
-        searchField.setPromptText("search");
-        searchField.relocate(32,642);
+        searchField.setPromptText("Search by FlightID");
+        //searchField.relocate(32,642);
         searchField.setMinWidth(605);
 
         backButton=new Button("Back");
@@ -134,14 +139,15 @@ public class ViewBookingScene {
 
         buttonLayout=new HBox();
         buttonLayout.getChildren().addAll(searchField, add_bookingButton,backButton);
-        buttonLayout.relocate(720,642);
-        buttonLayout.setPadding(new Insets(20));
+        //buttonLayout.relocate(720,642);
+        buttonLayout.setPadding(new Insets(10));
         buttonLayout.setSpacing(20);
         
+        allFlightsL = new Label("All flights searched or currently available");
         
-        layout2 = new VBox(30);
-        layout2.getChildren().addAll(row1HBox, ftable, buttonLayout);
-        layout2.setPadding(new Insets(50));
+        layout2 = new VBox(10);
+        layout2.getChildren().addAll(row1HBox, allFlightsL, ftable, buttonLayout);
+        layout2.setPadding(new Insets(30));
         //layout.getChildren().addAll(btable,buttonLayout,searchField);
 
         scene = new Scene(layout2,1200,700);

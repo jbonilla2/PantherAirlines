@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,7 +42,7 @@ public class ViewFlightsScene {
     private static TableColumn<FlightTable, String> departingCityColumn, departingDateColumn, departingTimeColumn, arrivalCityColumn;
     private static TableColumn<FlightTable, Double> priceColumn;
     
-    
+    private static Label allFlightL;
     private static TextField search;
     private static HBox buttonLayout;
     private static Button backB, addB, deleteFlightsB;
@@ -91,7 +92,7 @@ public class ViewFlightsScene {
         backB = new Button("Back");
 
         //add butt
-        addB = new Button("Add/Edit Flight..");
+        addB = new Button("Add/Edit Flight...");
         addB.setMinWidth(100);
 
         //exportFlightsB
@@ -100,16 +101,14 @@ public class ViewFlightsScene {
         //button layout
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
-        buttonLayout.relocate(300,442);
         buttonLayout.getChildren().addAll(search,addB,deleteFlightsB,backB);
-
-        //layout setup
-        //layout = new Pane();
-        //layout.getChildren().addAll(table,search,buttonLayout);
-
+        
+        allFlightL = new Label("\t\t\t\t\t\t\t\t\tHere you can see all flights available by Panther Airlines \n\t\t\t\t\t\t\t\t\t        ONLY ADMINS can add, edit, or delete a flight");
+        allFlightL.setAlignment(Pos.CENTER);
+        
         layout2 = new VBox(30);
-        layout2.setPadding(new Insets(10));
-        layout2.getChildren().addAll(table, buttonLayout);
+        layout2.setPadding(new Insets(50, 50,50,50));
+        layout2.getChildren().addAll(allFlightL,table, buttonLayout);
         
         //scene
         scene = new Scene(layout2, 1200, 700);

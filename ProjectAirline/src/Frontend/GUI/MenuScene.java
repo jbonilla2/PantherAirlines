@@ -32,12 +32,12 @@ public class MenuScene {
         welcomeLabel.setStyle("-fx-font-size: 24pt");
         
         //bookingsB
-        bookingsB = new Button("Bookings");
+        bookingsB = new Button("Book Flights");
         bookingsB.setAlignment(Pos.CENTER);
         bookingsB.getStyleClass().add("menu-button");
 
         //flightsB
-        flightsB = new Button("Flights");
+        flightsB = new Button("All Available Flights");
         flightsB.setAlignment(Pos.CENTER);
         flightsB.getStyleClass().add("menu-button");
 
@@ -56,7 +56,7 @@ public class MenuScene {
         vbox.getChildren().addAll(welcomeLabel, bookingsB,flightsB,exitB,logoutB);
 
         //scene
-        scene = new Scene(vbox, 800, 800);
+        scene = new Scene(vbox, 800, 600);
         scene.getStylesheets().add("Frontend/GUI/style.css");
 
         System.out.println("menu scene initialized");
