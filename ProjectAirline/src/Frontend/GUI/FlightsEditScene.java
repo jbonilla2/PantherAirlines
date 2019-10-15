@@ -122,7 +122,7 @@ public class FlightsEditScene {
         layout.getStylesheets().add("/Frontend/GUI/style.css");
         
         //stage setup
-        scene = new Scene(layout,500,600);
+        scene = new Scene(layout,500,450);
         scene.getStylesheets().addAll("/Frontend/GUI/style.css");
 
         dialogStage = new Stage();
