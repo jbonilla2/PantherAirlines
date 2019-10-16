@@ -139,7 +139,7 @@ public class BookingEditScene {
         layout.getChildren().addAll(bookingLabel,labelsLayout,detailsLayout);
 
         //Scene
-        scene = new Scene(layout,500,600);
+        scene = new Scene(layout,500,450);
         scene.getStylesheets().addAll("/Presentation/style.css");
 
         //Stage

@@ -12,14 +12,14 @@ import java.sql.*;
 public class ReservationsTableData {
 		
 		private static Statement statement;
-		 private static PreparedStatement pstatement;
+		private static PreparedStatement pstatement;
 	    private static ObservableList<ReservationsTable> reservationsTableItems;
 	    private static Connection conn = DBconnect.connect();
 
 	    
 	    public static ObservableList<ReservationsTable> getReservationsTableItems() throws ClassNotFoundException, SQLException{
 	        
-	    	String sql = "SELECT * FROM reservations;"; // WHERE " + LoginSceneControl.getUsername() + ";";
+	    	String sql = "SELECT * FROM reservations;";
 	    	
 	    	reservationsTableItems = FXCollections.observableArrayList();
 
@@ -125,7 +125,7 @@ public class ReservationsTableData {
 	    public static void deleteReservation(ReservationsTable res) {		
 			
 			try{
-				statement.executeUpdate("DELETE FROM reservations WHERE FlightID = " + res.getFlightID() + ";");					
+				statement.executeUpdate("DELETE FROM reservations WHERE ticketNumber = " + res.getTicketNum() + ";");					
 	        }
 	        catch(Exception e){
 	            e.printStackTrace();
